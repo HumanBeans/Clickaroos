@@ -56,8 +56,8 @@ git checkout -b `your-branch-name`
 ### Make commits to your feature branch. 
 
 Prefix each commit like so
-  - (feat) Added a new feature
-  - (fix) Fixed inconsistent tests [Fixes #0]
+  - (feat) Add a new feature.
+  - (fix) Fix inconsistent tests [Fixes #0].
   - (refactor) ...
   - (cleanup) ...
   - (test) ...
