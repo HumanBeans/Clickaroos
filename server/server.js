@@ -8,11 +8,9 @@ var connection = mysql.createConnection({
 	database: 'ClickagoosDB'
 })
 
-connection.connect(function(err){
-	if(err) {
-		console.error('error', err.stack);
-		return;
-	}
-});
+connection.connect();
+
+
+
 app.listen(3000);
 console.log('we made it!')
