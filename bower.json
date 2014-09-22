@@ -1,0 +1,28 @@
+{
+  "name": "Clickaroos",
+  "version": "0.0.0",
+  "homepage": "http://clickaroos.com",
+  "authors": [
+    "Joe Lowinske <lowi0008@gmail.com>",
+    "Dara Bun <dara209@gmail.com>",
+    "Ly Mai Le <lymaile@gmail.com>",
+    "Armando Perez <armandopmj@gmail.com>",
+    "Haiming Bao <mr.nrober@gmail.com>"
+  ],
+  "description": "Real-time dynamic email content",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.11"
+  }
+}

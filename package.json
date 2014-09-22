@@ -8,20 +8,40 @@
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "https://github.com/armandopmj/Clickaroos.git"
+=======
+    "url": "https://github.com/HumanBeans/Clickaroos.git"
+>>>>>>> 9e79e6e29f5d0ad8e3cc49101da7083dbc405336
   },
   "author": "Armando Perez, Haiming Bao, Joe, Dara, Mai Ly",
   "license": "ISC",
   "bugs": {
+<<<<<<< HEAD
     "url": "https://github.com/armandopmj/Clickaroos/issues"
   },
   "homepage": "https://github.com/armandopmj/Clickaroos",
+=======
+    "url": "https://github.com/HumanBeans/Clickaroos/issues"
+  },
+  "homepage": "https://github.com/HumanBeans/Clickaroos",
+>>>>>>> 9e79e6e29f5d0ad8e3cc49101da7083dbc405336
   "dependencies": {
     "bcrypt": "^0.8.0",
     "body-parser": "^1.8.2",
     "express": "^4.9.3",
     "express-jwt": "^0.3.2",
     "jsonwebtoken": "^1.1.2",
+<<<<<<< HEAD
     "q": "^1.0.1"
+=======
+    "mysql": "^2.5.0",
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "karma": "^0.12.23",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.9"
+>>>>>>> 9e79e6e29f5d0ad8e3cc49101da7083dbc405336
   }
 }
