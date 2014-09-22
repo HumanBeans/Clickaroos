@@ -4,7 +4,8 @@ angular.module('clickaroos.config', [])
   $stateProvider
     .state('account', {
       url: '/account',
-      templateUrl: 'states/account/account.html'
+      templateUrl: 'states/account/account.html',
+      controller: 'AccountController'
     })
     .state('dashboard', {
       url: '/dashboard',

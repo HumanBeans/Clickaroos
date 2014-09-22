@@ -1,3 +1,21 @@
 account.html
 
 <a ui-sref="dashboard">Dashboard</a>
+
+<!-- Q: Switch login and signup to their respective folders and html files? -->
+
+<!-- Login -->
+<p>Login</p>
+<form name="login" ng-submit="submitLogin(user)">
+  Username: <input type="text" name="username" ng-model="user.username"></input>
+  Password: <input type="password" name="password" ng-model="user.password"></input>
+  <input type="submit" name="login"></input>
+</form>
+
+<!-- Signup -->
+<p>Signup</p>
+<form name="signup" ng-submit="submitSignup(user)">
+  Username: <input type="text" name="username" ng-model="user.username"></input>
+  Password: <input type="password" name="password" ng-model="user.password"></input>
+  <input type="submit" name="signup"></input>
+</form>

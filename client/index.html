@@ -1,10 +1,21 @@
+<!DOCTYPE html>
 <html ng-app="clickaroos">
 <head>
   <title>Clickaroos</title>
+
+  <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+
+  <!-- Main app -->
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="config/app.config.js"></script>
+
+  <!-- Account -->
+  <!-- TODO: Ask if there's a way to not have <script>s everywhere -->
+  <script type="text/javascript" src="states/account/controllers/account.controller.js"></script>
+  <script type="text/javascript" src="states/account/services/account.service.js"></script>
+
 </head>
 <body>
   index.html
