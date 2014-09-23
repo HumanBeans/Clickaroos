@@ -1,3 +1,39 @@
-dashboard.html
+<link rel="stylesheet" href="assets/style.css">
+<!-- <link rel="stylesheet" href="dashboard.css"> -->
+<link rel="stylesheet" href="states/dashboard/dashboard.css">
+<div class="container">
+  <div id="top-bar">
+    <div id="clickaroos-logo">
+      <img src="assets/images/clickaroos2.png" alt="">
+    </div>
+    <div id="top-nav">
+        <div id="create-campaign"><a ui-sref="create-campaign">Create Campaign</a></div>
+        <div id="campaign-list"><a ui-sref="campaign-list">Campaigns</a></div>
+    </div>
+  </div>
 
-<a ui-sref="create-campaign">Create Campaign</a>
+  <div id="dashboard-sidebar">
+    <div id="client-logo">
+      <img src="http://dummyimage.com/240x160/35d1f0/fff/&text=client logo" alt="">
+      <!-- <img src="http://dummyimage.com/240x150/19c6ff/fff.png" alt=""> -->
+    </div>
+    <!-- <div id="user-details">
+      Julie Smith
+    </div> -->
+    <div id="filter-campaigns">
+      <h3>Recent Reports:</h3>
+      <ul id="select-campaign">
+        <li>Fall Campaign</li>
+        <li class="active">30% Off Sale</li>
+        <li>Another Campaign</li>
+        <li>One More Campaign</li>
+        <li>Aggregate</li>
+      </ul>
+    </div>
+  </div>
+  <div id="dashboard-content">
+    <div id="dashboard-reports">
+      <h1>DASHBOARD<span> / 30% Off Sale</span></h1>
+    </div>
+  </div>
+</div>
