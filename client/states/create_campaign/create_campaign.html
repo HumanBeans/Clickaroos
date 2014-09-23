@@ -1,4 +1,10 @@
 create_campaign.html
 
+<form name="create-campaign" ng-submit="createCampaign(campaignName)">
+  <input type="text" name="campaign-name" ng-model="campaignName"></input>
+  <!-- TODO: Campaign folder -->
+  <input type="submit" name="createCampaign"></input>
+</form>
+
 <!-- TODO: swap out dummy campaign with real data -->
-<a ui-sref="dummy-campaign">Create</a>
+<a ui-sref="dummy-campaign">Create (for rerouting only)</a>

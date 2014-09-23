@@ -13,7 +13,8 @@ angular.module('clickaroos.config', [])
     })
     .state('create-campaign', {
       url: '/create-campaign',
-      templateUrl: 'states/create_campaign/create_campaign.html'
+      templateUrl: 'states/create_campaign/create_campaign.html',
+      controller: 'CreateCampaignController'
     })
     .state('campaign-page/:campaign-id', {
       url: '/campaign/:campaign-id', // TODO: adjust if necessary
