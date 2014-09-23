@@ -1,4 +1,4 @@
-describe("Account Module:", function() {
+describe("Unit: AccountController", function() {
 	beforeEach(
 		module('clickaroos.account', function($provide) {
 			$provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
