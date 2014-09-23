@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/HumanBeans/Clickaroos",
   "dependencies": {
-    "bcrypt": "^0.8.0",
+    // "bcrypt": "^0.8.0",
     "body-parser": "^1.8.2",
     "express": "^4.9.3",
     "express-jwt": "^0.3.2",
