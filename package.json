@@ -23,7 +23,7 @@
     "express-jwt": "^0.3.2",
     "jsonwebtoken": "^1.1.2",
     "q": "^1.0.1",
-    "mysql": "^2.5.0",
+    "mysql": "^2.5.0"
   },
   "devDependencies": {
     "karma": "^0.12.23",

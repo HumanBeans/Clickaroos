@@ -1,0 +1,29 @@
+Mon Sep 22 2014 16:44:15 GMT-0700 (PDT):
+{ [Error: Unable to locate site named clickaroos.azurewebsites.net]
+  stack: [Getter/Setter],
+  __frame: 
+   { name: 'lookupSiteNameAndWebSpace__20',
+     line: 871,
+     file: '/usr/local/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
+     prev: 
+      { name: '__1',
+        line: 35,
+        file: '/usr/local/lib/node_modules/azure-cli/lib/commands/asm/site.scale._js',
+        prev: undefined,
+        active: false,
+        offset: 15,
+        col: 6 },
+     active: false,
+     offset: 12,
+     col: 4 },
+  rawStack: [Getter] }
+Error: Unable to locate site named clickaroos.azurewebsites.net
+    at ___ (/usr/local/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:867:20)
+    at ___ (/usr/local/lib/node_modules/azure-cli/node_modules/streamline/lib/callbacks/runtime.js:85:13)
+    at ___ (/usr/local/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:473:131)
+    at __tryCatch (/usr/local/lib/node_modules/azure-cli/node_modules/streamline/lib/callbacks/runtime.js:141:4)
+    at ___ (/usr/local/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:473:67)
+    at getSites__7 (/usr/local/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:473:33)
+    at lookupSiteNameAndWebSpace__20 (/usr/local/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:883:4)
+    at __1 (/usr/local/lib/node_modules/azure-cli/lib/commands/asm/site.scale._js:50:6)
+
