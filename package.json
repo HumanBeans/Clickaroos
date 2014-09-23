@@ -2,9 +2,10 @@
   "name": "Clickaroos",
   "version": "1.0.0",
   "description": "Best Email Marketing Tools Ever!",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
