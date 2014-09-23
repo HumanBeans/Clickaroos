@@ -1,0 +1,121 @@
+#dashboard-sidebar {
+  background: #222A30;
+  width: 240px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  color: #ddd;
+  /*box-shadow: 2px 0 2px #989898;*/
+  z-index: 1;
+}
+
+#clickaroos-logo {
+  float: left;
+}
+
+#dashboard-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#dashboard-sidebar li {
+  list-style-type: none;
+  padding: 18px 20px;
+  border-bottom: 1px solid #353F47;
+  cursor: pointer;
+  transition: .35s;
+}
+
+#dashboard-sidebar li:hover {
+  background: #383F45;
+  border-bottom: 1px solid #253F47;
+  transition: .35s;
+}
+
+#dashboard-sidebar li.active {
+  border-left: 3px solid #FF005D;
+}
+
+#dashboard-sidebar li b {
+  color: #FF005D;
+}
+
+#dashboard-sidebar img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#dashboard-sidebar #user-details {
+  font-size: 0.8em;
+  margin: 20px;
+}
+
+#dashboard-sidebar #user-details {
+}
+
+#dashboard-sidebar, #dashboard-content {
+  margin-top: 68px;
+}
+
+#dashboard-content #dashboard-reports {
+  margin-left: 240px;
+  padding: 30px;
+}
+
+#top-bar {
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  height: 68px;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  z-index: 2;
+}
+
+#dashboard-content h1 {
+  padding: 0;
+  margin: 0;
+  color: #333;
+}
+
+#dashboard-content h1 span {
+  font-weight: 100;
+}
+
+#top-nav {
+  float: right;
+  height: 68px;
+}
+
+#campaign-list, #create-campaign {
+  border-radius: 5px;
+  background-color: #FF005D;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 10px;
+  transition: 0.3s;
+  float: right;
+}
+
+#create-campaign a:link, #create-campaign a:visited, #create-campaign a:hover, #create-campaign a:active, 
+#campaign-list a:link, #campaign-list a:visited, #campaign-list a:hover, #campaign-list a:active{
+  text-decoration: none;
+  color: #fff;
+}
+
+#create-campaign:hover, #campaign-list:hover {
+  border-radius: 3px;
+  background-color: #FF4388;
+  transition: 0.3s;
+}
+
+#filter-campaigns h3 {
+  color: #FF005D;
+  font-size: 16px;
+  padding: 18px 20px 0 20px;
+}
