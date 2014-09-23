@@ -3,7 +3,8 @@
 angular.module('clickaroos', [
   'ui.router',
   'clickaroos.config',
-  'clickaroos.account'
+  'clickaroos.account',
+  'clickaroos.createCampaign'
   ])
 
 // todo: Update accordingly

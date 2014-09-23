@@ -1,8 +1,9 @@
 angular.module('clickaroos.account')
 
 .factory('Account', function($http, appServerUrl) {
-  
-  var submitLogin = function(user) {
+  var components = {};
+
+  components.submitLogin = function(user) {
     
     console.log('submitLogin');
     console.log('username', user.username);
@@ -19,7 +20,7 @@ angular.module('clickaroos.account')
 
   };
 
-  var submitSignup = function(user) {
+  components.submitSignup = function(user) {
     
     console.log('submitSignup');
     console.log('username', user.username);
@@ -36,10 +37,7 @@ angular.module('clickaroos.account')
 
   };
 
-  return {
-    submitLogin: submitLogin,
-    submitSignup: submitSignup
-  };
+  return components;
 })
 
 ;
