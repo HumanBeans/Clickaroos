@@ -23,4 +23,9 @@ connection.query(
 var port = process.env.PORT || 3000;
 
 app.listen(port);
+
+app.get( '/', function( req, res ){
+  res.send( 'what is up' );
+} );
+
 console.log('we made it!')
