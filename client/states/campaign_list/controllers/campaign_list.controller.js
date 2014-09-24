@@ -5,5 +5,5 @@ angular.module('clickaroos.campaignList', [])
   $scope.user = {};
   $scope.campaigns = {};
   
-  $scope.getCampaigns = CampaignList.getCampaigns;
+  // TODO: getCampaigns function should be on global campaign model controller and services
 }]);

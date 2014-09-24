@@ -24,8 +24,7 @@ describe('Unit: CampaignListController', function() {
   it('should have a campaigns object', function() {
     expect(scope.campaigns).to.be.a('object');
   });
-
-  it('should have a getCampaigns function', function() {
-    expect(scope.getCampaigns).to.be.a('function');
+  
+  // TODO: getCampaigns function should be on global campaign model controller and services
   });
 });

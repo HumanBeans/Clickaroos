@@ -11,7 +11,5 @@ describe('Unit: CampaignList', function() {
     });
   });
 
-  it('should have a getCampaign function', function() {
-    expect(CampaignList.getCampaigns).to.be.a('function');
-  });
+  // TODO: getCampaigns function should be on global campaign model controller and services
 });
