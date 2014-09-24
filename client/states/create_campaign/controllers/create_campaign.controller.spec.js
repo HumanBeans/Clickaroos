@@ -17,14 +17,12 @@ describe("Unit: CreateCampaignController", function() {
     });
   }));
 
-  //TESTS
-  it('should have a campaignName string', function() {
+  // TODO: fix test bug
+  it("should have a campaignName string", function() {
     expect(scope.campaignName).to.be.a('string');
   });
 
-  it("should have a createCampaign function", function() { 
+  it("should have a createCampaign function", function() {
     expect(scope.createCampaign).to.be.a('function');
   });
-
 });
-

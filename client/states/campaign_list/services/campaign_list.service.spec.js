@@ -12,7 +12,6 @@ describe('Unit: CampaignList', function() {
   });
 
   it('should have a getCampaign function', function() {
-    expect(CampaignList.getCampaign).to.be.a('function');
+    expect(CampaignList.getCampaigns).to.be.a('function');
   });
-
 });

@@ -25,7 +25,7 @@ describe('Unit: CampaignListController', function() {
     expect(scope.campaigns).to.be.a('object');
   });
 
-  it('should have a getCampaign function', function() {
-    expect(scope.getCampaign).to.be.a('function');
+  it('should have a getCampaigns function', function() {
+    expect(scope.getCampaigns).to.be.a('function');
   });
 });
