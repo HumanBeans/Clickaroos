@@ -1,5 +1,6 @@
 $font-stack: Helvetica, sans-serif;
-$primary-color: #FFBC67;
+$primary-color: #F5F5F5;
+$secondary-color: #FFBC67;
 $page-bg: #EBEBEB;
 $nav-height: 68px;
 
@@ -21,6 +22,26 @@ body {
   /*height: 100%;*/
 }
 
+#top-nav {
+  float: right;
+  height: 68px;
+}
+
+#top-bar {
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  height: 68px;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  z-index: 2;
+}
+
+#clickaroos-logo {
+  float: left;
+}
+
 .settings-icon {
   font-size: 20px;
 }
@@ -39,4 +60,20 @@ body {
 
 #settings-btn:hover {
   background-color: #616161;
+}
+
+#content {
+  margin-top: 68px;
+  padding: 30px;
+  margin-left: 240px;
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    color: #333;
+  }
+  
+  h1 span {
+    font-weight: 100;
+  }
 }
