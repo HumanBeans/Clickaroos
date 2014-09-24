@@ -1,21 +1,24 @@
 describe("Unit: AccountController", function() {
-	beforeEach(
+	var ctrl, scope;
+
+  beforeEach(function() {
+
 		module('clickaroos.account', function($provide) {
 			$provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
-			})
-	);
-
-	var ctrl, scope;
-	// Inject the $controller and $rootScope services
-	// in the beforeEach block
-	beforeEach(inject(function($controller, $rootScope) {
-		// Create a new scope that's a child of the $rootScope 
-		scope = $rootScope.$new();
-		// Create the controller
-		ctrl = $controller('AccountController', {
-			$scope: scope
 		});
-	}));
+
+    // Inject the $controller and $rootScope services
+    // in the beforeEach block
+    inject(function($controller, $rootScope) {
+      // Create a new scope that's a child of the $rootScope 
+      scope = $rootScope.$new();
+      // Create the controller
+      ctrl = $controller('AccountController', {
+        $scope: scope
+      });
+    });
+    
+	});
 
   it("should have a user object", function() { 
   	expect(scope.user).to.be.a('object');

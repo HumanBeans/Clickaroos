@@ -1,6 +1,27 @@
 campaign_page.html
 
+<hr>
+<h1 ng-model="campaignInfo.name">{{ campaignInfo.name }}</h1>
+<p ng-model="campaignInfo.description">{{ campaignInfo.description }}</p>
+
+<hr>
+
+<h1>Apps</h1>
+
+<h4>Current Apps</h4>
+
+<div ng-repeat="app in currentApps">
+  {{ app.name }}
+</div>
+
+<h4>Add Apps</h4>
 <!-- TODO: swap out dummy tests with real data -->
+<!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
 <a ui-sref="dummy-ab">Add AB test</a>
 <a ui-sref="dummy-timer">Add timer</a>
 <a ui-sref="dummy-query">Add query</a>
+
+<hr>
+
+<h1>Reports</h1>
+<!-- TODO: Data visualization; use directives? -->
