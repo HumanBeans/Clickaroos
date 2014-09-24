@@ -1,3 +1,8 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #FFBC67;
+$page-bg: #EBEBEB;
+$nav-height: 68px;
+
 #dashboard-sidebar {
   background: #222A30;
   width: 240px;
@@ -10,53 +15,52 @@
   z-index: 1;
 }
 
-#clickaroos-logo {
-  float: left;
-}
+#dashboard-sidebar {
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-#dashboard-sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
+  li {
+    list-style-type: none;
+    padding: 18px 20px;
+    border-bottom: 1px solid #353F47;
+    cursor: pointer;
+    transition: .35s;
+  }
 
-#dashboard-sidebar li {
-  list-style-type: none;
-  padding: 18px 20px;
-  border-bottom: 1px solid #353F47;
-  cursor: pointer;
-  transition: .35s;
-}
+  li:hover {
+    background: #383F45;
+    border-bottom: 1px solid #253F47;
+    transition: .35s;
+  }
 
-#dashboard-sidebar li:hover {
-  background: #383F45;
-  border-bottom: 1px solid #253F47;
-  transition: .35s;
-}
+  li.active {
+    border-left: 3px solid $primary-color;
+  }
+  
+  li b {
+    color: $primary-color;
+  }
 
-#dashboard-sidebar li.active {
-  border-left: 3px solid #FFBC67;
-}
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
-#dashboard-sidebar li b {
-  color: #FFBC67;
-}
-
-#dashboard-sidebar img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-#dashboard-sidebar #user-details {
-  font-size: 0.8em;
-  margin: 20px;
-}
-
-#dashboard-sidebar #user-details {
+  #user-details {
+    font-size: 0.8em;
+    margin: 20px;
+  }
 }
 
 #dashboard-sidebar, #dashboard-content {
   margin-top: 68px;
+}
+
+#clickaroos-logo {
+  float: left;
 }
 
 #dashboard-content #dashboard-reports {
@@ -75,14 +79,16 @@
   z-index: 2;
 }
 
-#dashboard-content h1 {
-  padding: 0;
-  margin: 0;
-  color: #333;
-}
-
-#dashboard-content h1 span {
-  font-weight: 100;
+#dashboard-content {
+  h1 {
+    padding: 0;
+    margin: 0;
+    color: #333;
+  }
+  
+  h1 span {
+    font-weight: 100;
+  }
 }
 
 #top-nav {
@@ -92,7 +98,7 @@
 
 #campaign-list, #create-campaign {
   border-radius: 5px;
-  background-color: #FFBC67;
+  background-color: $primary-color;
   color: #fff;
   padding: 15px;
   cursor: pointer;
@@ -115,7 +121,7 @@
 }
 
 #filter-campaigns h3 {
-  color: #FFBC67;
+  color: $primary-color;
   font-size: 16px;
   padding: 18px 20px 0 20px;
 }

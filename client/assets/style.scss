@@ -1,0 +1,22 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #FFBC67;
+$page-bg: #EBEBEB;
+$nav-height: 68px;
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #EBEBEB;
+}
+
+#container {
+  /*height: 100%;*/
+}
