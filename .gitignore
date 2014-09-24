@@ -29,4 +29,7 @@ node_modules/
 bower_components/
 
 # Other
+# Temporarily ignoring these minified/uglified files
+client/assets/css/
+client/assets/js/
 .DS_Store
