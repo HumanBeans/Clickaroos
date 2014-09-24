@@ -5,7 +5,7 @@ ab_test.html
 <!-- Drag and drop images here -->
 <!-- Populate images, allow to be associated with image -->
 
-<form>
+<form ng-submit="submitImagesAndReroutes(imagesAndReroutes)">
   <div ng-repeat="imageAndReroute in imagesAndReroutes">
     <p>
     <input type="text" placeholder="http://image-url-here" ng-model="imageAndReroute.image_url"></input>
@@ -13,9 +13,9 @@ ab_test.html
     </p>
   </div>
   <!-- For adding multiple images. Not sure if this is the best implementation. -->
-  <button ng-click="addImageAndReroute()">Add Image</button>
   <input type="submit"></input>
 </form>
+  <button ng-click="addImageAndReroute()">Add Image</button>
 
 <hr>
 
