@@ -1,5 +1,6 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var User = require('../api/users/user.query');
 
 exports.setup = function(User){
   passport.use(new LocalStrategy{
