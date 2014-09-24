@@ -9,8 +9,7 @@ angular.module('clickaroos.config', [])
     })
     .state('dashboard', {
       url: '/dashboard',
-      templateUrl: 'states/dashboard/dashboard.html',
-      controller: 'DashboardController'
+      templateUrl: 'states/dashboard/dashboard.html'
     })
     .state('create-campaign', {
       url: '/create-campaign',
@@ -19,51 +18,42 @@ angular.module('clickaroos.config', [])
     })
     .state('campaign-page/:campaign-id', {
       url: '/campaign/:campaign-id', // TODO: adjust if necessary
-      templateUrl: 'states/campaign_page/campaign_page.html',
-      controller: 'CampaignPageController'
+      templateUrl: 'states/campaign_page/campaign_page.html'
     })
     .state('campaign-list', {
       url: '/campaigns/',
-      templateUrl: 'states/campaign_list/campaign_list.html',
-      controller: 'CampaignListController'
+      templateUrl: 'states/campaign_list/campaign_list.html'
     })
 
     // CREATE CLIENT TOOL PAGES
     .state('ab-test', {
       url: '/campaign/:campaign-id/ab-test', // TODO: adjust if necessary
-      templateUrl: 'states/ab_test/ab_test.html',
-      controller: 'ABTestController'
+      templateUrl: 'states/campaign-page/ab_test/ab_test.html'
     })
     .state('timer', {
       url: '/campaign/:campaign-id/timer', // TODO: adjust if necessary
-      templateUrl: 'states/timer/timer.html',
-      controller: 'TimerController'
+      templateUrl: 'states/campaign-page/timer/timer.html'
     })
     .state('query', {
       url: '/campaign/:campaign-id/query', // TODO: adjust if necessary
-      templateUrl: 'states/query/query.html',
-      controller: 'QueryController'
+      templateUrl: 'states/campaign-page/query/query.html'
     })
 
     // DUMMY ROUTES
     .state('dummy-campaign', {
       url: 'dummy-campaign',
-      templateUrl: 'states/campaign_page/campaign_page.html',
-      controller: 'CampaignPageController'
+      templateUrl: 'states/campaign_page/campaign_page.html'
     })
     .state('dummy-ab', {
       url: 'dummy-ab',
-      templateUrl: 'states/campaign_page/ab_test/ab_test.html',
-      controller: 'ABTestController'
+      templateUrl: 'states/campaign_page/ab_test/ab_test.html'
     })
     .state('dummy-timer', {
       url: 'dummy-timer',
-      templateUrl: 'states/campaign_page/timer/timer.html',
-      controller: 'TimerController'
+      templateUrl: 'states/campaign_page/timer/timer.html'
     })
     .state('dummy-query', {
       url: 'dummy-query',
-      templateUrl: 'states/campaign_page/query/query.html',
-      controller: 'QueryController'
+      templateUrl: 'states/campaign_page/query/query.html'
     })
 });
