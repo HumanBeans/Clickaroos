@@ -1,21 +1,58 @@
-account.html
+<div class="container">
+  <div id="top-bar">
+    <div id="clickaroos-logo">
+      <img src="http://dummyimage.com/240x68/ffbd67/ffffff&text=clickaroos" alt="">
+    </div>
+    <div id="top-nav">
+      <div id="settings-btn" ui-sref="dashboard"><i class="fa fa-cog settings-icon"></i></div>
+<!--       <div id="create-campaign"><a ui-sref="create-campaign">Create Campaign</a></div>
+      <div id="campaign-list"><a ui-sref="campaign-list">Campaigns</a></div> -->
+    </div>
+  </div>
 
-<a ui-sref="dashboard">Dashboard</a>
+  <div id="dashboard-sidebar">
+    <div id="filter-campaigns">
+      <h3>Articles:</h3>
+      <ul id="select-campaign">
+        <li>How Armano got 12% increase in conversions</li>
+        <li class="active">Effective countdown timer usage</li>
+        <li>Email opens on mobile increases another 2%. Now at 56% of all email opens</li>
+      </ul>
+    </div>
+  </div>
+  <div id="content">
+    <!-- Q: Switch login and signup to their respective folders and html files? -->
 
-<!-- Q: Switch login and signup to their respective folders and html files? -->
+    <!-- Login -->
+    <div id="login-form" ng-if="loginView">
+      <form name="login" ng-submit="submitLogin(user)">
+      <h1>LOGIN</h1>
+        <label for="username-input">Username: </label>
+        <input id="username-input" type="text" name="username" ng-model="user.username"></input>
 
-<!-- Login -->
-<p>Login</p>
-<form name="login" ng-submit="submitLogin(user)">
-  Username: <input type="text" name="username" ng-model="user.username"></input>
-  Password: <input type="password" name="password" ng-model="user.password"></input>
-  <input type="submit" name="login"></input>
-</form>
+        <label for="password-input">Password: </label>
+        <input id="password-input" type="password" name="password" ng-model="user.password"></input>
+        <input type="submit" name="login"></input>
+      </form>
+      <p>Already a customer?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Log in</span></p>
+    </div>
 
-<!-- Signup -->
-<p>Signup</p>
-<form name="signup" ng-submit="submitSignup(user)">
-  Username: <input type="text" name="username" ng-model="user.username"></input>
-  Password: <input type="password" name="password" ng-model="user.password"></input>
-  <input type="submit" name="signup"></input>
-</form>
+    <div id="signup-form" ng-if="!loginView">
+      <!-- Signup -->
+      <h1>SIGNUP</h1>
+      <form name="signup" ng-submit="submitSignup(user)">
+        <label for="username">Username: </label>
+        <input id="username-input" type="text" name="username" ng-model="user.username"></input>
+        <label for="password-input">Password: </label>
+        <input id="password-input" type="password" name="password" ng-model="user.password"></input>
+        <input type="submit" name="signup"></input>
+      </form>
+      <p>Don't have an account?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Sign up</span></p>
+    </div>
+
+  </div>
+</div>
+
+
+
+

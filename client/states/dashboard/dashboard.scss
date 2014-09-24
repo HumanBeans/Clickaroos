@@ -59,24 +59,9 @@ $nav-height: 68px;
   margin-top: 68px;
 }
 
-#clickaroos-logo {
-  float: left;
-}
-
 #dashboard-content #dashboard-reports {
   margin-left: 240px;
   padding: 30px;
-}
-
-#top-bar {
-  position: fixed;
-  background: #fff;
-  width: 100%;
-  height: 68px;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  z-index: 2;
 }
 
 #dashboard-content {
@@ -89,11 +74,6 @@ $nav-height: 68px;
   h1 span {
     font-weight: 100;
   }
-}
-
-#top-nav {
-  float: right;
-  height: 68px;
 }
 
 #campaign-list, #create-campaign {
@@ -115,8 +95,8 @@ $nav-height: 68px;
 }
 
 #create-campaign:hover, #campaign-list:hover {
-  border-radius: 3px;
-  background-color: #FF4388;
+  border-radius: 5px;
+  background-color: #ECAA57;
   transition: 0.3s;
 }
 
