@@ -18,7 +18,8 @@ angular.module('clickaroos.config', [])
     })
     .state('campaign-page/:campaign-id', {
       url: '/campaign/:campaign-id', // TODO: adjust if necessary
-      templateUrl: 'states/campaign_page/campaign_page.html'
+      templateUrl: 'states/campaign_page/campaign_page.html',
+      controller: 'CampaignPage'
     })
     .state('campaign-list', {
       url: '/campaigns/',
@@ -42,7 +43,8 @@ angular.module('clickaroos.config', [])
     // DUMMY ROUTES
     .state('dummy-campaign', {
       url: '/dummy-campaign',
-      templateUrl: 'states/campaign_page/campaign_page.html'
+      templateUrl: 'states/campaign_page/campaign_page.html',
+      controller: 'CampaignPageController'
     })
     .state('dummy-ab', {
       url: '/dummy-ab',
