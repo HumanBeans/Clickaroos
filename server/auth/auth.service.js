@@ -4,10 +4,10 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var compose = require('composable-middleware');
-var config = require('../config');
+var config = require('../config/main.js');
 var validateJwt = expressJwt({secret: config.secrets.token});
 //planned to save the query to user helper functions in following file path
-var User = require('../api/users/user.model');
+var User = require('../api/users/user.query');
 
 
 //see if the user is authenticated, if it is, set req.user
@@ -41,4 +41,4 @@ exports.hasRole = function(requiredRole){
   }else{
     res.send(403);
   }
-}
+};

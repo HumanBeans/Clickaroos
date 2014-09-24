@@ -9,6 +9,12 @@ var all = {
     user: 'b017f8a5a6d3e8',
     password: '46c0073d',
     database: 'ClickagoosDB'
+  },
+  dbConnectionStringLocal: {
+    host: 'localhost',
+    user: 'root',
+    password: 'HumanBeans',
+    database: 'ClickagoosDB'
   }
 }
 
