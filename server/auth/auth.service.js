@@ -1,0 +1,44 @@
+'use strict'
+
+var passport = require('passport');
+var jwt = require('jsonwebtoken');
+var expressJwt = require('express-jwt');
+var compose = require('composable-middleware');
+var config = require('../config');
+var validateJwt = expressJwt({secret: config.secrets.token});
+//planned to save the query to user helper functions in following file path
+var User = require('../api/users/user.model');
+
+
+//see if the user is authenticated, if it is, set req.user
+exports.isAuthenticated = function(){
+  return compose()
+    .use(function(req, res, next){
+      //allow the access_token be passed in the query string
+      if(req.query && req.query.hasOwnProperty('access_token')){
+        req.header.authorization = 'Bearer ' + req.query.access_token;
+      }
+
+      validateJwt(req, res, next);
+    })
+    //attach user info into req, since validateJwt only attaches the user._id into req; and this two middleware needs to be seperated because the req.user._id could only be accessed after validateJwt() is called;
+    .use(function(req, res, next){
+      //planned to have a User.findById function in user.model
+      User.findById(req.user._id, function(err, user){
+        if(err) return next(err);
+        if(!user) return res.send(401);
+        req.user = user;
+        next();
+      })
+    })
+};
+
+//
+exports.hasRole = function(requiredRole){
+  if(!requiredRole){ throw new Error('requiredRole is required'); }
+  if(req.user.role === requiredRole){
+    next();
+  }else{
+    res.send(403);
+  }
+}
