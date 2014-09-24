@@ -20,3 +20,23 @@ body {
 #container {
   /*height: 100%;*/
 }
+
+.settings-icon {
+  font-size: 20px;
+}
+
+#settings-btn {
+  background-color: #ADADAD;
+  padding: 13px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 10px;
+  transition: 0.3s;
+  float: right;
+}
+
+#settings-btn:hover {
+  background-color: #616161;
+}
