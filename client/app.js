@@ -5,7 +5,8 @@ angular.module('clickaroos', [
   'clickaroos.config',
   'clickaroos.account',
   'clickaroos.createCampaign',
-  'clickaroos.campaignPage'
+  'clickaroos.campaignPage',
+  'clickaroos.abTest'
   ])
 
 // todo: Update accordingly

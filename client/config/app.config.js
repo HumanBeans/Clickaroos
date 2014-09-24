@@ -29,7 +29,8 @@ angular.module('clickaroos.config', [])
     // CREATE CLIENT TOOL PAGES
     .state('ab-test', {
       url: '/campaign/:campaign-id/ab-test', // TODO: adjust if necessary
-      templateUrl: 'states/campaign-page/ab_test/ab_test.html'
+      templateUrl: 'states/campaign-page/ab_test/ab_test.html',
+      controller: 'AbTestController'
     })
     .state('timer', {
       url: '/campaign/:campaign-id/timer', // TODO: adjust if necessary
@@ -48,7 +49,8 @@ angular.module('clickaroos.config', [])
     })
     .state('dummy-ab', {
       url: '/dummy-ab',
-      templateUrl: 'states/ab_test/ab_test.html'
+      templateUrl: 'states/ab_test/ab_test.html',
+      controller: 'AbTestController'
     })
     .state('dummy-timer', {
       url: '/dummy-timer',

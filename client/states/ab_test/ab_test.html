@@ -1,4 +1,30 @@
 ab_test.html
 
+<h1>Images</h1>
+
+<!-- Drag and drop images here -->
+<!-- Populate images, allow to be associated with image -->
+
+<form>
+  <div ng-repeat="imageAndReroute in imagesAndReroutes">
+    <p>
+    <input type="text" placeholder="http://image-url-here" ng-model="imageAndReroute.image_url"></input>
+    <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.reroute_url"></input>
+    </p>
+  </div>
+  <!-- For adding multiple images. Not sure if this is the best implementation. -->
+  <button ng-click="addImageAndReroute()">Add Image</button>
+  <input type="submit"></input>
+</form>
+
+<hr>
+
+<h1>Logic</h1>
+<p>Start time: (angular directive for time)</p>
+
+<hr>
+
+<button>Done</button>
+
 <!-- TODO: swap out dummy routes with real routes -->
-<a ui-sref="dummy-campaign">Add AB test</a>
+<a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a>
