@@ -1,6 +1,6 @@
 angular.module('clickaroos.createCampaign')
 
-.factory('CreateCampaign', function($http, appServerUrl) {
+.factory('CreateCampaign', ['$http', 'appServerUrl', function($http, appServerUrl) {
   var components = {};
 
   components.createCampaign = function(campaignName) {
@@ -18,6 +18,4 @@ angular.module('clickaroos.createCampaign')
   };
 
   return components;
-})
-
-;
+}]);
