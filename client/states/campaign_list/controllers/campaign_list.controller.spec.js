@@ -26,5 +26,4 @@ describe('Unit: CampaignListController', function() {
   });
   
   // TODO: getCampaigns function should be on global campaign model controller and services
-  });
 });

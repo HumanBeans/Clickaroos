@@ -1,3 +1,4 @@
+// abTest requires ui.bootstrap!
 angular.module('clickaroos.abTest', ['ui.bootstrap'])
 
 .controller('AbTestController', ['$scope', 'AbTest', function($scope, AbTest) {
