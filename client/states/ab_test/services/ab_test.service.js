@@ -4,15 +4,16 @@ angular.module('clickaroos.abTest')
   var factory = {};
 
   factory.imagesAndReroutes = [];
+  factory.time = { start: '' };
 
   var dataToServer = {
     user_id: 1, // TODO: Modify from global services
     campaign_id: 2, // TODO: Modify from global services
+    time: factory.time,
     imagesAndReroutes: factory.imagesAndReroutes
   };
 
-  // TODO: Send userID and campaignID (from global services)
-  factory.submitImagesAndReroutes = function(imagesAndReroutes) {
+  factory.submitImagesAndReroutes = function() {
     $http.post(
       appServerUrl+'/api/ab_tests',
       dataToServer

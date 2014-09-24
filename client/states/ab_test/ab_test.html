@@ -12,19 +12,48 @@ ab_test.html
     <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.reroute_url"></input>
     </p>
   </div>
-  <!-- For adding multiple images. Not sure if this is the best implementation. -->
+
+  <!-- Having this as a button calls ng-submit -->
+  <div ng-click="addImageAndReroute()">Click to add image</div>
+
+  <hr>
+
+  <h1>Logic</h1>
+
+  A/B testing start time:
+
+  <!-- Angular/Bootstrap Timepicker Directive -->
+  <div>
+
+    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+    <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+
+    <div class="row"> 
+      <div class="col-xs-6">
+          Hours step is:
+        <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+      </div>
+      <div class="col-xs-6">
+          Minutes step is:
+        <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+      </div>
+    </div>
+
+    <hr>
+
+    <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+    <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
+    <button class="btn btn-danger" ng-click="clear()">Clear</button>
+
+  </div>
+  <!-- End Angular/Bootstrap Timepicker Directive -->
+  
+  <hr>
+
   <input type="submit"></input>
+
 </form>
-  <button ng-click="addImageAndReroute()">Add Image</button>
-
-<hr>
-
-<h1>Logic</h1>
-<p>Start time: (angular directive for time)</p>
-
-<hr>
-
-<button>Done</button>
 
 <!-- TODO: swap out dummy routes with real routes -->
 <a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a>
