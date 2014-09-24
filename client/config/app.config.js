@@ -41,19 +41,19 @@ angular.module('clickaroos.config', [])
 
     // DUMMY ROUTES
     .state('dummy-campaign', {
-      url: 'dummy-campaign',
+      url: '/dummy-campaign',
       templateUrl: 'states/campaign_page/campaign_page.html'
     })
     .state('dummy-ab', {
-      url: 'dummy-ab',
-      templateUrl: 'states/campaign_page/ab_test/ab_test.html'
+      url: '/dummy-ab',
+      templateUrl: 'states/ab_test/ab_test.html'
     })
     .state('dummy-timer', {
-      url: 'dummy-timer',
-      templateUrl: 'states/campaign_page/timer/timer.html'
+      url: '/dummy-timer',
+      templateUrl: 'states/timer/timer.html'
     })
     .state('dummy-query', {
-      url: 'dummy-query',
-      templateUrl: 'states/campaign_page/query/query.html'
+      url: '/dummy-query',
+      templateUrl: 'states/query/query.html'
     })
 });
