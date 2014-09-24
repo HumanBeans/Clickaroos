@@ -1,6 +1,6 @@
 angular.module('clickaroos.account', [])
 
-.controller('AccountController', function($scope, Account) {
+.controller('AccountController', ['$scope', 'Account', function($scope, Account) {
 	$scope.user = {
   	username: '',
   	password: ''
@@ -8,6 +8,4 @@ angular.module('clickaroos.account', [])
 
   $scope.submitLogin = Account.submitLogin;
   $scope.submitSignup = Account.submitSignup;
-})
-
-;
+}]);

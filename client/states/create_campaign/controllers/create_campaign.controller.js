@@ -1,8 +1,8 @@
 angular.module('clickaroos.createCampaign', [])
 
-.controller('CreateCampaignController', function($scope, CreateCampaign) {
+.controller('CreateCampaignController', ['$scope', 'CreateCampaign', function($scope, CreateCampaign) {
 
   $scope.campaignName = '';
   
   $scope.createCampaign = CreateCampaign.createCampaign;
-});
+}]);
