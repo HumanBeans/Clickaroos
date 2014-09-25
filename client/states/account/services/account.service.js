@@ -1,11 +1,11 @@
 angular.module('clickaroos.account')
 
 .factory('Account', ['$http', 'appServerUrl', function($http, appServerUrl) {
-  var components = {};
+  var factory = {};
 
-  components.loginView = true;
+  factory.loginView = true;
 
-  components.submitLogin = function(user) {
+  factory.submitLogin = function(user) {
     console.log('submitLogin');
     console.log('username', user.username);
     console.log('password', user.password);
@@ -20,7 +20,7 @@ angular.module('clickaroos.account')
     });
   };
 
-  components.submitSignup = function(user) {
+  factory.submitSignup = function(user) {
     console.log('submitSignup');
     console.log('username', user.username);
     console.log('password', user.password);
@@ -35,11 +35,11 @@ angular.module('clickaroos.account')
     });
   };
   
-  components.switchLoginSignupView = function() {
-    components.loginView = !components.loginView;
+  factory.switchLoginSignupView = function() {
+    factory.loginView = !factory.loginView;
     console.log('toggled');
-    console.log('components.loginView: ', components.loginView);
+    console.log('factory.loginView: ', factory.loginView);
   };
 
-  return components;
+  return factory;
 }]);
