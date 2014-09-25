@@ -1,6 +1,6 @@
 angular.module('clickaroos.account')
 
-.factory('Account', ['$http', '$window', 'appServerUrl', function($http, $state, $window, appServerUrl) {
+.factory('Account', ['$http', '$state', '$window', 'appServerUrl', function($http, $state, $window, appServerUrl) {
   var factory = {};
 
   factory.loginView = true;
@@ -57,14 +57,14 @@ angular.module('clickaroos.account')
     $http.post(
       appServerUrl+'/auth/signup',
       user
-      ).success(function(data, status, headers, config) {
-        // TODO: Should token be saved in global services?
-        submitSuccess(data, status, headers, config);
-      }).error(function(data, status, headers, config) {
-        // TODO: login error
-        submitError(data, status, headers, config);
-        alert('Signup error.');
-      });
+    ).success(function(data, status, headers, config) {
+      // TODO: Should token be saved in global services?
+      submitSuccess(data, status, headers, config);
+    }).error(function(data, status, headers, config) {
+      // TODO: login error
+      submitError(data, status, headers, config);
+      alert('Signup error.');
+    });
   };
   
   factory.switchLoginSignupView = function() {
@@ -73,9 +73,11 @@ angular.module('clickaroos.account')
     console.log('factory.loginView: ', factory.loginView);
   };
 
+  // TODO: Move globally
   factory.logout = function(user) {
     console.log('logout');
     deleteSessionToken();
+    $state.go('account');
   };
 
   return factory;
