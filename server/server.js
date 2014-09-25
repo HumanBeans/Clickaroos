@@ -4,8 +4,10 @@ var express = require('express');
 var http = require('http');
 var mysql = require('mysql');
 var routes = require('./routes');
-
+var configExpress = require('./config/express');
 var app = express();
+
+configExpress(app);
 routes(app);
 
 // TODO: Look into http.createServer, wth does it do?

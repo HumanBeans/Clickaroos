@@ -15,9 +15,12 @@ exports.index = function(req, res, next){
 // create a user account
 exports.create = function(req, res, next){
   User.save(req.body, function(err, result){
-    if(err) res.json(403, 'user already exists!');
+    if(err) {
+      console.log(err);
+      return res.status(403).json('try again');
+    }
     var token = jwt.sign({_id: result.insertId}, config.secrets.token, {expiresInMinutes: 60*5});
-    res.json({token:token});
+    res.status(200).json({token:token});
   });
 };
 

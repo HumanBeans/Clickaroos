@@ -1,9 +1,9 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../api/users/user.query');
+var User = require('../../api/users/user.query');
 
 exports.setup = function(User){
-  passport.use(new LocalStrategy{
+  passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   }, function(email, password, done){
@@ -29,5 +29,5 @@ exports.setup = function(User){
 
       // return done(null, user);
     });
-  })
+  }));
 }

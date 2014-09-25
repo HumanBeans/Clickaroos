@@ -53,7 +53,7 @@ exports.authenticate = function(email, password){
   exports.findByEmail(email,function(err,user){
     bcrypt.compare(password, user.password, function(err, res){
       if(err){
-        deferred.reject(new Error(error));
+        deferred.reject(new Error(err));
       }else{
         deferred.resolve(res,user);
       }

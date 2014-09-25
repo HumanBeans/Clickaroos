@@ -36,9 +36,17 @@ exports.isAuthenticated = function(){
 //
 exports.hasRole = function(requiredRole){
   if(!requiredRole){ throw new Error('requiredRole is required'); }
-  if(req.user.role === requiredRole){
-    next();
-  }else{
-    res.send(403);
-  }
+  return compose()
+    .use(exports.isAuthenticated())
+    .use(function(req, res, next){
+      if(req.user.role === requiredRole){
+        next();
+      }else{
+        res.send(403);
+      }     
+    });
 };
+
+exports.signToken = function(id){
+  return jwt.sign({_id: id}, config.secrets.token, {expireInMinutes: 60*5});
+}

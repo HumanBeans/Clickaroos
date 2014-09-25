@@ -3,8 +3,8 @@
 //////////////////////////////////////////////////////////
 // API's Request Handlers
 var abTestRequestHandlers = require( './api/ab_tests/main' );
-
-
+var userRequestHandlers = require('./api/users/main');
+var authRequestHandlers = require('./auth/main');
 //////////////////////////////////////////////////////////
 // Module Routes
 module.exports = function( app ) {
@@ -27,9 +27,9 @@ module.exports = function( app ) {
   });
 
   // TODO: require and add request-handler for users
-  app.use('/api/users', function( req, res ) {
-    res.send( 'hit api/users route' );
-  });
+  app.use('/api/users', userRequestHandlers);
+
+  app.use('/auth', authRequestHandlers);
 
   app.route('/').get( function( req, res ){
     res.send('server landing page');
