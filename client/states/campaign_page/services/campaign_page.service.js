@@ -1,7 +1,7 @@
 angular.module('clickaroos.campaignPage')
 
 .factory('CampaignPage', ['$http', 'appServerUrl', function($http, appServerUrl) {
-  var components = {};
+  var factory = {};
 
   // When page loading, get Campaign Info from server.
   $http.get(
@@ -13,31 +13,29 @@ angular.module('clickaroos.campaignPage')
     // error
   });
 
-  components.campaignInfo = {
+  factory.campaignInfo = {
     name: '(Campaign Name Goes Here)',
     description: '(Campaign Description Goes Here)'
   };
 
   // TODO: Populate via GET request
-  components.currentApps = [
+  factory.currentApps = [
     {
       id: 1,
       name: 'First Campaign',
-      apps: [
-        {
-          ab_tests: [
-            {
-              images: ['image urls here', 'another one'],
-              title: 'AB Test Title',
-              start_time: '5:00PM',
-              minutes_after_start: '20',
-              winner: 'image url here'
-            }
-          ],
-          queries: [/* TODO */],
-          timers: [/* TODO */]
-        }
-      ],
+      apps: {
+        ab_tests: [
+          {
+            images: ['image urls here', 'another one'],
+            title: 'AB Test Title',
+            start_time: '5:00PM',
+            minutes_after_start: '20',
+            winner: 'image url here'
+          }
+        ],
+        queries: [/* TODO */],
+        timers: [/* TODO */]
+      },
       reports: {
         clicks: 50,
         views: 100,
@@ -58,7 +56,7 @@ angular.module('clickaroos.campaignPage')
     }
   ];
 
-  return components;
+  return factory;
 }])
 
 ;
