@@ -44,6 +44,7 @@
     "karma": "^0.12.23",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.4",
-    "karma-mocha": "^0.1.9"
+    "karma-mocha": "^0.1.9",
+    "supertest": "^0.13.0"
   }
 }
