@@ -22,7 +22,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('client/**/*.js')
+  return gulp.src(['client/**/*.js', '!client/**/*.spec.js'])
     // .pipe(jshint('.jshintrc'))
     // .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))

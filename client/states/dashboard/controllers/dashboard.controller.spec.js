@@ -22,7 +22,7 @@ describe("Unit: DashboardController", function() {
   });
 
   it('should have a campaigns object', function() {
-    expect(scope.campaigns).to.be.a.('object');
+    expect(scope.campaigns).to.be.a('object');
   });
   
   // TODO: getCampaigns function should be on global campaign model controller and services
