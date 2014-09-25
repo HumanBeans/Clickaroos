@@ -5,7 +5,7 @@ ab_test.html
 <!-- Drag and drop images here -->
 <!-- Populate images, allow to be associated with image -->
 
-<form ng-submit="submitImagesAndReroutes(imagesAndReroutes)">
+<form>
   <div ng-repeat="imageAndReroute in imagesAndReroutes">
     <p>
     <input type="text" placeholder="http://image-url-here" ng-model="imageAndReroute.image_url"></input>
@@ -13,8 +13,7 @@ ab_test.html
     </p>
   </div>
 
-  <!-- Having this as a button calls ng-submit -->
-  <div ng-click="addImageAndReroute()">Click to add image</div>
+  <button ng-click="addImageAndReroute()">Add image</button>
 
   <hr>
 
@@ -51,7 +50,8 @@ ab_test.html
   
   <hr>
 
-  <input type="submit"></input>
+  <!-- Using ng-click because ng-submit considers button clicks as submits, and there are buttons littered throughout the HTML -->
+  <input type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)"></input>
 
 </form>
 

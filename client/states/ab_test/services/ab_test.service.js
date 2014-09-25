@@ -10,7 +10,7 @@ angular.module('clickaroos.abTest')
     user_id: 1, // TODO: Modify from global services
     campaign_id: 2, // TODO: Modify from global services
     time: factory.time,
-    imagesAndReroutes: factory.imagesAndReroutes
+    images_and_reroutes: factory.imagesAndReroutes
   };
 
   factory.submitImagesAndReroutes = function() {
