@@ -1,14 +1,14 @@
 'use strict'
 
+var dbConnection = require('../../config/dbconnection');
 var mysql = require('mysql');
 var config = require('../../config/main.js');
 var bcrypt = require('bcrypt-nodejs');
 var Q = require('q');
 
 // var dbConnection = mysql.createConnection(config.dbConnectionString);
-var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
-
-dbConnection.connect();
+// var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
+// dbConnection.connect();
 
 exports.findByEmail = function(email, callback){
   var queryString = 'SELECT * FROM users WHERE email = ?';

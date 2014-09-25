@@ -3,12 +3,9 @@
 var express = require('express');
 var http = require('http');
 var routes = require('./routes');
-<<<<<<< HEAD
 var configExpress = require('./config/express');
-=======
 var connection = require('./config/dbconnection');
 
->>>>>>> (feat) Add ab_test routes and queries
 var app = express();
 
 configExpress(app);

@@ -9,9 +9,10 @@ var request = require('supertest');
 var app = require('../../server');
 var mysql = require('mysql');
 var config = require('../../config/main');
+var dbConnection = require('../../config/dbconnection');
 
-var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
-dbConnection.connect();
+// var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
+// dbConnection.connect();
 
 describe('user routes test', function(){
 
