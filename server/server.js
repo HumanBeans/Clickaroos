@@ -2,9 +2,10 @@
 
 var express = require('express');
 var http = require('http');
-var mysql = require('mysql');
 var routes = require('./routes');
 var configExpress = require('./config/express');
+var connection = require('./config/dbconnection');
+
 var app = express();
 
 configExpress(app);
@@ -15,14 +16,7 @@ routes(app);
 
 ///////////////////////////////////////////////////
 // DB Connection
-var connection = mysql.createConnection({
-	host: 'us-cdbr-azure-west-a.cloudapp.net',
-	user: 'b017f8a5a6d3e8',
-	password: '46c0073d',
-	database: 'ClickagoosDB'
-});
 connection.connect();
-
 
 var port = process.env.PORT || 3000;
 app.listen( port );
