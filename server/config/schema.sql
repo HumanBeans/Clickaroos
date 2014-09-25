@@ -8,7 +8,7 @@ drop table ab_imgs;
 CREATE TABLE users (
 	user_id INT NOT NULL AUTO_INCREMENT,
 	user_name VARCHAR(40) NOT NULL UNIQUE,
-	password VARCHAR(40) NOT NULL,
+	password VARCHAR(100) NOT NULL,
 	email VARCHAR(40) NOT NULL UNIQUE,
 	phone BIGINT NOT NULL UNIQUE,
 	credit_card BIGINT NOT NULL UNIQUE,

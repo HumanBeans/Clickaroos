@@ -15,7 +15,7 @@ dbConnection.connect(function(err){
 
 describe('user test', function(){
 
-  var testUserId;
+  var testUserId, testUserId2;
 
   var testUser = {
     user_name: "testuser",
@@ -24,19 +24,27 @@ describe('user test', function(){
     phone: '123',
     credit_card: '123' 
   };
+
+  var testUser2 = {
+    user_name: 'testuser2',
+    email: "234@234.com",
+    password: '234',
+    phone: '234',
+    credit_card: '234'
+  }
   
   before(function(done){
     var queryString = 'INSERT INTO users SET ?';
     dbConnection.query(queryString, [testUser], function(err,result){
-      // console.log('++++++', arguments);
+      // console.log('-------', result);
       testUserId = result.insertId;
       done();
     })
   });
 
   after(function(done){
-    var queryString = 'DELETE FROM users WHERE user_id = ?';
-    dbConnection.query(queryString, [testUserId], function(err, result){
+    var queryString = 'DELETE FROM users WHERE user_id = ? or user_id = ?';
+    dbConnection.query(queryString, [testUserId, testUserId2], function(err, result){
       done();
     });
   })
@@ -46,6 +54,7 @@ describe('user test', function(){
     User.should.have.property('findById');
     User.should.have.property('findAllUsers');
     User.should.have.property('save');
+    User.should.have.property('authenticate');
     done();
   });
 
@@ -72,12 +81,30 @@ describe('user test', function(){
   });
 
   it('should be able to save a user', function(done){
-    User.save(testUser, function(err,result){
-      console.log('++++++++', arguments);
+    User.save(testUser2, function(err,result){
+      testUserId2 = result.insertId;
       User.findById(result.insertId, function(err,user){
-        user.user_name.should.equal(testUser.user_name);
+        user.user_name.should.equal(testUser2.user_name);
+        done();
       });
     });
+  });
+
+  it('should be able to login with correct password', function(done){
+    User.authenticate(testUser2.email, '234')
+    .then(function(auth){
+      // console.log('Data', user);
+      auth.should.equal(true);
+      done();
+    });
+  });
+
+  it('should not be able to login with incorrect password', function(done){
+    User.authenticate(testUser2.email, 'wrong password')
+      .then(function(auth, user){
+        auth.should.equal(false);
+        done();
+      });
   });
 
 });

@@ -3,6 +3,7 @@
 var mysql = require('mysql');
 var config = require('../../config/main.js');
 var bcrypt = require('bcrypt-nodejs');
+var Q = require('q');
 
 // var dbConnection = mysql.createConnection(config.dbConnectionString);
 var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
@@ -35,14 +36,28 @@ exports.save = function(userObj, callback){
   exports.findByEmail(userObj.email, function(err, user){
     if(user) {callback(user);}
     else{
-      bcrypt.hash(password, null, null, function(err,hash){
-        userObj.password = hash;
-        dbConnection.query(queryString, [userObj], callback);
+      bcrypt.genSalt(10, function(err,salt){
+        bcrypt.hash(password, salt, null, function(err,hash){
+          userObj.password = hash;
+          dbConnection.query(queryString, [userObj], callback);
+        });
       });
     }
   });
 };
 
 //authentication function
-exports.authenticate = function(){};
-
+//use the synchronous version of compare function for now, to be refactored later
+exports.authenticate = function(email, password){
+  var deferred = Q.defer();
+  exports.findByEmail(email,function(err,user){
+    bcrypt.compare(password, user.password, function(err, res){
+      if(err){
+        deferred.reject(new Error(error));
+      }else{
+        deferred.resolve(res,user);
+      }
+    });
+  });
+  return deferred.promise;
+};

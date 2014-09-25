@@ -16,11 +16,18 @@ exports.setup = function(User){
       }
 
       // need authenticate method in User DB model
-      if(!User.authenticate(email, password)){
-        return done(null, false, {message: 'This password is not correct.'});
-      }
+      User.authenticate(email, password)
+        .then(function(auth){
+          if(!auth){
+            return done(null, false, {message: 'Incorrect password'});
+          }
+          return done(null, user);
+        });
+      // if(!User.authenticate(email, password)){
+      //   return done(null, false, {message: 'This password is not correct.'});
+      // }
 
-      return done(null, user);
+      // return done(null, user);
     });
   })
 }
