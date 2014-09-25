@@ -1,4 +1,4 @@
-describe("Unit: DashboardController", function() {
+describe('Unit: DashboardController', function() {
   beforeEach(
     module('clickaroos.dashboard', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL');
