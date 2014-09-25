@@ -1,9 +1,9 @@
 angular.module('clickaroos.createCampaign')
 
 .factory('CreateCampaign', ['$http', 'appServerUrl', function($http, appServerUrl) {
-  var components = {};
+  var factory = {};
 
-  components.createCampaign = function(campaignName) {
+  factory.createCampaign = function(campaignName) {
     console.log('campaignName', campaignName);
 
     $http.post(
@@ -17,5 +17,5 @@ angular.module('clickaroos.createCampaign')
 
   };
 
-  return components;
+  return factory;
 }]);
