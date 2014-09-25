@@ -47,9 +47,9 @@ describe('user routes test', function(){
       .send(testUser2)
       .expect(200)
       .end(function(err,res){
-        console.log('++++++', res.body);
         res.body.should.have.property('token');
         done();
       });
   });
+
 });

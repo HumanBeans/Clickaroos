@@ -33,11 +33,11 @@ describe('local auth test', function(){
   }
 
   before(function(done){
-    var queryString = 'INSERT INTO users SET ?';
-    dbConnection.query(queryString, [testUser1], function(err,result){
+    User.save(testUser1, function(err, result){
       done();
     })
-  })
+  });
+
   after(function(done){
     var queryString = 'DELETE FROM users WHERE user_name = ? or user_name = ?';
     dbConnection.query(queryString, [testUser1.user_name, testUser2.user_name], function(err, result){
@@ -45,15 +45,25 @@ describe('local auth test', function(){
     });
   });
 
-  it('POST /', function(done){
+  it('should be able to login with correct password', function(done){
     request(app)
       .post('/auth/')
-      .send({email:testUser1.email, password:testUser1.password})
+      .send({email:testUser1.email, password:'123'})
       .expect(200)
       .end(function(err,res){
-        console.log('++++++', res.body);
-        // res.body.should.have.property('token');
+        res.body.should.have.property('token');
         done();
       });
   });
+
+  it('should not be able to login with wrong password', function(done){
+    request(app)
+      .post('/auth/')
+      .send({email:testUser1.email, password: 'whatever'})
+      .expect(401)
+      .end(function(err,res){
+        res.body.should.not.have.property('token');
+        done();
+      })
+  })
 });
