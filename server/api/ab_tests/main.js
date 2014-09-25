@@ -1,14 +1,24 @@
 'use strict';
 
 var express = require('express');
-// var controller = require('./ab_tests.controller');
+var controller = require('./ab_tests.controllers');
 
 var router = express.Router();
 
 ///////////////////////////////////////////////////////////////
 // Request Handlers For api/test Route
-router.all( '/', function( req, res ) {
-  res.send( 'hit api/test route, indside ab_tests/main.js' ); 
-} );
+
+// Add AB Test
+router.post( '/', controller.handleNewABTest );
+
+// TODO: Edit AB Test
+// router.put( '/', controller.handleABTestEdit );
+
+// TODO: Delete AB Test
+// router.delete( '/', controller.handleDeleteABTest );
+
+router.get( '/', function( req, res ) {
+  res.send( 'hit GET api/test route, indside ab_tests/main.js' ); 
+});
 
 module.exports = router;
