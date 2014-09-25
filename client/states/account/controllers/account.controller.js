@@ -15,4 +15,6 @@ angular.module('clickaroos.account', [])
   $scope.switchLoginSignupView = Account.switchLoginSignupView;
   $scope.submitLogin = Account.submitLogin;
   $scope.submitSignup = Account.submitSignup;
+  $scope.logout = Account.logout;
+  
 }]);
