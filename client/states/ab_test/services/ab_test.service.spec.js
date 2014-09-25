@@ -23,6 +23,11 @@ describe("Unit: AbTest", function() {
     expect(AbTest.time).to.be.a('object');
   });
 
+  it("should have addImageAndReroute function", function() { 
+    expect(AbTest.addImageAndReroute).to.exist;
+    expect(AbTest.addImageAndReroute).to.be.a('function');
+  });
+
   it("should have dataToServer object", function() { 
     expect(AbTest.imagesAndReroutes).to.exist;
     expect(AbTest.imagesAndReroutes).to.be.a('array');

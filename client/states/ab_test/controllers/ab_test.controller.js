@@ -13,9 +13,7 @@ angular.module('clickaroos.abTest', ['ui.bootstrap'])
     };
   }
 
-  $scope.addImageAndReroute = function() {
-    $scope.imagesAndReroutes.push(newImageAndReroute());
-  };
+  $scope.addImageAndReroute = AbTest.addImageAndReroute;
 
   $scope.time = AbTest.time;
 
