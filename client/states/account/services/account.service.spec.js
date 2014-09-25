@@ -13,6 +13,12 @@ describe("Unit: Account", function() {
 
   it("should have a login function", function() { 
     expect(Account.submitLogin).to.be.a('function');
+  });  
+
+  it("should toggle loginView when switchLoginSignupView is invoked", function() { 
+    expect(Account.loginView).to.equal(true);
+    Account.switchLoginSignupView();
+    expect(Account.loginView).to.equal(false);
   });
 
   it("should have a signup function", function() { 

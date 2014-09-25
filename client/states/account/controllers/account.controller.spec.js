@@ -21,7 +21,11 @@ describe("Unit: AccountController", function() {
 	});
 
   it("should have a user object", function() { 
-  	expect(scope.user).to.be.a('object');
+    expect(scope.user).to.be.a('object');
+  });  
+
+  it("should have a loginView boolean", function() { 
+  	expect(scope.loginView).to.be.a('boolean');
   });
 
   it("user object should contain username and password properties", function() { 
