@@ -48,11 +48,24 @@ describe("Unit: AbTestController", function() {
     expect(scope.mytime).to.be.a('date');
     expect(scope.mstep).to.be.a('number');
     expect(scope.hstep).to.be.a('number');
+
     expect(scope.options).to.be.a('object');
+    expect(scope.options).to.have.property('hstep');
+    expect(scope.options.hstep).to.be.a('array');
+    expect(scope.options).to.have.property('mstep');
+    expect(scope.options.mstep).to.be.a('array');
+
     expect(scope.ismeridian).to.be.a('boolean');
+
     expect(scope.update).to.be.a('function');
+
     expect(scope.changed).to.be.a('function');
+    scope.changed();
+    expect(scope.time.start).to.not.equal('');
+
     expect(scope.clear).to.be.a('function');
+    scope.clear();
+    expect(scope.mytime).to.equal(null);
   });
 
 });

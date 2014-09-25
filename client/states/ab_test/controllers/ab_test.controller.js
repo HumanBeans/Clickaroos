@@ -5,14 +5,6 @@ angular.module('clickaroos.abTest', ['ui.bootstrap'])
 
   $scope.imagesAndReroutes = AbTest.imagesAndReroutes;
 
-  // Create a new object for every new added image
-  var newImageAndReroute = function() {
-    return {
-      image_url: '',
-      reroute_url: ''
-    };
-  }
-
   $scope.addImageAndReroute = AbTest.addImageAndReroute;
 
   $scope.time = AbTest.time;
@@ -40,8 +32,8 @@ angular.module('clickaroos.abTest', ['ui.bootstrap'])
 
   $scope.update = function() {
     var d = new Date();
-    d.setHours( 14 );
-    d.setMinutes( 0 );
+    d.setHours(14);
+    d.setMinutes(0);
     $scope.mytime = d;
   };
 
