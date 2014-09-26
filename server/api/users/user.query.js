@@ -29,6 +29,15 @@ exports.findAllUsers = function(callback){
   dbConnection.query(queryString, callback);
 };
 
+exports.getProfile = function(id, callback){
+  var queryString = 'SELECT * FROM users WHERE user_id = ?';
+  dbConnection.query(queryString, [id], function(err, user){
+    // console.log('******', user[0]);
+    delete user[0].password;
+    callback(err, user[0]);
+  })
+}
+
 exports.save = function(userObj, callback){
   var password = userObj.password;
   var queryString = 'INSERT INTO users SET ?';
@@ -39,6 +48,7 @@ exports.save = function(userObj, callback){
       bcrypt.genSalt(10, function(err,salt){
         bcrypt.hash(password, salt, null, function(err,hash){
           userObj.password = hash;
+          console.log('hereeeeee  ',userObj);
           dbConnection.query(queryString, [userObj], callback);
         });
       });

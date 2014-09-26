@@ -5,8 +5,9 @@ var should = chai.should();
 var User = require('./user.query');
 var mysql = require('mysql');
 var config = require('../../config/main.js');
+var dbConnection = require('../../config/dbconnection');
 
-var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
+// var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
 
 dbConnection.connect(function(err){
   if(err) console.log(err);

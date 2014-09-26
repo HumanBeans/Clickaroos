@@ -22,15 +22,17 @@ exports.isAuthenticated = function(){
       validateJwt(req, res, next);
     })
     //attach user info into req, since validateJwt only attaches the user._id into req; and this two middleware needs to be seperated because the req.user._id could only be accessed after validateJwt() is called;
-    .use(function(req, res, next){
-      //planned to have a User.findById function in user.model
-      User.findById(req.user._id, function(err, user){
-        if(err) return next(err);
-        if(!user) return res.send(401);
-        req.user = user;
-        next();
-      })
-    })
+
+    //###########commented out for now, not necessarily have to attach user into every request
+    // .use(function(req, res, next){
+    //   //planned to have a User.findById function in user.model
+    //   User.findById(req.user._id, function(err, user){
+    //     if(err) return next(err);
+    //     if(!user) return res.send(401);
+    //     req.user = user;
+    //     next();
+    //   })
+    // })
 };
 
 //
