@@ -17,6 +17,7 @@ router.post( '/', controller.handleNewABTest );
 // TODO: Delete AB Test
 // router.delete( '/', controller.handleDeleteABTest );
 
+// D: The router below is for debugging purpses
 router.get( '/', function( req, res ) {
   res.send( 'hit GET api/test route, indside ab_tests/main.js' ); 
 });

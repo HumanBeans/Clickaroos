@@ -17,6 +17,8 @@ var parsePost = function(req, callback) {
   });
   req.on("end", function() {
     // if (data) { callback(JSON.parse(data)); }
+
+    // TODO: Switch back to top line once client is connected to server
     if (data) callback( eval("("+data+")") );
     else callback();
   });
