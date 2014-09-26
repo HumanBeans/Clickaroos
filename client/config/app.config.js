@@ -1,5 +1,6 @@
 angular.module('clickaroos.config', [])
-.config(function($stateProvider, $urlRouterProvider) {
+
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
   
   $stateProvider
     .state('account', {
@@ -60,4 +61,10 @@ angular.module('clickaroos.config', [])
       url: '/dummy-query',
       templateUrl: 'states/query/query.html'
     })
-});
+
+    ;
+
+    // For Auth0
+    $httpProvider.interceptors.push('AuthInterceptor');
+
+}]);

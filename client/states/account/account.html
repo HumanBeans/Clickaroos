@@ -5,6 +5,8 @@
     </div>
     <div id="top-nav">
       <div id="settings-btn" ui-sref="dashboard"><i class="fa fa-cog settings-icon"></i></div>
+      <!-- TODO: Change styling accordingly. Currently is using create-campaign's styling incorrectly. -->
+      <div id="create-campaign"><a ui-sref="account" ng-click="logout()">Logout</a></div>
 <!--       <div id="create-campaign"><a ui-sref="create-campaign">Create Campaign</a></div>
       <div id="campaign-list"><a ui-sref="campaign-list">Campaigns</a></div> -->
     </div>
@@ -34,7 +36,7 @@
         <input id="password-input" type="password" name="password" ng-model="user.password"></input>
         <input type="submit" name="login"></input>
       </form>
-      <p>Already a customer?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Log in</span></p>
+      <p>Don't have an account?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Sign up</span></p>
     </div>
 
     <div id="signup-form" ng-if="!loginView">
@@ -47,7 +49,7 @@
         <input id="password-input" type="password" name="password" ng-model="user.password"></input>
         <input type="submit" name="signup"></input>
       </form>
-      <p>Don't have an account?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Sign up</span></p>
+      <p>Already a customer?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Log in</span></p>
     </div>
 
   </div>

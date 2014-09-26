@@ -37,4 +37,9 @@ describe("Unit: AccountController", function() {
   	expect(scope.submitLogin).to.be.a('function');
   	expect(scope.submitSignup).to.be.a('function');
   });
+
+  it('should have a logout function', function() {
+    expect(scope.logout).to.exist;
+    expect(scope.logout).to.be.a('function');
+  });
 });

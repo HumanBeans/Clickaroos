@@ -24,4 +24,8 @@ describe("Unit: Account", function() {
   it("should have a signup function", function() { 
     expect(Account.submitSignup).to.be.a('function');
   });
+
+  it('should have a logout function', function() {
+    expect(Account.logout).to.be.a('function');
+  });
 });
