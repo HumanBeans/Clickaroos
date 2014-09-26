@@ -48,6 +48,7 @@ exports.save = function(userObj, callback){
       bcrypt.genSalt(10, function(err,salt){
         bcrypt.hash(password, salt, null, function(err,hash){
           userObj.password = hash;
+          console.log('hereeeeee  ',userObj);
           dbConnection.query(queryString, [userObj], callback);
         });
       });

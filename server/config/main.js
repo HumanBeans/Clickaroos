@@ -1,5 +1,7 @@
 'use strict'
 
+var path = require('path');
+
 var all = {
   secrets: {
     token: 'Human-Beans'
@@ -10,12 +12,15 @@ var all = {
     password: '46c0073d',
     database: 'ClickagoosDB'
   },
+
   dbConnectionStringLocal: {
     host: 'localhost',
     user: 'root',
     password: 'HumanBeans',
     database: 'ClickagoosDB'
-  }
+  },
+
+  root: path.normalize(__dirname + '/../../..')
 }
 
 module.exports = all;

@@ -9,8 +9,10 @@ var request = require('supertest');
 var app = require('../../server');
 var mysql = require('mysql');
 
-var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
-dbConnection.connect();
+// var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
+// dbConnection.connect();
+
+var dbConnection = require('../../config/dbconnection');
 
 describe('local auth test', function(){
 

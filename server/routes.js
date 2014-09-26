@@ -5,6 +5,7 @@
 var abTestRequestHandlers = require( './api/ab_tests/main' );
 var userRequestHandlers = require('./api/users/main');
 var authRequestHandlers = require('./auth/main');
+var config = require('./config/main');
 //////////////////////////////////////////////////////////
 // Module Routes
 module.exports = function( app ) {
@@ -31,8 +32,11 @@ module.exports = function( app ) {
 
   app.use('/auth', authRequestHandlers);
 
-  app.route('/').get( function( req, res ){
-    res.send('server landing page');
-  });
+  // app.route('/').get( function( req, res ){
+  //   res.send('server landing page');
+  // });
 
+  app.route('/*').get(function(req, res){
+    res.sendFile(config.root + '/Clickaroos/client/index.html');
+  })
 };

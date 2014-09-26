@@ -10,8 +10,10 @@ var app = require('../server');
 var mysql = require('mysql');
 var auth = require('./auth.service');
 
-var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
-dbConnection.connect();
+// var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
+// dbConnection.connect();
+
+var dbConnection = require('../config/dbconnection');
 
 describe('auth service test', function(){
 
@@ -35,6 +37,7 @@ describe('auth service test', function(){
 
   before(function(done){
     User.save(testUser1, function(err, result){
+      console.log('********', arguments);
       request(app)
         .post('/auth/')
         .send({email: testUser1.email, password:'123'})
