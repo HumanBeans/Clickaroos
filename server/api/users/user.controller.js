@@ -17,7 +17,7 @@ exports.create = function(req, res, next){
   User.save(req.body, function(err, result){
     if(err) {
       console.log(err);
-      return res.status(403).json('try again');
+      return res.status(403).json('user alread exists');
     }
     var token = jwt.sign({_id: result.insertId}, config.secrets.token, {expiresInMinutes: 60*5});
     res.status(200).json({token:token});
@@ -26,7 +26,6 @@ exports.create = function(req, res, next){
 
 // get profile of the user
 exports.getProfile = function(req, res, next){
-  console.log('+++++', req.user._id);
   // res.json('hello');
 
   //##### To be worked on later
