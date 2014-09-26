@@ -37,8 +37,7 @@ angular.module('clickaroos.account')
     console.log('password', user.password);
 
     $http.post(
-      // appServerUrl+'/auth/login',
-      '/auth',
+      appServerUrl+'/auth',
       user
     ).success(function(data, status, headers, config) {
       // TODO: Should token be saved in global services?
@@ -56,8 +55,7 @@ angular.module('clickaroos.account')
     console.log('password', user.password);
 
     $http.post(
-      // appServerUrl+'/auth/signup',
-      '/api/users',
+      appServerUrl+'/api/users',
       user
     ).success(function(data, status, headers, config) {
       // TODO: Should token be saved in global services?
