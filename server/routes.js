@@ -3,6 +3,9 @@
 //////////////////////////////////////////////////////////
 // API's Request Handlers
 var abTestRequestHandlers = require( './api/ab_tests/main' );
+var campaginRequestHandlers = require('./api/compaigns/main');
+var queryRequestHandlers = require('./api/queries/main');
+var timerRequestHandlers = require('./api/timers/main');
 var userRequestHandlers = require('./api/users/main');
 var authRequestHandlers = require('./auth/main');
 var config = require('./config/main');
@@ -13,19 +16,13 @@ module.exports = function( app ) {
   app.use('/api/ab_tests', abTestRequestHandlers );
 
   // TODO: require and add request-handler for campaigns
-  app.use('/api/campaigns', function( req, res ) {
-    res.send( 'hit api/campaigns route' );
-  });
+  app.use('/api/campaigns', campaginRequestHandlers);
 
   // TODO: require and add request-handler for queries
-  app.use('/api/queries', function( req, res ) {
-    res.send( 'hit api/queries route' );
-  });
+  app.use('/api/queries', queryRequestHandlers);
 
   // TODO: require and add request-handler for timers
-  app.use('/api/timers', function( req, res ) {
-    res.send( 'hit api/timers route' );
-  });
+  app.use('/api/timers', timerRequestHandlers);
 
   // TODO: require and add request-handler for users
   app.use('/api/users', userRequestHandlers);
