@@ -25,7 +25,15 @@ exports.create = function(req, res, next){
 };
 
 // get profile of the user
-exports.getProfile = function(req, res, next){};
+exports.getProfile = function(req, res, next){
+  console.log('+++++', req.user._id);
+  // res.json('hello');
+
+  //##### To be worked on later
+  User.getProfile(req.user._id, function(err, userProfile){
+    res.json(userProfile);
+  });
+};
 
 // update user profile
 exports.update = function(req, res, next){};
