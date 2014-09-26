@@ -9,3 +9,4 @@ var router = express.Router();
 router.get('/', auth.isAuthenticated(), controller.index);
 
 module.exports = router;
+

@@ -23,3 +23,4 @@ describe('campaign query test', function(){
   });
 
 });
+
