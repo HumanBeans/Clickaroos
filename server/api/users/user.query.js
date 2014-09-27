@@ -48,7 +48,6 @@ exports.save = function(userObj, callback){
   }
 
   exports.findByEmail(userObj.email, function(err, user){
-    console.log('++++++++++', userObj);
     if(user) {
       //do not return user password
       delete user.password;
@@ -70,6 +69,9 @@ exports.save = function(userObj, callback){
 exports.authenticate = function(email, password){
   var deferred = Q.defer();
   exports.findByEmail(email,function(err,user){
+    if(!user){
+      return deferred.resolve(false);
+    }
     bcrypt.compare(password, user.password, function(err, res){
       if(err){
         deferred.reject(new Error(err));

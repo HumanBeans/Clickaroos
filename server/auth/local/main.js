@@ -22,16 +22,16 @@ var router = express.Router();
 // });
 
 router.post('/', function(req, res, next){
-  console.log('hereeeeeee');
   if(!req.body.email){
     req.body.email = req.body.username;
     delete req.body.username;
   }
-  console.log('++++++', req.body);
   User.authenticate(req.body.email, req.body.password)
     .then(function(authenticated){
       // console.log('******', authenticated);
-      if(!authenticated){ return res.status(401).json('incorrect password');}
+      if(!authenticated){ 
+        return res.status(401).json('incorrect password or invalid username');
+      }
       User.findByEmail(req.body.email, function(err, user){
         var token = auth.signToken(user.user_id);
         res.json({token:token});
