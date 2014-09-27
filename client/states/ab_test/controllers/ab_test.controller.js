@@ -1,53 +1,41 @@
 // abTest requires ui.bootstrap!
-angular.module('clickaroos.abTest', ['ui.bootstrap'])
+angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
 
-.controller('AbTestController', ['$scope', 'AbTest', function($scope, AbTest) {
+.controller('AbTestController', ['$scope', 'AbTest', 'appServerUrl', function($scope, AbTest, appServerUrl) {
 
   $scope.imagesAndReroutes = AbTest.imagesAndReroutes;
-
   $scope.addImageAndReroute = AbTest.addImageAndReroute;
-
   $scope.time = AbTest.time;
-
   $scope.submitImagesAndReroutes = AbTest.submitImagesAndReroutes;
 
   //////////////////////////////////////////////////////
   // For Angular/Bootstrap Timepicker Directive
   //
 
-  $scope.mytime = new Date();
-
-  $scope.hstep = 1;
-  $scope.mstep = 15;
-
-  $scope.options = {
-    hstep: [1, 2, 3],
-    mstep: [1, 5, 10, 15, 25, 30]
-  };
-
-  $scope.ismeridian = true;
-  $scope.toggleMode = function() {
-    $scope.ismeridian = ! $scope.ismeridian;
-  };
-
-  $scope.update = function() {
-    var d = new Date();
-    d.setHours(14);
-    d.setMinutes(0);
-    $scope.mytime = d;
-  };
-
-  $scope.changed = function () {
-    $scope.time.start = $scope.mytime;
-    console.log($scope.time);
-  };
-
-  $scope.clear = function() {
-    $scope.mytime = null;
-  };
+  // TODO: Move to services
+  $scope.mytime = AbTest.mytime;
+  $scope.hstep = AbTest.hstep;
+  $scope.mstep = AbTest.mstep;
+  $scope.options = AbTest.options;
+  $scope.ismeridian = AbTest.ismeridian;
+  $scope.toggleMode = AbTest.toggleMode;
+  $scope.update = AbTest.update;
+  $scope.changed = AbTest.changed;
+  $scope.clear = AbTest.clear;
 
   //
   // End Angular/Bootstrap Timepicker Directive
+  //////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////////
+  // For ng-file-upload
+  //
+
+  $scope.onFileSelect = AbTest.onFileSelect;
+  $scope.upload = AbTest.upload;
+
+  //
+  // End ng-file-upload
   //////////////////////////////////////////////////////
   
 }])

@@ -6,77 +6,48 @@ process.env['AZURE_STORAGE_ACCESS_KEY'] = 'axddKfkXfxoGI7Tz4hx69KPxH3kiWima8YyOp
 
 var config = require('../../config/main');
 var bodyParser = require('body-parser');
-// var multiparty = require('multiparty');
-var Busboy = require('busboy');
+var multiparty = require('multiparty');
 var azure = require('azure');
 
 exports.createImage = function(req, res) {
-  var busboy = new Busboy({ headers: req.headers });
-  busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-    console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
-    file.on('data', function(data) {
-      console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
-    });
-    file.on('end', function() {
-      console.log('File [' + fieldname + '] Finished');
-    });
+  var blobService = azure.createBlobService();
+  var form = new multiparty.Form();
+  var magic = '';
+
+  blobService.createContainerIfNotExists('img', {publicAccessLevel : 'blob'}, function(error){
+    if(!error){
+      console.log('exists and is public');
+    }
   });
-  busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-    console.log('Field [' + fieldname + ']: value: ' + val);
+
+  form.on('part', function(part) {
+
+    // TODO: Add userid/campaignid/filename
+    var filename = part.filename;
+    var size = part.byteCount;
+    var contentType = part.headers['content-type'];
+
+    var onEnd = function(error, response) {
+
+      if (error) {
+        res.send({ grrr: error });
+        return;
+      }
+
+      console.log('success! ', response);
+
+      console.log('url: ', 'https://clickaroos.blob.core.windows.net/img/'+response.blob);
+      // save image url string to DB
+      // TODO: use res.body in front-end
+      magic = 'https://clickaroos.blob.core.windows.net/img/'+response.blob;
+      res.json({ imageUrl: magic });
+
+    };
+
+    blobService.createBlockBlobFromStream('img', filename, part, size, { contentTypeHeader: contentType }, onEnd);
+
   });
-  busboy.on('finish', function() {
-    console.log('Done parsing form!');
-    res.writeHead(303, { Connection: 'close', Location: '/' });
-    res.end();
-  });
-  req.pipe(busboy);
 
-
-
-
-  
-  // var blobService = azure.createBlobService();
-
-  // blobService.createContainerIfNotExists('img', {publicAccessLevel : 'blob'}, function(error){
-  //   if(!error){
-  //     console.log('exists and is public');
-  //   }
-  // });
-
-  // var form = new multiparty.Form();
-  // console.log('form', form);
-  // var magic = '';
-
-  // form.on('part', function(part) {
-  //   if (part.filename) {
-  //     // this filename can be whatver you want.
-  //     // we'd use the imageID to keep it unique
-  //     var filename = part.filename;
-  //     var size = part.byteCount;
-
-  //     var onEnd = function(error, response) {
-  //       if (error) {
-  //         res.send({ grrr: error });
-  //       }
-  //       else {
-  //         console.log('success! ', response);
-  //         // TODO: change URL to a variable
-  //         console.log('url: ', 'https://clickaroos.blob.core.windows.net/img/'+response.blob);
-  //         // TODO: save image url string to DB
-  //         magic = 'https://clickaroos.blob.core.windows.net/img/'+response.blob;
-  //         // TODO: use res.body in front-end
-  //         res.json({ imageUrl: magic });
-  //       }
-  //     };
-  //     // TODO: Change contentTypeHeader to any image type 
-  //     blobService.createBlockBlobFromStream('img', filename, part, size, { contentTypeHeader:'image/jpg' }, onEnd);
-
-  //   } else {
-  //     form.handlePart(part);
-  //   }
-
-  // });
-
-  // form.parse(req);
+  form.parse(req);
 
 };
