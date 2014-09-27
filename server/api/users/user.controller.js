@@ -8,7 +8,7 @@ var config = require('../../config/main.js');
 exports.index = function(req, res, next){
   User.findAllUsers(function(err,users){
     if(err) res.json(401, 'something went wrong, please try again');
-    res.json(200, users);
+    res.status(200).json(users);
   });
 };
 
