@@ -11,9 +11,11 @@ module.exports = function(app){
   app.use(bodyParser.json());
   app.use(passport.initialize());
 
-  // app.use(express.static(path.join(config.root, '.tmp')));
   // app.use(express.static(path.join(config.root, 'client')));
+  
   app.use('/', express.static(config.root + '/Clickaroos/client/splash'));
   app.use('/app', express.static(config.root + '/Clickaroos/client'));
+
+  // app.use(express.static(config.root + '/Clickaroos/client'));
   app.set('appPath', 'client');
 }
