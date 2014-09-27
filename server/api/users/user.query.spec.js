@@ -19,7 +19,7 @@ describe('user test', function(){
   var testUserId, testUserId2;
 
   var testUser = {
-    user_name: "testuser",
+    username: "testuser",
     email: "123@123.com",
     password: '123',
     phone: '123',
@@ -27,7 +27,7 @@ describe('user test', function(){
   };
 
   var testUser2 = {
-    user_name: 'testuser2',
+    username: 'testuser2',
     email: "234@234.com",
     password: '234',
     phone: '234',
@@ -62,21 +62,21 @@ describe('user test', function(){
   it('should find a user using findByEmail', function(done){
     User.findByEmail(testUser.email, function(err, user){
       // console.log('++++++++', user);
-      user.user_name.should.equal(testUser.user_name);
+      user.username.should.equal(testUser.username);
       done();
     });
   });
 
   it('should find a user using findById', function(done){
     User.findById(testUserId, function(err, user){
-      user.user_name.should.equal(testUser.user_name);
+      user.username.should.equal(testUser.username);
       done();
     });
   });
 
   it('should find all the users in the database', function(done){
     User.findAllUsers(function(err, users){
-      users.length.should.equal(5);
+      users.length.should.equal(6);
       done();
     });
   });
@@ -85,7 +85,7 @@ describe('user test', function(){
     User.save(testUser2, function(err,result){
       testUserId2 = result.insertId;
       User.findById(result.insertId, function(err,user){
-        user.user_name.should.equal(testUser2.user_name);
+        user.username.should.equal(testUser2.username);
         done();
       });
     });

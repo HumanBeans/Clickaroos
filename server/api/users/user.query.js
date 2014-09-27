@@ -42,13 +42,21 @@ exports.save = function(userObj, callback){
   var password = userObj.password;
   var queryString = 'INSERT INTO users SET ?';
 
+  //if email not provided, set the email the same as username for now, assuming the user are using email to login
+  if(!userObj.email){
+    userObj.email = userObj.username;
+  }
+
   exports.findByEmail(userObj.email, function(err, user){
-    if(user) {callback(user);}
+    if(user) {
+      //do not return user password
+      delete user.password;
+      callback(user);
+    }
     else{
       bcrypt.genSalt(10, function(err,salt){
         bcrypt.hash(password, salt, null, function(err,hash){
           userObj.password = hash;
-          console.log('hereeeeee  ',userObj);
           dbConnection.query(queryString, [userObj], callback);
         });
       });
@@ -61,6 +69,9 @@ exports.save = function(userObj, callback){
 exports.authenticate = function(email, password){
   var deferred = Q.defer();
   exports.findByEmail(email,function(err,user){
+    if(!user){
+      return deferred.resolve(false);
+    }
     bcrypt.compare(password, user.password, function(err, res){
       if(err){
         deferred.reject(new Error(err));

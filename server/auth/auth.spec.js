@@ -20,7 +20,7 @@ describe('auth service test', function(){
   var testUserId1, testUserId2, token;
 
   var testUser1 = {
-    user_name: "testuser1",
+    username: "testuser1",
     email: "123@123.com",
     password: '123',
     phone: '123',
@@ -28,7 +28,7 @@ describe('auth service test', function(){
   };
 
   var testUser2 = {
-    user_name: 'testuser2',
+    username: 'testuser2',
     email: "234@234.com",
     password: '234',
     phone: '234',
@@ -37,7 +37,6 @@ describe('auth service test', function(){
 
   before(function(done){
     User.save(testUser1, function(err, result){
-      console.log('********', arguments);
       request(app)
         .post('/auth/')
         .send({email: testUser1.email, password:'123'})
@@ -50,8 +49,8 @@ describe('auth service test', function(){
   });
 
   after(function(done){
-    var queryString = 'DELETE FROM users WHERE user_name = ? or user_name = ?';
-    dbConnection.query(queryString, [testUser1.user_name, testUser2.user_name], function(err, result){
+    var queryString = 'DELETE FROM users WHERE username = ? or username = ?';
+    dbConnection.query(queryString, [testUser1.username, testUser2.username], function(err, result){
       token = '';
       done();
     });
@@ -63,7 +62,7 @@ describe('auth service test', function(){
       .get('/api/users/' + testUserId1)
       .set('authorization', 'Bearer ' + token)
       .end(function(err,res){
-        res.body.should.have.property('user_name');
+        res.body.should.have.property('username');
         done();
       });
   });

@@ -1,4 +1,4 @@
-USE	clickagoosdb;
+USE clickagoosdb;
 
 drop table users;
 drop table campaigns;
@@ -7,11 +7,11 @@ drop table ab_imgs;
 
 CREATE TABLE users (
 	user_id INT NOT NULL AUTO_INCREMENT,
-	user_name VARCHAR(40) NOT NULL UNIQUE,
+	username VARCHAR(40) NOT NULL UNIQUE,
 	password VARCHAR(100) NOT NULL,
 	email VARCHAR(40) NOT NULL UNIQUE,
-	phone BIGINT NOT NULL UNIQUE,
-	credit_card BIGINT NOT NULL UNIQUE,
+	phone BIGINT UNIQUE,
+	credit_card BIGINT UNIQUE,
 	PRIMARY KEY(user_id)
 );
 
@@ -55,10 +55,10 @@ CREATE TABLE ab_imgs (
 
 /* test data */
 -- test users
-insert into users (user_name, password, email, phone, credit_card) values ('armando', 'armando', 'aaa@aaa.com', 155555523, 2);
-insert into users (user_name, password, email, phone, credit_card) values ('david', 'david', 'bbb@bbb.com', 325555551, 3);
-insert into users (user_name, password, email, phone, credit_card) values ('mai', 'mai', 'ccc@ccc.com', 425555552, 4);
-insert into users (user_name, password, email, phone, credit_card) values ('eddie', 'eddie', 'ddd@ddd.com', 255555535, 5);
+insert into users (username, password, email, phone, credit_card) values ('armando', 'armando', 'aaa@aaa.com', 155555523, 2);
+insert into users (username, password, email, phone, credit_card) values ('david', 'david', 'bbb@bbb.com', 325555551, 3);
+insert into users (username, password, email, phone, credit_card) values ('mai', 'mai', 'ccc@ccc.com', 425555552, 4);
+insert into users (username, password, email, phone, credit_card) values ('eddie', 'eddie', 'ddd@ddd.com', 255555535, 5);
 
 -- test campagins
 insert into campaigns( campaign_title, user_id, clicks, views, tablet, desktop, android, iphone, webmail ) values ( 'Winter Sale', 1, 4000, 10000, 400, 2000, 800, 700, 1000 );
