@@ -1,27 +1,52 @@
-campaign_page.html
+<div class="view-container">
+  <div id="top-bar">
+    <div id="clickaroos-logo">
+      <img src="http://dummyimage.com/240x68/ffbd67/ffffff&text=clickaroos" alt="">
+    </div>
+    <div id="top-nav">
+      <div id="settings-btn" ui-sref="settings-page"><i class="fa fa-cog settings-icon"></i></div>
+      <div id="create-campaign"><a ui-sref="create-campaign">Create Campaign</a></div>
+      <div id="campaign-list"><a ui-sref="campaign-list">Campaigns</a></div>
+    </div>
+  </div>
 
-<hr>
-<h1 ng-model="campaignInfo.name">{{ campaignInfo.name }}</h1>
-<p ng-model="campaignInfo.description">{{ campaignInfo.description }}</p>
+  <div id="dashboard-sidebar">
+    <div id="filter-campaigns">
+      <h3>Articles:</h3>
+      <ul id="select-campaign">
+        <li>How Armano got 12% increase in conversions</li>
+        <li class="active">Effective countdown timer usage</li>
+        <li>Email opens on mobile increases another 2%. Now at 56% of all email opens</li>
+      </ul>
+    </div>
+  </div>
+  <div id="content">
+    <h1 ng-model="campaignInfo.name">{{ campaignInfo.name }}</h1>
+    <!-- <p ng-model="campaignInfo.description">{{ campaignInfo.description }}</p> -->
+  
+    <br />
+    <br />
+    <h1>Apps</h1>
 
-<hr>
+    <h4>Current Apps</h4>
 
-<h1>Apps</h1>
+    <div ng-repeat="app in currentApps">
+      {{ app.name }}
+    </div>
 
-<h4>Current Apps</h4>
+    <h4>Add Apps</h4>
+    <!-- TODO: swap out dummy tests with real data -->
+    <!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
+    <a class="btn btn-warning btn-md" ui-sref="dummy-ab">Add Switcheroo</a>
+    <!-- <a ui-sref="dummy-timer">Add timer</a> -->
+    <a class="btn btn-warning btn-md" ui-sref="dummy-query">Add RooLogic</a>
 
-<div ng-repeat="app in currentApps">
-  {{ app.name }}
+    <hr>
+
+    <h1>Reports</h1>
+    <!-- TODO: Data visualization; use directives? -->
+
+    <!-- TODO: swap out dummy campaign with real data -->
+    <a ui-sref="dummy-campaign">Create (for rerouting only)</a>
+  </div>
 </div>
-
-<h4>Add Apps</h4>
-<!-- TODO: swap out dummy tests with real data -->
-<!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
-<a ui-sref="dummy-ab">Add AB test</a>
-<a ui-sref="dummy-timer">Add timer</a>
-<a ui-sref="dummy-query">Add query</a>
-
-<hr>
-
-<h1>Reports</h1>
-<!-- TODO: Data visualization; use directives? -->
