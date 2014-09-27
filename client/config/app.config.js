@@ -62,6 +62,11 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/query/query.html'
     })
 
+    .state("otherwise", {
+      url: "*path",
+      templateUrl: 'states/account/account.html',
+      controller: 'AccountController'
+    })
     ;
 
     // For Auth0
