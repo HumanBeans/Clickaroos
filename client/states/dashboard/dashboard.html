@@ -1,14 +1,4 @@
 <div class="view-container">
-  <div id="top-bar">
-    <div id="clickaroos-logo">
-      <img src="http://dummyimage.com/240x68/ffbd67/ffffff&text=clickaroos" alt="">
-    </div>
-    <div id="top-nav">
-      <div id="settings-btn" ui-sref="settings-page"><i class="fa fa-cog settings-icon"></i></div>
-      <div id="create-campaign"><a ui-sref="create-campaign">Create Campaign</a></div>
-      <div id="campaign-list"><a ui-sref="campaign-list">Campaigns</a></div>
-    </div>
-  </div>
 
   <div id="dashboard-sidebar">
     <div id="client-logo">
@@ -25,7 +15,7 @@
         <li class="active">30% Off Sale</li>
         <li>Another Campaign</li>
         <li>One More Campaign</li>
-        <li>Aggregate</li>
+        <li ng-click="getRecentCampaigns()">Aggregate</li>
       </ul>
     </div>
   </div>

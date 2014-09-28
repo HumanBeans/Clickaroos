@@ -10,7 +10,8 @@ angular.module('clickaroos.config', [])
     })
     .state('dashboard', {
       url: '/dashboard',
-      templateUrl: 'states/dashboard/dashboard.html'
+      templateUrl: 'states/dashboard/dashboard.html',
+      controller: 'DashboardController'
     })
     .state('create-campaign', {
       url: '/create-campaign',
