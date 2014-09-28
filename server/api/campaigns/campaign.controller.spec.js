@@ -12,33 +12,39 @@ var connection = require('../../config/dbconnection');
 
 describe('campaign routes test', function(){
   var token;
+  
+// The testuser is currently existing in the clickagoosdb with user_id = 15
   var testuser = {
     username: '1@1.com',
     password: '1'
   };
-  var campaign1 = {
-    campaign_title = 'breakfirst',
-    clicks: 0,
-    views: 0
-  };
-  var campaign2 = {
-    campaign_title = 'dinner',
-    clicks: 0,
-    views: 0
-  };
+
+  var campaign1 = ['breakfirst', 0, 0, 15];
+  var campaign2 = ['dinner', 0, 0, 15];
+
+
+  //+++++++++ neat way to insert multiple rows at in a single query
+  // before(function(done){
+  //   var queryString = 'INSERT into campaigns (campaign_title, clicks, views, user_id) VALUES (?), (?)';
+  //   connection.query(queryString, [campaign1, campaign2], function(err, result){
+  //     console.log('++++++', err);
+  //     request
+  //     done();
+  //   })
+  // });
 
   before(function(done){
     request(app)
       .post('/auth/')
       .send(testuser)
       .end(function(err, res){
-        token = res.token;
-        var queryString = 'CREATE'
+        token = res.body.token;
+        done();
       })
-    done();
   })
 
   after(function(done){
+    token = undefined;
     done();
   });
 
@@ -48,9 +54,9 @@ describe('campaign routes test', function(){
       .set('authorization', 'Bearer ' + token)
       .expect(200)
       .end(function(err, res){
-        res.body.should
+        res.body.length.should.equal(3);
+        done();
       })
-    done();
   });
 
 });

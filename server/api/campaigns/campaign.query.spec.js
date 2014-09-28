@@ -10,9 +10,9 @@ var connection = require('../../config/dbconnection');
 
 describe('campaign query test', function(){
 
-  var campaign1_id = 1;
+  var campaign1_id = 30;
   var campaign1_title = 'Winter Sale';
-  var user1_id = 1;
+  var user1_id = 15;
   var user2_id = 2;
   var campaign2 = {
     campaign_title: 'Spring sale',

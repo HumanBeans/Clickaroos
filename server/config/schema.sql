@@ -1,4 +1,6 @@
 USE clickagoosdb;
+-- USE clickaroosTest;
+-- USE Test;
 
 drop table users;
 drop table campaigns;
@@ -30,6 +32,8 @@ CREATE TABLE campaigns (
   webmail BIGINT,
   outlook BIGINT,
   apple_mail BIGINT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  modified_at DATETIME ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(campaign_id)
 );
 
