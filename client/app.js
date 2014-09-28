@@ -2,6 +2,7 @@
 
 angular.module('clickaroos', [
   'ui.router',
+  'ui.bootstrap',
   'clickaroos.config',
   'clickaroos.account',
   'clickaroos.createCampaign',
