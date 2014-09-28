@@ -1,5 +1,5 @@
 'use strict';
-var addABTest = require('./queries').addABTest;
+var addABTest = require('./ab_tests.queries').addABTest;
 
 
 //////////////////////////////////////////////////////

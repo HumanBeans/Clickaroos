@@ -4,7 +4,7 @@ var express = require('express');
 var http = require('http');
 var routes = require('./routes');
 var configExpress = require('./config/express');
-var connection = require('./config/dbconnection');
+var connection = require('./config/dbconnection').connection;
 
 var app = express();
 

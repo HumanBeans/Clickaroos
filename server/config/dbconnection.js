@@ -1,18 +1,17 @@
 var mysql = require('mysql');
 
-// var connection = mysql.createConnection({
-//   host: 'us-cdbr-azure-west-a.cloudapp.net',
-//   user: 'b017f8a5a6d3e8',
-//   password: '46c0073d',
-//   database: 'ClickagoosDB'
-// });
+// This DB is for testing Purposes
+exports.testingConnection = mysql.createConnection({
+  host: 'clickaroosdb.cloudapp.net',
+  user: 'Clickaroos',
+  password: 'HumanBeans',
+  database: 'clickaroosTest'
+});
 
-var connection = mysql.createConnection({
+// Main DB
+exports.connection = mysql.createConnection({
   host: 'clickaroosdb.cloudapp.net',
   user: 'Clickaroos',
   password: 'HumanBeans',
   database: 'clickagoosdb'
 });
-
-module.exports = connection;
-
