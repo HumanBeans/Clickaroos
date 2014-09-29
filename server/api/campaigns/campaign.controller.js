@@ -2,7 +2,7 @@
 
 var Campaign = require('./campaign.query');
 var config = require('../../config/main.js');
-var connection = require('../../config/dbconnection');
+var connection = require('../../config/dbconnection').connection;
 
 exports.all = function(req, res, next){
   var queryString = 'SELECT * FROM campaigns';
