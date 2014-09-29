@@ -7,7 +7,9 @@ var config = require('../../config/main.js');
 // return all all the users information
 exports.index = function(req, res, next){
   User.findAllUsers(function(err,users){
-    if(err) res.json(401, 'something went wrong, please try again');
+    if(err) {
+      return res.status(401).json('something went wrong, please try again');
+    }
     res.status(200).json(users);
   });
 };
@@ -17,7 +19,7 @@ exports.create = function(req, res, next){
   User.save(req.body, function(err, result){
     if(err) {
       console.log(err);
-      return res.status(403).json('user alread exists');
+      return res.status(403).json('user already exists');
     }
     var token = jwt.sign({_id: result.insertId}, config.secrets.token, {expiresInMinutes: 60*5});
     res.status(200).json({token:token});
