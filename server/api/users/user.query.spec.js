@@ -85,7 +85,7 @@ describe('user test', function(){
     User.save(testUser2, function(err,result){
       testUserId2 = result.insertId;
       User.findById(result.insertId, function(err, user){
-        user.user_name.should.equal(testUser2.user_name);
+        user.username.should.equal(testUser2.username);
         done();
       });
     });
