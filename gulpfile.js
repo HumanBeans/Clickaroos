@@ -24,7 +24,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src(['client/**/*.js', '!client/**/*.spec.js'])
+  return gulp.src(['client/**/*.js', '!client/**/*.spec.js', '!client/assets/lib/*.js'])
     // .pipe(jshint('.jshintrc'))
     // .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
@@ -67,5 +67,3 @@ gulp.task('serve', function(){
 gulp.task('seed', function(){
   require('./server/config/seed');
 });
-
-
