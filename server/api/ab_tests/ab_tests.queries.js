@@ -1,13 +1,11 @@
-// var connection = require('../../config/dbconnection');
+'use strict'
 
-// Only for testing
-var mysql = require('mysql'); 
-var connection = mysql.createConnection({
-  host: 'clickaroosdb.cloudapp.net',
-  user: 'Clickaroos',
-  password: 'HumanBeans',
-  database: 'clickaroosTest'
-});
+var connection = require('../../config/dbconnection').connection;
+
+// // Required only for testing
+// var mysql = require('mysql');
+// var connection = require('../../config/dbconnection').testingConnection;
+// connection.connect();
 
 // Delete an ab_test 
 exports.findABTestById = function( res, ABTestId, callback ){ 
@@ -40,8 +38,7 @@ exports.addABTest = function( res, data, callback ){
 exports.deleteABTest = function( res, ABTestId, callback ){ 
   console.log( 'before deleteABTest id:', ABTestId );
   connection.query( 'DELETE FROM ab_tests WHERE ab_test_id = ?', [ABTestId], 
-    function( err, result ) {
-      console.log('inside delete query', err, result );
+    function( err ) {
       if( err ) throw err;
       callback( res, 'ab test deleted!!' )
     } 

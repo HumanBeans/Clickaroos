@@ -3,16 +3,9 @@
 var mysql = require('mysql');
 var chai = require('chai');
 var should = chai.should();
-var User = require('./ab_tests.queries');
+var ABTestsQueries = require('./ab_tests.queries');
 
-// var connection = require('../../config/main.js').connection;
-
-var connection = mysql.createConnection({
-  host: 'clickaroosdb.cloudapp.net',
-  user: 'Clickaroos',
-  password: 'HumanBeans',
-  database: 'clickaroosTest'
-});
+var connection = require('../../config/dbconnection.js').testingConnection;
 
 connection.connect(function(err){
   if(err) console.log(err);
@@ -75,15 +68,15 @@ describe('ab_tests test', function(){
   });
   
   it('should have addABTest, deleteABTest, updateABTest and findABTestById', function(done){
-    User.should.have.property('addABTest');
-    User.should.have.property('deleteABTest');
-    User.should.have.property('updateABTest');
-    User.should.have.property('findABTestById');
+    ABTestsQueries.should.have.property('addABTest');
+    ABTestsQueries.should.have.property('deleteABTest');
+    ABTestsQueries.should.have.property('updateABTest');
+    ABTestsQueries.should.have.property('findABTestById');
     done();
   });
 
-  it('should find a user using findABTestById', function(done){
-    User.findABTestById( [], ab_test1ID, function( res, result ){
+  it('should find a ab_test using findABTestById', function(done){
+    ABTestsQueries.findABTestById( [], ab_test1ID, function( res, result ){
       // console.log( 'the result:', result );
       result[0].ab_test_id.should.equal( ab_test1ID );
       done();
@@ -91,7 +84,7 @@ describe('ab_tests test', function(){
   });
 
   it('should add an ab_test using addABTest', function(done){
-    User.addABTest( [], ab_test4, function( res, message ){
+    ABTestsQueries.addABTest( [], ab_test4, function( res, message ){
       connection.query('SELECT * FROM ab_tests WHERE ab_test_title = ?', [ab_test4.abTestTitle], 
         function( err, result ){
           result[0].ab_test_title.should.equal( ab_test4.abTestTitle );
@@ -103,12 +96,12 @@ describe('ab_tests test', function(){
 
   it('should delete an ab_test from the database', function(done){
     var ab_testID;
-    User.addABTest( [], ab_test3, function( res, message ){ 
+    ABTestsQueries.addABTest( [], ab_test3, function( res, message ){ 
       connection.query('SELECT * FROM ab_tests WHERE ab_test_title = ?', [ab_test3.abTestTitle], 
         function( err, result ){
           ab_testID = result[0].ab_test_id;
-          User.deleteABTest( [], ab_testID, function(err, message){
-            User.findABTestById( [], ab_testID, function( err, result ){
+          ABTestsQueries.deleteABTest( [], ab_testID, function(err, message){
+            ABTestsQueries.findABTestById( [], ab_testID, function( err, result ){
               result.length.should.equal( 0 );
               done();
             });
@@ -116,13 +109,5 @@ describe('ab_tests test', function(){
         });
     });
   });
-
-  // it('should not be able to login with incorrect password', function(done){
-  //   User.authenticate(testUser2.email, 'wrong password')
-  //     .then(function(auth, user){
-  //       auth.should.equal(false);
-  //       done();
-  //     });
-  // });
 
 });
