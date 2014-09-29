@@ -15,7 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'bower_components/ng-file-upload/angular-file-upload-shim.js',
       'lib/angular.js',
+      'bower_components/ng-file-upload/angular-file-upload.js',
       'lib/angular-mocks.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/app.js',

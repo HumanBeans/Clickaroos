@@ -21,6 +21,6 @@ var all = {
   },
 
   root: path.normalize(__dirname + '/../../..')
-}
+};
 
 module.exports = all;

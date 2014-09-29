@@ -7,6 +7,7 @@ var campaginRequestHandlers = require('./api/campaigns/main');
 var queryRequestHandlers = require('./api/queries/main');
 var timerRequestHandlers = require('./api/timers/main');
 var userRequestHandlers = require('./api/users/main');
+var imagesRequestHandlers = require('./api/images/main');
 var authRequestHandlers = require('./auth/main');
 var config = require('./config/main');
 //////////////////////////////////////////////////////////
@@ -17,6 +18,8 @@ module.exports = function( app ) {
 
   // TODO: require and add request-handler for campaigns
   app.use('/api/campaigns', campaginRequestHandlers);
+
+  app.use('/api/images', imagesRequestHandlers);
 
   // TODO: require and add request-handler for queries
   // app.use('/api/queries', queryRequestHandlers);

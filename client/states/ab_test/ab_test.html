@@ -2,18 +2,26 @@ ab_test.html
 
 <h1>Images</h1>
 
-<!-- Drag and drop images here -->
-<!-- Populate images, allow to be associated with image -->
+<!-- ng-file-upload -->
+<div>
+  <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+  <div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
+  <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+        ng-show="dropSupported" style="height: 150px; width: 300px; text-align: center; border: 3px dashed gray; margin: 20px;">Or, drag drop files here.</div>
+  <div ng-file-drop-available="dropSupported=true" 
+        ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+  <button ng-click="upload.abort()">Cancel Upload</button>
+</div>
 
 <form>
   <div ng-repeat="imageAndReroute in imagesAndReroutes">
     <p>
-    <input type="text" placeholder="http://image-url-here" ng-model="imageAndReroute.image_url"></input>
-    <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.reroute_url"></input>
+    <img style="width: 100px;" ng-src="{{ imageAndReroute.image_url }}" />
+    <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.reroute_url" />
     </p>
   </div>
 
-  <button ng-click="addImageAndReroute()">Add image</button>
+  <!-- <button ng-click="addImageAndReroute()">Add image</button> -->
 
   <hr>
 

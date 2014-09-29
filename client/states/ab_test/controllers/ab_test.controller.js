@@ -1,14 +1,11 @@
 // abTest requires ui.bootstrap!
-angular.module('clickaroos.abTest', ['ui.bootstrap'])
+angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
 
-.controller('AbTestController', ['$scope', 'AbTest', function($scope, AbTest) {
+.controller('AbTestController', ['$scope', 'AbTest', 'appServerUrl', function($scope, AbTest, appServerUrl) {
 
   $scope.imagesAndReroutes = AbTest.imagesAndReroutes;
-
   $scope.addImageAndReroute = AbTest.addImageAndReroute;
-
   $scope.time = AbTest.time;
-
   $scope.submitImagesAndReroutes = AbTest.submitImagesAndReroutes;
 
   //////////////////////////////////////////////////////
@@ -48,6 +45,17 @@ angular.module('clickaroos.abTest', ['ui.bootstrap'])
 
   //
   // End Angular/Bootstrap Timepicker Directive
+  //////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////////
+  // For ng-file-upload
+  //
+
+  $scope.onFileSelect = AbTest.onFileSelect;
+  $scope.upload = AbTest.upload;
+
+  //
+  // End ng-file-upload
   //////////////////////////////////////////////////////
   
 }])
