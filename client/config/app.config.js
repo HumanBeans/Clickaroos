@@ -19,25 +19,26 @@ angular.module('clickaroos.config', [])
       controller: 'CreateCampaignController'
     })
     .state('campaign-page', {
-      url: '/campaign/:campaign_id/', // TODO: adjust if necessary
+      url: '/campaign/:campaign_id', // TODO: adjust if necessary
       templateUrl: 'states/campaign_page/campaign_page.html',
-      controller: 'CampaignPageController'
-      // resolve: {
-      //   campaign_id: ['$stateParams', function($stateParams) {
-      //     return $stateParams.campaign_id;
-      //   }]
-      // }
+      controller: 'CampaignPageController',
+      // Can use 
+      resolve: {
+        campaign_id: ['$stateParams', function($stateParams) {
+          return $stateParams.campaign_id;
+        }]
+      }
     })
     .state('campaign-list', {
-      url: '/campaigns/',
+      url: '/campaigns',
       templateUrl: 'states/campaign_list/campaign_list.html'
     })
 
     // CREATE CLIENT TOOL PAGES
     // TODO: Make these nested states of campain page
-    .state('ab-test', {
-      url: '/campaign/:campaign_id/ab-test', // TODO: adjust if necessary
-      templateUrl: 'states/campaign-page/ab_test/ab_test.html',
+    .state('campaign-page.ab-test', {
+      url: '/ab-test', // TODO: adjust if necessary
+      templateUrl: 'states/ab_test/ab_test.html',
       controller: 'AbTestController'
     })
     .state('timer', {

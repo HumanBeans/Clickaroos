@@ -1,7 +1,9 @@
 // abTest requires ui.bootstrap!
 angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
 
-.controller('AbTestController', ['$scope', 'AbTest', 'appServerUrl', function($scope, AbTest, appServerUrl) {
+.controller('AbTestController', ['$scope', 'AbTest', 'appServerUrl', 'campaign_id', function($scope, AbTest, appServerUrl, campaign_id) {
+
+  console.log('campaign_id', campaign_id);
 
   $scope.imagesAndReroutes = AbTest.imagesAndReroutes;
   $scope.addImageAndReroute = AbTest.addImageAndReroute;

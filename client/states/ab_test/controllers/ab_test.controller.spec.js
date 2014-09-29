@@ -5,6 +5,7 @@ describe('Unit: AbTestController', function() {
 
     module('clickaroos.abTest', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
+      $provide.constant('campaign_id', 0);
     });
 
     // Inject the $controller and $rootScope services

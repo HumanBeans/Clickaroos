@@ -24,7 +24,6 @@ angular.module('clickaroos.abTest')
   };
 
   var dataToServer = {
-    user_id: 1, // TODO: Modify from global services
     campaign_id: 2, // TODO: Modify from global services
     time: factory.time,
     images_and_reroutes: factory.imagesAndReroutes
