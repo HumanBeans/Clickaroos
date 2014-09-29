@@ -45,6 +45,15 @@ exports.show = function(req, res, next){
   });
 };
 
+exports.recent = function(req, res, next){
+  Campaign.getRecent(req.body.num, function(err, campaigns){
+    if(err){
+      res.json('try again');
+    }
+    res.status(200).json(campaigns);
+  });
+}
+
 exports.update = function(req, res, next){
   Campaign.updateById(req.params.campaign, function(err,result){});
 };

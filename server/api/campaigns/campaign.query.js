@@ -23,6 +23,13 @@ var findAllCampaignByUserId = function(user_id, callback){
   connection.query(queryString, [user_id], callback);
 };
 
+var getRecent = function(num, callback){
+  num = num || 4;
+  var queryString = 'SELECT * FROM campaigns ORDER BY -modified_at limit ?';
+  connection.query(queryString, [num], callback);
+}
+
 exports.save = save;
 exports.findById = findById;
 exports.findAllCampaignByUserId = findAllCampaignByUserId;
+exports.getRecent = getRecent;

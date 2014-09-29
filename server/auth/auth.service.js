@@ -18,9 +18,6 @@ exports.isAuthenticated = function(){
       if(req.query && req.query.hasOwnProperty('access_token')){
         req.header.authorization = 'Bearer ' + req.query.access_token;
       }
-
-      console.log('++++++++', req.header.authorization);
-
       validateJwt(req, res, next);
     })
     //attach user info into req, since validateJwt only attaches the user._id into req; and this two middleware needs to be seperated because the req.user._id could only be accessed after validateJwt() is called;

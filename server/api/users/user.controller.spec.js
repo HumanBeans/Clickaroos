@@ -21,7 +21,7 @@ describe('user routes test', function(){
   var testUser1 = {
     username: "testuser1",
     email: "123@123.com",
-    password: '123',
+    password: '999',
     phone: '123',
     credit_card: '123' 
   };
@@ -30,7 +30,7 @@ describe('user routes test', function(){
     username: 'testuser2',
     email: "234@234.com",
     password: '234',
-    phone: '234',
+    phone: '888',
     credit_card: '234'
   }
 
