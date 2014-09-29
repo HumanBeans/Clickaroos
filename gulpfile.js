@@ -7,8 +7,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    livereload = require('gulp-livereload');
-    mocha = require('gulp-mocha');
+    livereload = require('gulp-livereload'),
+    mocha = require('gulp-mocha'),
     nodemon = require('gulp-nodemon');
 
 gulp.task('styles', function() {
