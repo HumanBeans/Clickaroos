@@ -7,26 +7,36 @@ var should = chai.should();
 var mysql = require('mysql');
 var config = require('../../config/main');
 var connection = require('../../config/dbconnection');
+var Q = require('q');
+var query = Q.nbind(connection.query, connection);
 
 describe('campaign query test', function(){
 
-  var campaign1_id = 30;
+  var campaign1_id = 1;
   var campaign1_title = 'Winter Sale';
-  var user1_id = 15;
+  var user1_id = 1;
   var user2_id = 2;
+
   var campaign2 = {
-    campaign_title: 'Spring sale',
+    campaign_title: 'Jeans sale',
     clicks: 0,
-    views: 0
-  }
+    views: 0,
+    user_id: user1_id
+  };
+  var campaign3 = {
+    campaign_title: 'Shorts sale',
+    clicks: 0,
+    views: 0,
+    user_id: user1_id
+  };
 
   before(function(done){
     done();
   })
 
   after(function(done){
-    var queryString = 'DELETE FROM campaigns WHERE campaign_title = ?';
-    connection.query(queryString, [campaign2.campaign_title], function(err, result){
+    var queryString = 'DELETE FROM campaigns WHERE campaign_title = ? or campaign_title = ?';
+    connection.query(queryString, [campaign2.campaign_title, campaign3.campaign_title], function(err, result){
       done();
     })
   });
@@ -40,19 +50,31 @@ describe('campaign query test', function(){
 
   it('should find all the campaigns with the given user', function(done){
     Campaign.findAllCampaignByUserId(user1_id, function(err, campaigns){
-      campaigns.length.should.equal(3);
+      campaigns.length.should.equal(5);
       done();
     });
   });
 
   it('should be able to save a campaign', function(done){
-    Campaign.save(user2_id, campaign2, function(err, result){
+    Campaign.save(user1_id, campaign2, function(err, result){
       var queryString = 'SELECT * FROM campaigns WHERE campaign_title = ?';
-      connection.query(queryString, ['Spring sale'], function(err, campaign){
+      connection.query(queryString, [campaign2.campaign_title], function(err, campaign){
         campaign[0].campaign_id.should.equal(result.insertId);
         done();
-      })
-    })
+      });
+    });
+  });
+
+  it('should be able to return the nth recent campgians', function(done){
+    var queryString = 'INSERT into campaigns SET ?';
+    query(queryString, [campaign3])
+    connection.query(queryString, [campaign3], function(err, result){
+      Campaign.getRecent(2, function(err, campaigns){
+        campaigns.length.should.equal(2);
+        campaigns[0].campaign_title.should.equal(campaign2.campaign_title);
+        done();
+      });
+    });
   })
 
 });
