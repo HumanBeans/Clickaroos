@@ -32,6 +32,12 @@ module.exports = function( app ) {
 
   app.use('/auth', authRequestHandlers);
 
+  // D: Testing Redirect:
+  app.use('/img.png', function( req, res ){
+    res.send( "<img src='https://www.google.com/logos/doodles/2014/first-day-of-autumn-2014-5193866277814272.2-res.png'>" );
+    // res.send( 'https://www.google.com/logos/doodles/2014/first-day-of-autumn-2014-5193866277814272.2-res.png' );
+  } )
+
   // app.route('/').get( function( req, res ){
   //   res.send('server landing page');
   // });
