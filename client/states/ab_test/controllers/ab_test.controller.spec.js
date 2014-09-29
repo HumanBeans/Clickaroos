@@ -1,4 +1,4 @@
-describe("Unit: AbTestController", function() {
+describe('Unit: AbTestController', function() {
   var ctrl, scope;
 
   beforeEach(function() {
@@ -20,31 +20,31 @@ describe("Unit: AbTestController", function() {
     
   });
 
-  it("'imagesAndReroutes' should be an array", function() {
+  it('should have an imagesAndReroutes array', function() {
     expect(scope.imagesAndReroutes).to.exist;
     expect(scope.imagesAndReroutes).to.be.a('array');
   });
 
-  it("'newImageAndReroute' should not be in the scope", function() { 
+  it('should not have newImageAndReroute in the scope', function() { 
     expect(scope.newImageAndReroute).to.not.exist;
   });
 
-  it("'addImageAndReroute' should be a function", function() {
+  it('should have a addImageAndReroute function', function() {
     expect(scope.addImageAndReroute).to.exist;
     expect(scope.addImageAndReroute).to.be.a('function');
   });
 
-  it("'time' should be an object", function() {
+  it('should be a time object', function() {
     expect(scope.time).to.exist;
     expect(scope.time).to.be.a('object');
   });
 
-  it("'submitImagesAndReroutes' should be a function", function() {
+  it('should have a submitImagesAndReroutes function', function() {
     expect(scope.submitImagesAndReroutes).to.exist;
     expect(scope.submitImagesAndReroutes).to.be.a('function');
   });
 
-  it("For timepicker directive", function() {
+  it('should have an Angular/Bootstrap timepicker directive', function() {
     expect(scope.mytime).to.be.a('date');
     expect(scope.mstep).to.be.a('number');
     expect(scope.hstep).to.be.a('number');
@@ -66,6 +66,18 @@ describe("Unit: AbTestController", function() {
     expect(scope.clear).to.be.a('function');
     scope.clear();
     expect(scope.mytime).to.equal(null);
+  });
+
+  describe('ng-file-upload directive', function() {
+
+    it('should have an upload function', function() {
+      expect(scope.upload).to.be.a('function');
+    });
+
+    it('should have an onFileSelect function', function() {
+      expect(scope.onFileSelect).to.be.a('function');
+    });
+
   });
 
 });

@@ -7,6 +7,8 @@ describe("Unit: AccountController", function() {
 			$provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
 		});
 
+    module('ui.router')
+
     // Inject the $controller and $rootScope services
     // in the beforeEach block
     inject(function($controller, $rootScope) {

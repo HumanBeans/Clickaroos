@@ -33,4 +33,16 @@ describe("Unit: AbTest", function() {
     expect(AbTest.submitImagesAndReroutes).to.be.a('function');
   });
 
+  describe('ng-file-upload directive', function() {
+
+    it('should have an upload function', function() {
+      expect(AbTest.upload).to.be.a('function');
+    });
+
+    it('should have an onFileSelect function', function() {
+      expect(AbTest.onFileSelect).to.be.a('function');
+    });
+
+  });
+
 });

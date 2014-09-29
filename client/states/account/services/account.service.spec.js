@@ -2,6 +2,8 @@ describe("Unit: Account", function() {
   var Account;
 
   beforeEach(function () {
+    module('ui.router');
+
     module('clickaroos.account', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
       });

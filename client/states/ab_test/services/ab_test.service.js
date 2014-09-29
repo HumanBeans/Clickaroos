@@ -82,45 +82,6 @@ angular.module('clickaroos.abTest')
   // End ng-file-upload
   //////////////////////////////////////////////////////
 
-  //////////////////////////////////////////////////////
-  // For Angular/Bootstrap Timepicker Directive
-  //
-
-  factory.mytime = new Date();
-
-  factory.hstep = 1;
-  factory.mstep = 15;
-
-  factory.options = {
-    hstep: [1, 2, 3],
-    mstep: [1, 5, 10, 15, 25, 30]
-  };
-
-  factory.ismeridian = true;
-  factory.toggleMode = function() {
-    factory.ismeridian = ! factory.ismeridian;
-  };
-
-  factory.update = function() {
-    var d = new Date();
-    d.setHours(14);
-    d.setMinutes(0);
-    factory.mytime = d;
-  };
-
-  factory.changed = function () {
-    factory.time.start = factory.mytime;
-    console.log(factory.time);
-  };
-
-  factory.clear = function() {
-    factory.mytime = null;
-  };
-
-  //
-  // End Angular/Bootstrap Timepicker Directive
-  //////////////////////////////////////////////////////
-
   return factory;
 }])
 
