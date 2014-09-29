@@ -13,14 +13,14 @@ var connection = require('../../config/dbconnection');
 describe('campaign routes test', function(){
   var token;
   
-// The testuser is currently existing in the clickagoosdb with user_id = 15
+// The testuser is currently existing in the clickagoosdb with user_id = 1
   var testuser = {
     username: '1@1.com',
-    password: '1'
+    password: '123'
   };
 
-  var campaign1 = ['breakfirst', 0, 0, 15];
-  var campaign2 = ['dinner', 0, 0, 15];
+  var campaign1 = ['breakfirst', 0, 0, 1];
+  var campaign2 = ['dinner', 0, 0, 1];
 
 
   //+++++++++ neat way to insert multiple rows at in a single query
@@ -54,7 +54,7 @@ describe('campaign routes test', function(){
       .set('authorization', 'Bearer ' + token)
       .expect(200)
       .end(function(err, res){
-        res.body.length.should.equal(3);
+        res.body.length.should.equal(5);
         done();
       })
   });

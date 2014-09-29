@@ -19,7 +19,7 @@ routes(app);
 connection.connect();
 
 // populating seed data
-require('./config/seed');
+// require('./config/seed');
 
 var port = process.env.PORT || 3000;
 app.listen( port );

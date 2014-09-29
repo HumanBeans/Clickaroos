@@ -22,7 +22,7 @@ describe('user test', function(){
     username: "testuser",
     email: "123@123.com",
     password: '123',
-    phone: '123',
+    phone: '999',
     credit_card: '123' 
   };
 
@@ -30,7 +30,7 @@ describe('user test', function(){
     username: 'testuser2',
     email: "234@234.com",
     password: '234',
-    phone: '234',
+    phone: '888',
     credit_card: '234'
   }
   
@@ -76,7 +76,7 @@ describe('user test', function(){
 
   it('should find all the users in the database', function(done){
     User.findAllUsers(function(err, users){
-      users.length.should.equal(6);
+      users.length.should.equal(3);
       done();
     });
   });

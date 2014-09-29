@@ -8,6 +8,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     livereload = require('gulp-livereload');
+    mocha = require('gulp-mocha');
+    nodemon = require('gulp-nodemon');
 
 gulp.task('styles', function() {
   return gulp.src(['client/**/*.scss', 'client/assets/*.scss'])
@@ -44,3 +46,26 @@ gulp.task('watch', function() {
   livereload.listen();
   gulp.watch(['dist/**']).on('change', livereload.changed);
 });
+
+gulp.task('mocha', function(){
+  return gulp.src('server/**/*.spec.js', {read: false})
+    .pipe(mocha({reporter: 'spec'}));
+});
+
+gulp.task('watch-mocha', function(){
+  gulp.watch(['server/**/*.js'], ['mocha']);
+});
+
+gulp.task('server-test', function(){
+  gulp.start('mocha', 'watch-mocha');
+});
+
+gulp.task('serve', function(){
+  nodemon({script: 'server/server.js'});
+});
+
+gulp.task('seed', function(){
+  require('./server/config/seed');
+});
+
+

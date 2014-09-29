@@ -38,5 +38,6 @@ query('truncate users')
     return query(queryString_saveCampaigns, [campaign1, campaign2, campaign3, campaign4, campaign5])
   })
   .then(function(err, result){
-    console.log('++++++++++', arguments);
+    console.log('Seed data generated susscessfully!');
   });
+
