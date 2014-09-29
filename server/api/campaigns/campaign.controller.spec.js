@@ -19,7 +19,7 @@ describe('campaign routes test', function(){
     password: '123'
   };
 
-  var campaign1 = ['breakfirst', 0, 0, 1];
+  var campaign1 = ['breakfast', 0, 0, 1];
   var campaign2 = ['dinner', 0, 0, 1];
 
 

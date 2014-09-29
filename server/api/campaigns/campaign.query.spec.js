@@ -65,7 +65,7 @@ describe('campaign query test', function(){
     });
   });
 
-  it('should be able to return the nth recent campgians', function(done){
+  it('should be able to return the nth recent campaigns', function(done){
     var queryString = 'INSERT into campaigns SET ?';
     query(queryString, [campaign3])
     connection.query(queryString, [campaign3], function(err, result){
