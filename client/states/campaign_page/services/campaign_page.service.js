@@ -1,6 +1,6 @@
 angular.module('clickaroos.campaignPage')
 
-.factory('CampaignPage', ['$http', 'appServerUrl', function($http, appServerUrl) {
+.factory('CampaignPage', ['$http', 'appServerUrl', function($http, $stateParams, appServerUrl) {
   var factory = {};
 
   // When page loading, get Campaign Info from server.
