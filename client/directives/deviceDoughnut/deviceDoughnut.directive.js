@@ -1,8 +1,8 @@
-angular.module('clickaroos.directives')
+angular.module('clickaroos.directives.deviceDoughnutDirective')
 
 .directive('deviceDoughnutDirective', [function() {
   return {
-    restrict: 'EA',
+    restrict: 'A',
     
     scope: {
       //these options bind scope data to attributes on HTML element with directive attached
