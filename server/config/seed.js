@@ -2,7 +2,7 @@
 
 var User = require('../api/users/user.query');
 var Campaign = require('../api/campaigns/campaign.query');
-var connection = require('./dbconnection.js');
+var connection = require('./dbconnection.js').connection;
 var Q = require('q');
 var query = Q.nbind(connection.query, connection);
 var user_create = Q.nbind(User.save, User);

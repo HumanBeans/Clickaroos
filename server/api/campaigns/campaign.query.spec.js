@@ -6,7 +6,7 @@ var chai = require('chai');
 var should = chai.should();
 var mysql = require('mysql');
 var config = require('../../config/main');
-var connection = require('../../config/dbconnection');
+var connection = require('../../config/dbconnection').connection;
 var Q = require('q');
 var query = Q.nbind(connection.query, connection);
 

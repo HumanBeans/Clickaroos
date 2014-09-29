@@ -1,6 +1,6 @@
 'use strict'
 
-var dbConnection = require('../../config/dbconnection');
+var dbConnection = require('../../config/dbconnection').connection;
 var mysql = require('mysql');
 var config = require('../../config/main.js');
 var bcrypt = require('bcrypt-nodejs');

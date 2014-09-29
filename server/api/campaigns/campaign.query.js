@@ -1,6 +1,6 @@
 'use strict'
 
-var connection = require('../../config/dbconnection');
+var connection = require('../../config/dbconnection').connection;
 var mysql = require('mysql');
 var config = require('../../config/main.js');
 var Q = require('q');

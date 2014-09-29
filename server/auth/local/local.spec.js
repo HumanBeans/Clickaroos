@@ -12,7 +12,7 @@ var mysql = require('mysql');
 // var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
 // dbConnection.connect();
 
-var dbConnection = require('../../config/dbconnection');
+var dbConnection = require('../../config/dbconnection').connection;
 
 describe('local auth test', function(){
 

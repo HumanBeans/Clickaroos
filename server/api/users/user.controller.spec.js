@@ -9,7 +9,7 @@ var request = require('supertest');
 var app = require('../../server');
 var mysql = require('mysql');
 var config = require('../../config/main');
-var dbConnection = require('../../config/dbconnection');
+var dbConnection = require('../../config/dbconnection').connection;
 
 // var dbConnection = mysql.createConnection(config.dbConnectionStringLocal);
 // dbConnection.connect();

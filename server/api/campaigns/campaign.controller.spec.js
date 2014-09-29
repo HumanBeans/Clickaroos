@@ -8,7 +8,7 @@ var request = require('supertest');
 var app = require('../../server');
 var mysql = require('mysql');
 var config = require('../../config/main');
-var connection = require('../../config/dbconnection');
+var connection = require('../../config/dbconnection').connection;
 
 describe('campaign routes test', function(){
   var token;
