@@ -24,6 +24,7 @@
     "express": "^4.9.3",
     "express-jwt": "^0.3.2",
     "gulp-nodemon": "^1.0.4",
+    "gulp-sass": "^1.0.0",
     "jsonwebtoken": "^1.1.2",
     "multiparty": "^3.3.2",
     "mysql": "^2.5.0",
