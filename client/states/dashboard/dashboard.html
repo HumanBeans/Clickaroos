@@ -22,6 +22,7 @@
       <div height="1000" width="1000">
         
         <canvas client-doughnut-directive ng-model="data" options="options"  auto-legend></canvas>
+        <!-- basic setup for directive legend -->
         <div class="client-doughnut-legend" ng-model="data">
           <ul style="list-style-type:none">
             <li ng-repeat="client in data.campaign.analytics.email_client">

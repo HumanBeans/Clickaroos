@@ -27,7 +27,7 @@ angular.module('clickaroos.dashboard', [])
   $scope.data.campaign.analytics.email_client['webmail'] = {label: 'Web mail',value: 65};
   $scope.data.campaign.analytics.email_client['outlook'] = {label: 'Outlook',value: 25};
   $scope.data.campaign.analytics.email_client['apple_mail'] = {label: 'Apple Mail',value: 10};
-  // ****                 ****
+  // ****       END DUMMY DATA          ****
 
 
   //colors to be used in analytics charts
