@@ -16,14 +16,13 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
       var chartData = [];
       
       console.log(scope.data);
-      
+
       //populate chartData with properly formatted from scope.data
       for(var key in scope.data.campaign.analytics.email_client) {
         
         chartData.push({
-          value: scope.data.campaign.analytics.email_client[key],
-          color: scope.data.colors[counter],
-          highlight: scope.data.highlights[counter],
+          value: scope.data.campaign.analytics.email_client[key].value,
+          color: scope.data.campaign.analytics.email_client[key].color,
           label: key
         });
 

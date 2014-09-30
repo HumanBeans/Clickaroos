@@ -19,9 +19,8 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
       for(var key in scope.data.campaign.analytics.device){
         
         chartData.push({
-          value: scope.data.campaign.analytics.device[key],
-          color: scope.data.colors[counter],
-          highlight: scope.data.highlights[counter],
+          value: scope.data.campaign.analytics.device[key].value,
+          color: scope.data.campaign.analytics.device[key].color,
           label: key
         });
 
