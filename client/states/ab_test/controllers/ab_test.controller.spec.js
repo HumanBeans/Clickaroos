@@ -21,13 +21,13 @@ describe('Unit: AbTestController', function() {
     
   });
 
+  it('should have abTestTitle', function() {
+    expect('scope.abTestTitle').to.exist;
+  });
+
   it('should have an imagesAndReroutes array', function() {
     expect(scope.imagesAndReroutes).to.exist;
     expect(scope.imagesAndReroutes).to.be.a('array');
-  });
-
-  it('should not have newImageAndReroute in the scope', function() { 
-    expect(scope.newImageAndReroute).to.not.exist;
   });
 
   it('should have a addImageAndReroute function', function() {
