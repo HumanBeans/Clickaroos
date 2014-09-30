@@ -56,11 +56,12 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/campaign_page/campaign_page.html',
       controller: 'CampaignPageController'
     })
-    .state('dummy-ab', {
-      url: '/dummy-ab',
-      templateUrl: 'states/ab_test/ab_test.html',
-      controller: 'AbTestController'
-    })
+    // dummy-ab no longer in use
+    // .state('dummy-ab', {
+    //   url: '/dummy-ab',
+    //   templateUrl: 'states/ab_test/ab_test.html',
+    //   controller: 'AbTestController'
+    // })
     .state('dummy-timer', {
       url: '/dummy-timer',
       templateUrl: 'states/timer/timer.html'

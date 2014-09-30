@@ -1,5 +1,9 @@
 ab_test.html
 
+<h1>A/B Test Title</h1>
+<!-- TODO: link to abTestTitle -->
+<input type="text"></input>
+
 <h1>Images</h1>
 
 <!-- ng-file-upload -->
@@ -16,8 +20,8 @@ ab_test.html
 <form>
   <div ng-repeat="imageAndReroute in imagesAndReroutes">
     <p>
-    <img style="width: 100px;" ng-src="{{ imageAndReroute.image_url }}" />
-    <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.reroute_url" />
+    <img style="width: 100px;" ng-src="{{ imageAndReroute.imageUrl }}" />
+    <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.rerouteUrl" />
     </p>
   </div>
 
@@ -27,7 +31,7 @@ ab_test.html
 
   <h1>Logic</h1>
 
-  A/B testing start time:
+  <h4>A/B testing start time:</h4>
 
   <!-- Angular/Bootstrap Timepicker Directive -->
   <div>
@@ -55,7 +59,10 @@ ab_test.html
 
   </div>
   <!-- End Angular/Bootstrap Timepicker Directive -->
-  
+
+  <h4>Hours after start when A/B testing ends:</h4>
+  <input type="number" ng-model="time.hoursAfterStart"></input> Hours
+
   <hr>
 
   <!-- Using ng-click because ng-submit considers button clicks as submits, and there are buttons littered throughout the HTML -->

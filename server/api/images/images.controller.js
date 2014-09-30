@@ -10,6 +10,9 @@ var multiparty = require('multiparty');
 var azure = require('azure');
 
 exports.createImage = function(req, res) {
+  console.log('req.user._id', req.user._id);
+
+  var userId = req.user._id;
   var blobService = azure.createBlobService();
   var form = new multiparty.Form();
   var magic = '';
@@ -23,7 +26,7 @@ exports.createImage = function(req, res) {
   form.on('part', function(part) {
 
     // TODO: Add userid/campaignid/filename
-    var filename = part.filename;
+    var filename = 'user/'+userId+'/'+part.filename;
     var size = part.byteCount;
     var contentType = part.headers['content-type'];
 

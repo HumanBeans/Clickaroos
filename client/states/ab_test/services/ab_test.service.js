@@ -4,33 +4,35 @@ angular.module('clickaroos.abTest')
   var factory = {};
 
   factory.imagesAndReroutes = [];
-  factory.time = { start: '' };
 
-  // Create a new object for every new added image
-  // var newImageAndReroute = function(image_url) {
-  //   return {
-  //     image_url: image_url || '',
-  //     reroute_url: ''
-  //   };
-  // };
+  factory.time = {
+    start: new Date(),
+    hoursAfterStart: null
+  };
 
-  factory.addImageAndReroute = function(image_url) {
+  factory.addImageAndReroute = function(imageUrl) {
     var newImageAndReroute = {
-      image_url: image_url || '',
-      reroute_url: ''
+      imageUrl: imageUrl || '',
+      rerouteUrl: ''
     };
 
     factory.imagesAndReroutes.push(newImageAndReroute);
   };
-
+  
   var dataToServer = {
-    campaign_id: 2, // TODO: Modify from global services
+    abTestTitle: null,
+    campaignId: null, // TODO: Modify from global services
     time: factory.time,
-    images_and_reroutes: factory.imagesAndReroutes
+    imagesAndReroutes: factory.imagesAndReroutes
   };
+
+  factory.setCampaignId = function(campaignId) {
+    dataToServer.campaignId = campaignId;
+  }
 
   factory.submitImagesAndReroutes = function() {
     console.log('dataToServer', dataToServer);
+    console.log('dataToServer.time', dataToServer.time);
     $http.post(
       appServerUrl+'/api/ab_tests',
       dataToServer

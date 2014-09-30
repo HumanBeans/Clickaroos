@@ -2,7 +2,7 @@ describe("Unit: CampaignPageController", function() {
   var ctrl, scope;
 
   beforeEach(function() {
-
+    
     module('clickaroos.campaignPage', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
     });
