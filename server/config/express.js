@@ -12,9 +12,9 @@ module.exports = function(app){
   app.use(passport.initialize());
 
   // app.use(express.static(path.join(config.root, 'client')));
-  
-  app.use('/', express.static(config.root + '/Clickaroos/client/splash'));
-  app.use('/app', express.static(config.root + '/Clickaroos/client'));
+
+  app.use('/', express.static(config.root + '/wwwroot/client/splash'));
+  app.use('/app', express.static(config.root + '/wwwroot/client'));
 
   // app.use(express.static(config.root + '/Clickaroos/client'));
   app.set('appPath', 'client');
