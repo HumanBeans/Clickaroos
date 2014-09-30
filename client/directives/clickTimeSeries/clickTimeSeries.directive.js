@@ -1,4 +1,4 @@
-angular.module('clickaroos.directives.clickTimeSeriesDirective')
+angular.module('clickaroos.directives.clickTimeSeriesDirective', [])
 
 .directive('clickTimeSeriesDirective', [function() {
   return {

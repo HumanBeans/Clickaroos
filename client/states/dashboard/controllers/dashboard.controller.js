@@ -9,9 +9,17 @@ angular.module('clickaroos.dashboard', [])
   $scope.data.campaign = {};
   $scope.data.campaign.analytics = {};
   $scope.data.campaign.analytics.clicks = [];
+  
+  $scope.data.campaign.analytics.device = {};
+  $scope.data.campaign.analytics.device['android'] = 40;
+  $scope.data.campaign.analytics.device['iphone'] = 20;
+  $scope.data.campaign.analytics.device['desktop'] = 30;
+  $scope.data.campaign.analytics.device['tablet'] = 10;
 
-
-
+  $scope.data.campaign.analytics.email_client = {};
+  $scope.data.campaign.analytics.email_client['webmail'] = 65;
+  $scope.data.campaign.analytics.email_client['outlook'] = 25;
+  $scope.data.campaign.analytics.email_client['apple_mail'] = 10;
 
   //colors to be used in analytics charts
   $scope.data.colors = ['#F7464A', '#46BFBD', '#FDB45C', '42FF00'];

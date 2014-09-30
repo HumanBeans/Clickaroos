@@ -24,17 +24,4 @@ describe("Directive: clickTimeSeriesDirective", function() {
     expect(Array.isArray(scope.data)).to.be.true;
   });
 
-  it('should have correctly formatted chartData', function() {
-    expect(chartData[0]).to.have.ownProperty('FILL IN!!!!');
- 
-  });
-
-  it('should have a chartData array', function() {
-    expect(Array.isArray(chartData)).to.be.true;
-  });
-
-  it('should have an options object for the chart', function() {
-    expect(options).to.be.a('object');
-  });
-
 });

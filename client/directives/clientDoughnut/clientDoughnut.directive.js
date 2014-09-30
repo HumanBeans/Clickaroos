@@ -1,42 +1,52 @@
-describe("Directive: clientDoughnutDirective", function() {
-  var element, scope;
+angular.module('clickaroos.directives.clientDoughnutDirective', [])
 
-  beforeEach(module('clickaroos.directives.clientDoughnutDirective'));
+.directive('clientDoughnutDirective', [function() {
+  return {
+    restrict: 'A',
+    
+    scope: {
+      //these options bind scope data to attributes on HTML element with directive attached
+      data: '=ngModel',
+      options: '=',
+    },
 
-  beforeEach(inject(function($rootScope, $compile) {
-    // element = angular.element('<div ng-model="data" options="options"><div>');
-    scope = $rootScope.$new();
+    link: function(scope, element, attrs) {
+      var ctx = element[0].getContext("2d");
+      var counter = 0;
+      var chartData = [];
+      
+      console.log(scope.data);
+      
+      //populate chartData with properly formatted from scope.data
+      for(var key in scope.data.campaign.analytics.email_client) {
+        
+        chartData.push({
+          value: scope.data.campaign.analytics.email_client[key],
+          color: scope.data.colors[counter],
+          highlight: scope.data.highlights[counter],
+          label: key
+        });
 
-    scope.data = [];
-    // scope.data.campaign = {};
-    // scope.data.campaign.analytics = {};
-    // scope.data.campaign.analytics.device = {};
-    // scope.data.campaign.analytics.device['iPhone'] = 20;
-    // scope.data.campaign.analytics.device['android'] = 30;
-    // scope.data.campaign.analytics.device['tablet'] =  10;
-    // scope.data.campaign.analytics.device['desktop'] = 40;
+        counter++;
+      }
+      
+      //charttype-specific configuration options
+      options = {
+        segmentShowStroke : true,
+        segmentStrokeColor : "#fff",
+        segmentStrokeWidth : 2,
+        percentageInnerCutout : 50,
+        animationSteps : 100,
+        animationEasing : "easeOutBounce",
+        animateRotate : true,
+        animateScale : false
+      };
+      
+      // set chart dimensions
+      ctx.canvas.width = 500;
+      ctx.canvas.height= 250;
 
-    // element = $compile(element)(scope);
-    // scope.$digest();
-  }));
-
-  it('should have a data object available on the scope', function() {
-    expect(Array.isArray(scope.data)).to.be.true;
-  });
-
-  it('should have correctly formatted chartData', function() {
-    expect(chartData[0]).to.have.ownProperty('value');
-    expect(chartData[0]).to.have.ownProperty('color');
-    expect(chartData[0]).to.have.ownProperty('highlight');
-    expect(chartData[0]).to.have.ownProperty('label');
-  });
-
-  it('should have a chartData array', function() {
-    expect(Array.isArray(chartData)).to.be.true;
-  });
-
-  it('should have an options object for the chart', function() {
-    expect(options).to.be.a('object');
-  });
-
-});
+      var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
+    }
+  };
+}]);

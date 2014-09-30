@@ -1,4 +1,4 @@
-angular.module('clickaroos.directives.deviceDoughnutDirective')
+angular.module('clickaroos.directives.deviceDoughnutDirective', [])
 
 .directive('deviceDoughnutDirective', [function() {
   return {
@@ -14,7 +14,7 @@ angular.module('clickaroos.directives.deviceDoughnutDirective')
       var ctx = element[0].getContext("2d");
       var counter = 0;
       var chartData = [];
-      
+
       //populate chartData with properly formatted from scope.data
       for(var key in scope.data.campaign.analytics.device){
         

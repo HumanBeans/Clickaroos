@@ -24,19 +24,4 @@ describe("Directive: clientDoughnutDirective", function() {
     expect(Array.isArray(scope.data)).to.be.true;
   });
 
-  it('should have correctly formatted chartData', function() {
-    expect(chartData[0]).to.have.ownProperty('value');
-    expect(chartData[0]).to.have.ownProperty('color');
-    expect(chartData[0]).to.have.ownProperty('highlight');
-    expect(chartData[0]).to.have.ownProperty('label');
-  });
-
-  it('should have a chartData array', function() {
-    expect(Array.isArray(chartData)).to.be.true;
-  });
-
-  it('should have an options object for the chart', function() {
-    expect(options).to.be.a('object');
-  });
-
 });
