@@ -9,7 +9,7 @@ angular.module('clickaroos', [
   'clickaroos.campaignPage',
   'clickaroos.abTest',
   'clickaroos.dashboard'
-  ])
+])
 
 // todo: Update accordingly
 .constant('appServerUrl', 'http://localhost:3000')

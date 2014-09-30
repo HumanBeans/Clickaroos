@@ -1,9 +1,11 @@
-describe("Unit: CreateCampaignController", function() {
-  beforeEach(
+describe('Unit: CreateCampaignController', function() {
+  beforeEach(function() {
+    module('ui.router');
+
     module('clickaroos.createCampaign', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
-      })
-  );
+    }); 
+  });
 
   var ctrl, scope;
   // Inject the $controller and $rootScope services
@@ -17,12 +19,12 @@ describe("Unit: CreateCampaignController", function() {
     });
   }));
 
-  // TODO: fix test bug
-  it("should have a campaignName string", function() {
-    expect(scope.campaignName).to.be.a('string');
+  it('should have a campaignInfo object', function() {
+    expect(scope.campaignInfo).to.be.a('object');
+    expect(scope.campaignInfo.campaign_title).to.be.a('string');
   });
 
-  it("should have a createCampaign function", function() {
+  it('should have a createCampaign function', function() {
     expect(scope.createCampaign).to.be.a('function');
   });
 });

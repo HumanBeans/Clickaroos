@@ -18,28 +18,35 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/create_campaign/create_campaign.html',
       controller: 'CreateCampaignController'
     })
-    .state('campaign-page/:campaign-id', {
-      url: '/campaign/:campaign-id', // TODO: adjust if necessary
+    .state('campaign-page', {
+      url: '/campaign/:campaign_id', // TODO: adjust if necessary
       templateUrl: 'states/campaign_page/campaign_page.html',
-      controller: 'CampaignPage'
+      controller: 'CampaignPageController',
+      // Can use 
+      resolve: {
+        campaign_id: ['$stateParams', function($stateParams) {
+          return $stateParams.campaign_id;
+        }]
+      }
     })
     .state('campaign-list', {
-      url: '/campaigns/',
+      url: '/campaigns',
       templateUrl: 'states/campaign_list/campaign_list.html'
     })
 
     // CREATE CLIENT TOOL PAGES
-    .state('ab-test', {
-      url: '/campaign/:campaign-id/ab-test', // TODO: adjust if necessary
-      templateUrl: 'states/campaign-page/ab_test/ab_test.html',
+    // TODO: Make these nested states of campain page
+    .state('campaign-page.ab-test', {
+      url: '/ab-test', // TODO: adjust if necessary
+      templateUrl: 'states/ab_test/ab_test.html',
       controller: 'AbTestController'
     })
     .state('timer', {
-      url: '/campaign/:campaign-id/timer', // TODO: adjust if necessary
+      url: '/campaign/:campaign_id/timer', // TODO: adjust if necessary
       templateUrl: 'states/campaign-page/timer/timer.html'
     })
     .state('query', {
-      url: '/campaign/:campaign-id/query', // TODO: adjust if necessary
+      url: '/campaign/:campaign_id/query', // TODO: adjust if necessary
       templateUrl: 'states/campaign-page/query/query.html'
     })
 
@@ -49,11 +56,12 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/campaign_page/campaign_page.html',
       controller: 'CampaignPageController'
     })
-    .state('dummy-ab', {
-      url: '/dummy-ab',
-      templateUrl: 'states/ab_test/ab_test.html',
-      controller: 'AbTestController'
-    })
+    // dummy-ab no longer in use
+    // .state('dummy-ab', {
+    //   url: '/dummy-ab',
+    //   templateUrl: 'states/ab_test/ab_test.html',
+    //   controller: 'AbTestController'
+    // })
     .state('dummy-timer', {
       url: '/dummy-timer',
       templateUrl: 'states/timer/timer.html'

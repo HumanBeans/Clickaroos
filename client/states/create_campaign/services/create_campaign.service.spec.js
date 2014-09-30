@@ -3,6 +3,8 @@ describe('Unit: CreateCampaign', function() {
   
   beforeEach(function() {
 
+    module('ui.router');
+
     module('clickaroos.createCampaign', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
     });
@@ -10,6 +12,11 @@ describe('Unit: CreateCampaign', function() {
     inject(function ($injector) {
       CreateCampaign = $injector.get('CreateCampaign');
     });
+  });
+
+  it('should have a campaignInfo object', function() {
+    expect(CreateCampaign.campaignInfo).to.be.a('object');
+    expect(CreateCampaign.campaignInfo.campaign_title).to.be.a('string');
   });
 
   it('should have a createCampaign function', function() {
