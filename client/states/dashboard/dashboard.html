@@ -22,6 +22,20 @@
   <div id="dashboard-content">
     <div id="dashboard-reports">
       <h1>DASHBOARD<span> / 30% Off Sale</span></h1>
+      <div height="1000" width="1000">
+        
+        <canvas client-doughnut-directive ng-model="data" options="options"  auto-legend></canvas>
+        <div class="client-doughnut-legend" ng-model="data">
+          <ul style="list-style-type:none">
+            <li ng-repeat="client in data.campaign.analytics.email_client">
+              <span>{{ client.label }}<span>:
+              <span>{{ client.value }}</span>
+              <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ client.color }};"></div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

@@ -17,11 +17,11 @@ describe('Unit: DashboardController', function() {
     });
   }));
 
-  it('should have a user object', function() {
+  it('should have a user object on the scope', function() {
     expect(scope.user).to.be.a('object');
   });
 
-  it('should have a campaigns object', function() {
+  it('should have a campaigns object on the scope', function() {
     expect(scope.campaigns).to.be.a('object');
   });
   
