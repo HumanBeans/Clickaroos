@@ -1,4 +1,4 @@
-describe("Unit: AbTest", function() {
+describe('Unit: AbTest', function() {
   var AbTest;
 
   beforeEach(function () {
@@ -13,22 +13,38 @@ describe("Unit: AbTest", function() {
 
   });
 
-  it("should have imagesAndReroutes array", function() { 
-    expect(AbTest.imagesAndReroutes).to.exist;
-    expect(AbTest.imagesAndReroutes).to.be.a('array');
+  it('should have abTestTitle initialized to null', function() {
+    expect(AbTest.abTestTitle).to.equal(null);
   });
 
-  it("should have time object", function() { 
+  it('should have campaignId initialized to null', function() {
+    expect(AbTest.campaignId).to.equal(null);
+  });
+
+  it('should have time object', function() { 
     expect(AbTest.time).to.exist;
     expect(AbTest.time).to.be.a('object');
   });
 
-  it("should have addImageAndReroute function", function() { 
-    expect(AbTest.addImageAndReroute).to.exist;
-    expect(AbTest.addImageAndReroute).to.be.a('function');
+  it('should have imagesAndReroutes array', function() { 
+    expect(AbTest.imagesAndReroutes).to.exist;
+    expect(AbTest.imagesAndReroutes).to.be.a('array');
   });
 
-  it("should have submitImagesAndReroutes function", function() { 
+  it('should have addImageAndReroute function', function() { 
+    expect(AbTest.addImageAndReroute).to.exist;
+    expect(AbTest.addImageAndReroute).to.be.a('function');
+    AbTest.addImageAndReroute();
+    expect(AbTest.imagesAndReroutes).to.have.length(1);
+  });
+
+  it('should have a setCampaignId function', function() {
+    expect(AbTest.setCampaignId).to.be.a('function');
+    AbTest.setCampaignId(222);
+    expect(AbTest.campaignId).to.equal(222);
+  });
+
+  it('should have submitImagesAndReroutes function', function() { 
     expect(AbTest.submitImagesAndReroutes).to.exist;
     expect(AbTest.submitImagesAndReroutes).to.be.a('function');
   });

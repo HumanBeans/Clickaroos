@@ -5,7 +5,14 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
 
   console.log('campaign_id', campaign_id);
   AbTest.setCampaignId(campaign_id);
-  
+
+  $scope.abTestTitle = AbTest.abTestTitle;
+  // Update services' abTestTitle accordingly
+  $scope.$watch("abTestTitle", function(newValue, oldValue) {
+    AbTest.abTestTitle = $scope.abTestTitle;
+    console.log('AbTest.abTestTitle', AbTest.abTestTitle);
+  });
+
   $scope.imagesAndReroutes = AbTest.imagesAndReroutes;
   $scope.addImageAndReroute = AbTest.addImageAndReroute;
   $scope.time = AbTest.time;
