@@ -3,6 +3,14 @@ angular.module('clickaroos.abTest')
 .factory('AbTest', ['$http', '$upload', 'appServerUrl', function($http, $upload, appServerUrl) {
   var factory = {};
 
+  // factory.abTestTitle = null;
+
+  factory.abTest = {
+    title: null
+  };
+
+  factory.campaignId = null;
+
   factory.imagesAndReroutes = [];
 
   factory.time = {
@@ -18,19 +26,18 @@ angular.module('clickaroos.abTest')
 
     factory.imagesAndReroutes.push(newImageAndReroute);
   };
-  
-  var dataToServer = {
-    abTestTitle: null,
-    campaignId: null, // TODO: Modify from global services
-    time: factory.time,
-    imagesAndReroutes: factory.imagesAndReroutes
-  };
 
   factory.setCampaignId = function(campaignId) {
-    dataToServer.campaignId = campaignId;
+    factory.campaignId = campaignId;
   }
 
   factory.submitImagesAndReroutes = function() {
+    var dataToServer = {
+      abTestTitle: factory.abTest.title,
+      campaignId: factory.campaignId,
+      time: factory.time,
+      imagesAndReroutes: factory.imagesAndReroutes
+    };
     console.log('dataToServer', dataToServer);
     console.log('dataToServer.time', dataToServer.time);
     $http.post(
