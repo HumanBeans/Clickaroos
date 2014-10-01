@@ -9,7 +9,10 @@ angular.module('clickaroos.abTest')
   
   factory.time = {
     start: new Date(),
-    hoursAfterStart: null
+    timeAfterStart: {
+      hours: null,
+      minutes: null
+    }
   };
   
   factory.imagesAndReroutes = [];
@@ -32,7 +35,7 @@ angular.module('clickaroos.abTest')
       abTestTitle: factory.abTestTitle,
       campaignId: factory.campaignId,
       startTime: factory.time.start,
-      hoursAfterStart: factory.time.hoursAfterStart,
+      minsAfterStart: factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes,
       imagesAndReroutes: factory.imagesAndReroutes
     };
     console.log('dataToServer', dataToServer);
