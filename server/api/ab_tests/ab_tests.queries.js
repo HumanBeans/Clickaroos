@@ -22,14 +22,29 @@ exports.addABTest = function( res, data, callback ){
   // TODO:  before inserting an AB test check if the test is already in the DB and return an error message
   //          if duplicate
   // D: The bellow console.log is for debugging purposes
-  console.log(data.abTestTitle, data.campaignId, data.startTime, data. timeAfterStart);
+  console.log(data.abTestTitle, data.campaignId, data.startTime, data.millisecondsAfterStart, data.millisecondsPickWinner );
   connection.query( 
-    "INSERT INTO ab_tests( ab_test_title, campaign_id, start_time, time_after_start ) VALUES ( ?, ?, ?, ? )",
+    "INSERT INTO ab_tests( ab_test_title, campaign_id, start_time, milliseconds_after_start, milliseconds_pick_winner ) VALUES ( ?, ?, ?, ?, ? )",
     // "values ( 'Hard Coded', 1, '2014-11-27 11:00:00', '01:00:00' )",
-    [ data.abTestTitle, data.campaignId, data.startTime, data.timeAfterStart ],
-    function( err ){
+    [ data.abTestTitle, data.campaignId, data.startTime, data.millisecondsAfterStart, data.millisecondsPickWinner ],
+    function( err, result ){
       if ( err ) throw err;
-      callback( res, 'ab test added!!' );
+      var abTestId = result.insertId;
+      console.log( 'abTestId:', abTestId );
+      
+      data.imagesAndReroutes.forEach( function(obj) {
+        console.log( abTestId, obj.imageUrl, obj.rerouteUrl );
+        connection.query( 
+          "INSERT INTO ab_imgs( ab_test_id, clicks, views, asset_url, redirect_url ) VALUES ( ?, ?, ?, ?, ? )",
+          [ abTestId, 0, 0, obj.imageUrl, obj.rerouteUrl ],
+          function( err ){
+            if ( err ) throw err;
+            if( data.imagesAndReroutes.indexOf(obj) === data.imagesAndReroutes.length - 1 ) {
+              callback( res, { abTestId: abTestId, emailVar: '*|EMAIL|*' } );
+            }
+          }  
+        );
+      });
     }  
   );
 };
