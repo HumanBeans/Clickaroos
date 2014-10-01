@@ -24,6 +24,10 @@ describe('Unit: AbTest', function() {
   it('should have time object', function() { 
     expect(AbTest.time).to.exist;
     expect(AbTest.time).to.be.a('object');
+    expect(AbTest.time).to.have.property('start');
+    expect(AbTest.time).to.have.property('timeAfterStart');
+    expect(AbTest.time.timeAfterStart).to.have.property('hours');
+    expect(AbTest.time.timeAfterStart).to.have.property('minutes');    
   });
 
   it('should have imagesAndReroutes array', function() { 
