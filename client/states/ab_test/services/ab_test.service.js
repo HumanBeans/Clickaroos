@@ -47,7 +47,9 @@ angular.module('clickaroos.abTest')
     $http.post(
       appServerUrl+'/api/ab_tests',
       dataToServer
-    );
+    ).success(function(data){
+      console.log( 'data from submit:', data);
+    } );
   };
 
   //////////////////////////////////////////////////////
