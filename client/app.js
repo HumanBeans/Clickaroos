@@ -17,6 +17,7 @@ angular.module('clickaroos', [
 ])
 
 // todo: Update accordingly
-.constant('appServerUrl', 'http://localhost:3000')
+// .constant('appServerUrl', 'http://localhost:3000')
+.constant('appServerUrl', '')
 
 ;

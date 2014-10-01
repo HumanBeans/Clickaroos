@@ -14,6 +14,8 @@ var config = require('./config/main');
 // Module Routes
 module.exports = function( app ) {
 
+  var env = app.get('env');
+
   app.use('/api/ab_tests', abTestRequestHandlers );
 
   // TODO: require and add request-handler for campaigns
@@ -43,7 +45,14 @@ module.exports = function( app ) {
   // });
 
   app.route('/*').get(function(req, res){
-    res.sendFile(config.root + '/wwwroot/client/index.html');
+
+    if(env === 'production'){
+      res.sendFile(config.root + '/wwwroot/client/index.html');
+    }
+
+    if(env === 'development'){
+      res.sendFile(config.root + '/Clickaroos/client/index.html');
+    }
   });
 };
 
