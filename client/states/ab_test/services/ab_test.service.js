@@ -31,12 +31,17 @@ angular.module('clickaroos.abTest')
   }
 
   factory.submitImagesAndReroutes = function() {
+    // Convert hours and minutes to milliseconds for easier conversion to Date object with 'new Date(milliseconds)'
+    var millisecondsAfterStart = (factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes)*60*1000;
     var dataToServer = {
       abTestTitle: factory.abTestTitle,
       campaignId: factory.campaignId,
       startTime: factory.time.start,
-      millisecondsAfterStart: (factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes)*6000,
-      imagesAndReroutes: factory.imagesAndReroutes
+      millisecondsStartTime: factory.time.start.getTime(),
+      millisecondsAfterStart: millisecondsAfterStart,
+      // Milliseconds to pick winner at for easier conversion to Date object 
+      millisecondsPickWinner: factory.time.start.getTime() + millisecondsAfterStart,
+      imagesAndReroutes: factory.imagesAndReroutes,
     };
     console.log('dataToServer', dataToServer);
     $http.post(

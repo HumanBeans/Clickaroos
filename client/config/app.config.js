@@ -25,7 +25,7 @@ angular.module('clickaroos.config', [])
       // Can use 
       resolve: {
         campaign_id: ['$stateParams', function($stateParams) {
-          return $stateParams.campaign_id;
+          return Number($stateParams.campaign_id);
         }]
       }
     })
