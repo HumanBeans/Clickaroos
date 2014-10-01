@@ -76,15 +76,16 @@ describe('user test', function(){
 
   it('should find all the users in the database', function(done){
     User.findAllUsers(function(err, users){
-      users.length.should.equal(3);
+      // console.log('********users', users);
+      users.length.should.equal(4);
       done();
     });
   });
 
   it('should be able to save a user', function(done){
     User.save(testUser2, function(err,result){
-      testUserId2 = result.insertId;
-      User.findById(result.insertId, function(err, user){
+      testUserId2 = result.id;
+      User.findById(result.id, function(err, user){
         user.username.should.equal(testUser2.username);
         done();
       });
