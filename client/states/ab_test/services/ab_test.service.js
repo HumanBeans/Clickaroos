@@ -35,7 +35,7 @@ angular.module('clickaroos.abTest')
       abTestTitle: factory.abTestTitle,
       campaignId: factory.campaignId,
       startTime: factory.time.start,
-      minsAfterStart: factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes,
+      millisecondsAfterStart: (factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes)*6000,
       imagesAndReroutes: factory.imagesAndReroutes
     };
     console.log('dataToServer', dataToServer);
