@@ -4,8 +4,7 @@
   "description": "Best Email Marketing Tools Ever!",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "install": "gulp"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
