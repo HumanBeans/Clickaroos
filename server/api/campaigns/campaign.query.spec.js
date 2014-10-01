@@ -50,7 +50,7 @@ describe('campaign query test', function(){
 
   it('should find all the campaigns with the given user', function(done){
     Campaign.findAllCampaignByUserId(user1_id, function(err, campaigns){
-      campaigns.length.should.equal(5);
+      campaigns.length.should.equal(6);
       done();
     });
   });
@@ -59,7 +59,7 @@ describe('campaign query test', function(){
     Campaign.save(user1_id, campaign2, function(err, result){
       var queryString = 'SELECT * FROM campaigns WHERE campaign_title = ?';
       connection.query(queryString, [campaign2.campaign_title], function(err, campaign){
-        campaign[0].campaign_id.should.equal(result.insertId);
+        campaign[0].campaign_id.should.equal(result.id);
         done();
       });
     });
@@ -71,7 +71,7 @@ describe('campaign query test', function(){
     connection.query(queryString, [campaign3], function(err, result){
       Campaign.getRecent(2, function(err, campaigns){
         campaigns.length.should.equal(2);
-        campaigns[0].campaign_title.should.equal(campaign2.campaign_title);
+        campaigns[0].attributes.campaign_title.should.equal(campaign3.campaign_title);
         done();
       });
     });
