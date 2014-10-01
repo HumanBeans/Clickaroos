@@ -42,7 +42,8 @@ CREATE TABLE ab_tests (
   ab_test_title VARCHAR(50) NOT NULL UNIQUE,
   campaign_id BIGINT NOT NULL,
   start_time DATETIME NOT NULL,
-  time_after_start TIME NOT NULL,
+  milliseconds_after_start BIGINT NOT NULL,
+  milliseconds_pick_winner BIGINT NOT NULL,
   winner VARCHAR(40),
   PRIMARY KEY(ab_test_id)
 );
@@ -70,8 +71,8 @@ insert into campaigns( campaign_title, user_id, clicks, views, tablet, desktop, 
 insert into campaigns( campaign_title, user_id, clicks, views, tablet, desktop, android, iphone, webmail ) values ( 'Summer Sale', 1, 1000, 7000, 100, 600, 150, 130, 400 );
 
 -- test ab_tests
-insert into ab_tests( ab_test_title, campaign_id, start_time, time_after_start ) values ( 'Splash Photo', 1, '2014-11-27 11:00:00', '01:00:00' );
-insert into ab_tests( ab_test_title, campaign_id, start_time, time_after_start ) values ( 'That One Product', 1, '2014-11-27 11:00:00', '01:00:00' );
+insert into ab_tests( ab_test_title, campaign_id, start_time, milliseconds_after_start, milliseconds_pick_winner ) values ( 'Splash Photo', 1, '2014-11-27 11:00:00', 3600000, 500000000000 );
+insert into ab_tests( ab_test_title, campaign_id, start_time, milliseconds_after_start, milliseconds_pick_winner ) values ( 'That One Product', 1, '2014-11-27 11:00:00', 3600000, 500000000000 );
 
 -- test ab_imgs
 -- Q: would the user rather know the number of clicks and views at the time the 'winner' was choosen
