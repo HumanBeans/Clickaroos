@@ -70,5 +70,17 @@ ab_test.html
 
 </form>
 
+<h1>For you to use in your emails</h1>
+<h3>Image Link:</h3>
+<span><code>
+  {{ productUrls.imageUrl }}
+</code></span>
+<h3>Reroute Link:</h3>
+<span><code>
+  {{ productUrls.rerouteUrl }}
+</code></span>
+
+<!-- TODO: Generate a <a href...><img src...></img></a> code block example -->
+
 <!-- TODO: swap out dummy routes with real routes -->
-<a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a>
+<p><a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a></p>

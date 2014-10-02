@@ -48,6 +48,12 @@ describe('Unit: AbTest', function() {
     expect(AbTest.campaignId).to.equal(222);
   });
 
+  it('should have a productUrls object', function() {
+    expect(AbTest.productUrls).to.be.a('object');
+    expect(AbTest.productUrls).to.have.property('imageUrl');
+    expect(AbTest.productUrls).to.have.property('rerouteUrl');
+  });
+
   it('should have submitImagesAndReroutes function', function() { 
     expect(AbTest.submitImagesAndReroutes).to.exist;
     expect(AbTest.submitImagesAndReroutes).to.be.a('function');
