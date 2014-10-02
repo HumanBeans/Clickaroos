@@ -11,8 +11,7 @@
       </div>
     </div>
     <div id="content">
-      <h1 ng-model="campaignInfo.name">Campaign Name: {{ campaignInfo.campaign_title }}</h1>
-      <!-- <p ng-model="campaignInfo.description">{{ campaignInfo.description }}</p> -->
+      <h1>Campaign Name: {{ campaignInfo.campaign.campaign_title }}</h1>
     
       <br />
       <br />
@@ -20,8 +19,10 @@
 
       <h4>Current Apps</h4>
 
-      <div ng-repeat="app in currentApps">
-        {{ app.name }}
+      <div ng-repeat="ab_test in campaignInfo.ab_tests">
+        <ul>
+          <li>{{ ab_test.ab_test_title }}</li>
+        </ul>
       </div>
 
       <h4>Add Apps</h4>
@@ -29,7 +30,7 @@
       <!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
       <a class="btn btn-warning btn-md" ui-sref="campaign-page.ab-test">Add Switcheroo</a>
       <!-- <a ui-sref="dummy-timer">Add timer</a> -->
-      <a class="btn btn-warning btn-md" ui-sref="dummy-query">Add RooLogic</a>
+      <!-- <a class="btn btn-warning btn-md" ui-sref="dummy-query">Add RooLogic</a> -->
 
       <hr>
 
