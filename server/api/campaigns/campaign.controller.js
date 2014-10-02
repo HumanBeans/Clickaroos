@@ -36,13 +36,14 @@ exports.create = function(req, res, next){
 
 exports.show = function(req, res, next){
   Campaign.findById(req.params.campaign, function(err, campaign){
+    //the second params campaign is an obj {campaign:xx, ab_tests:xx}
     if(err){
       return res.json('try agin');
     }
     if(!campaign){
       return res.status(401);
     }
-    if(campaign.user_id !== req.user._id){
+    if(campaign.campaign.user_id !== req.user._id){
       return res.status(401);
     }
     res.status(200).json(campaign);
