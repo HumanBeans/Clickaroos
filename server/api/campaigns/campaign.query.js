@@ -6,7 +6,13 @@ var Q = require('q');
 var bookshelf = require('../../config/dbconfig');
 var Campaign = bookshelf.Model.extend({
   tableName: 'campaigns'
-})
+});
+var ABTest = bookshelf.Model.extend({
+  tableName: 'ab_tests'
+});
+var ABImg = bookshelf.Model.extend({
+  tableName: 'ab_imgs'
+});
 // var save = function(user_id, campaignObj, callback){
 //   campaignObj.user_id = user_id;
 //   var queryString = 'INSERT INTO campaigns SET ?';
@@ -32,9 +38,16 @@ var save = function(user_id, campaignObj, callback){
 // };
 
 var findById = function(campaign_id, callback){
+  var result = {};
   Campaign.where({campaign_id:campaign_id}).fetch()
     .then(function(campaign){
-      callback(undefined, campaign.attributes);
+      result.campaign = campaign.attributes;
+      return ABTest.collection().query().where({campaign_id: campaign_id}).select();
+    })
+    .then(function(ab_tests){
+      result.ab_tests = ab_tests;
+      // console.log('+++++++++', result);
+      callback(undefined, result);
     })
     .catch(function(err){
       callback(err);
@@ -74,11 +87,10 @@ var getRecent = function(num, callback){
     // .query('order by', '-modified_at', 'limit', num)
     .fetch()
     .then(function(campaigns){
-      console.log('++++++++++ get Recent', campaigns.models);
       callback(undefined, campaigns.models);
     })
     .catch(function(err){
-      console.log('---------err', err);
+      callback(err);
     })
 };
 
