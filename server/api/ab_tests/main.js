@@ -2,6 +2,7 @@
 
 var express = require('express');
 var controller = require('./ab_tests.controllers');
+var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
@@ -9,7 +10,7 @@ var router = express.Router();
 // Request Handlers For api/test Route
 
 // Add AB Test
-router.post( '/', controller.handleNewABTest );
+router.post( '/', auth.isAuthenticated(), controller.handleNewABTest );
 
 // TODO: Edit AB Test
 // router.put( '/', controller.handleABTestEdit );
