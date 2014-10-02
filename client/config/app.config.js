@@ -22,7 +22,6 @@ angular.module('clickaroos.config', [])
       url: '/campaign/:campaign_id', // TODO: adjust if necessary
       templateUrl: 'states/campaign_page/campaign_page.html',
       controller: 'CampaignPageController',
-      // Can use 
       resolve: {
         campaign_id: ['$stateParams', function($stateParams) {
           return Number($stateParams.campaign_id);
@@ -51,11 +50,12 @@ angular.module('clickaroos.config', [])
     })
 
     // DUMMY ROUTES
-    .state('dummy-campaign', {
-      url: '/dummy-campaign',
-      templateUrl: 'states/campaign_page/campaign_page.html',
-      controller: 'CampaignPageController'
-    })
+    // dummy-campaign no longer in use
+    // .state('dummy-campaign', {
+    //   url: '/dummy-campaign',
+    //   templateUrl: 'states/campaign_page/campaign_page.html',
+    //   controller: 'CampaignPageController'
+    // })
     // dummy-ab no longer in use
     // .state('dummy-ab', {
     //   url: '/dummy-ab',

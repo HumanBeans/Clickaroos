@@ -1,22 +1,29 @@
 angular.module('clickaroos.campaignPage')
 
-.factory('CampaignPage', ['$http', 'appServerUrl', function($http, $stateParams, appServerUrl) {
+.factory('CampaignPage', ['$http', '$stateParams', 'appServerUrl', function($http, $stateParams, appServerUrl) {
   var factory = {};
+
+  console.log('$stateParams', $stateParams);
+  // Get campaign_id from stateParams
+  var campaign_id = Number($stateParams.campaign_id);
+  console.log('campaign_id', campaign_id);
 
   // When page loading, get Campaign Info from server.
   $http.get(
-    // TODO: change :campaign accordingly
-    appServerUrl+'/api/campaigns/:campaign'
-  ).success(function() {
+    appServerUrl+'/api/campaigns/'+campaign_id
+  ).success(function(data) {
     // TODO: set campaignInfo and currentApps
+    console.log('data in CampaignPage get request:', data);
+    // Clone data object into factory.campaignInfo so controller's $scope can always reference the same object.
+    for(var key in data) {
+      factory.campaignInfo[key] = data[key];
+    }
   }).error(function() {
     // error
+    console.log('Error in CampaignPage get request');
   });
 
-  factory.campaignInfo = {
-    name: '(Campaign Name Goes Here)',
-    description: '(Campaign Description Goes Here)'
-  };
+  factory.campaignInfo = {};
 
   // TODO: Populate via GET request
   factory.currentApps = [
