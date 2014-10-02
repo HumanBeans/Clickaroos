@@ -2,10 +2,10 @@
 
 var User = require('../api/users/user.query');
 var Campaign = require('../api/campaigns/campaign.query');
-var connection = require('./dbconnection.js').connection;
+// var connection = require('./dbconnection.js').connection;
+var connection = require('./dbconnection.js').testingConnection;
 var Q = require('q');
 var query = Q.nbind(connection.query, connection);
-var user_create = Q.nbind(User.save, User);
 
 var user1 = {
   username: 'kangaroo',
@@ -31,13 +31,14 @@ var campaign5 = ['Dinner', 1, 5000, 9000, 300, 600, 700, 200, 500];
 var queryString_saveCampaigns = 'INSERT INTO campaigns (campaign_title, user_id, clicks, views, tablet, desktop, android, iphone, webmail) VALUES (?), (?), (?), (?), (?)';
 
 query('truncate users')
-  .then(function(err, result){return user_create(user1);})
-  .then(function(err, result){return user_create(user2);})
-  .then(function(err, result){return query('truncate campaigns');})
+  .then(function(err, result){ return query('INSERT INTO users SET ?', [user1]);})
+  .then(function(err, result){ return query('INSERT INTO users SET ?', [user2]);})
+  .then(function(err, result){ return query('truncate campaigns');})
   .then(function(err, result){
     return query(queryString_saveCampaigns, [campaign1, campaign2, campaign3, campaign4, campaign5])
   })
   .then(function(err, result){
     console.log('Seed data generated susscessfully!');
   });
+
 

@@ -1,5 +1,5 @@
-USE clickagoosdb;
--- USE clickaroosTest;
+-- USE clickagoosdb;
+USE clickaroosTest;
 -- USE Test;
 
 drop table users;

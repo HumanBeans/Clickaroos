@@ -30,7 +30,7 @@ exports.create = function(req, res, next){
       return res.status(401).json('something went wrong, try again');
     }
     console.log('create arguments', arguments);
-    res.status(201).json({ campaign_id: result.insertId });
+    res.status(201).json({ campaign_id: result.id });
   });
 };
 
