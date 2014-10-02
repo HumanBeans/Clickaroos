@@ -5,7 +5,6 @@ angular.module('clickaroos.campaignPage', [])
   // console.log('$stateParams', $stateParams);
 
   $scope.campaignInfo = CampaignPage.campaignInfo;
-
   $scope.currentApps = CampaignPage.currentApps;
 
 }])
