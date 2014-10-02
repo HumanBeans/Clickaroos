@@ -30,9 +30,16 @@ angular.module('clickaroos.abTest')
     factory.campaignId = campaignId;
   }
 
+  factory.productUrls = {
+    imageUrl: null,
+    rerouteUrl: null
+  };
+
   factory.submitImagesAndReroutes = function() {
+
     // Convert hours and minutes to milliseconds for easier conversion to Date object with 'new Date(milliseconds)'
     var millisecondsAfterStart = (factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes)*60*1000;
+    
     var dataToServer = {
       abTestTitle: factory.abTestTitle,
       campaignId: factory.campaignId,
@@ -43,13 +50,21 @@ angular.module('clickaroos.abTest')
       millisecondsPickWinner: factory.time.start.getTime() + millisecondsAfterStart,
       imagesAndReroutes: factory.imagesAndReroutes,
     };
+
     console.log('dataToServer', dataToServer);
+
     $http.post(
       appServerUrl+'/api/ab_tests',
       dataToServer
-    ).success(function(data){
-      console.log( 'data from submit:', data);
-    } );
+    ).success(function(data, status, headers, config) {
+      // TODO: Change global appServerUrl properly
+      var appServerUrl = 'http://clickaroos.com';
+      console.log('data from submit:', data);
+      factory.productUrls.imageUrl = appServerUrl+'/img/ab/'+data.abTestId+'/'+data.emailVar;
+      factory.productUrls.rerouteUrl = appServerUrl+'/site/ab/'+data.abTestId+'/'+data.emailVar;
+      console.log('factory.productUrls', factory.productUrls);
+    });
+
   };
 
   //////////////////////////////////////////////////////

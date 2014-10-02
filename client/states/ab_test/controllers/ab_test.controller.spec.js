@@ -45,6 +45,10 @@ describe('Unit: AbTestController', function() {
     expect(scope.submitImagesAndReroutes).to.be.a('function');
   });
 
+  it('should have a productUrls object', function() {
+    expect(scope.productUrls).to.be.a('object');
+  });
+
   it('should have an Angular/Bootstrap timepicker directive', function() {
     expect(scope.mytime).to.be.a('date');
     expect(scope.mstep).to.be.a('number');

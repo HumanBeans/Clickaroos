@@ -17,6 +17,7 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
   $scope.addImageAndReroute = AbTest.addImageAndReroute;
   $scope.time = AbTest.time;
   $scope.submitImagesAndReroutes = AbTest.submitImagesAndReroutes;
+  $scope.productUrls = AbTest.productUrls;
 
   //////////////////////////////////////////////////////
   // For Angular/Bootstrap Timepicker Directive
