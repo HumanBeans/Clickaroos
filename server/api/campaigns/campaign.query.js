@@ -82,7 +82,18 @@ var getRecent = function(num, callback){
     })
 };
 
+var deleteById = function(campaign_id, callback){
+  Campaign.where({campaign_id: campaign_id}).destroy()
+    .then(function(result){
+      callback(undefined, result);
+    })
+    .catch(function(err){
+      callback(err);
+    });
+}
+
 exports.save = save;
 exports.findById = findById;
 exports.findAllCampaignByUserId = findAllCampaignByUserId;
 exports.getRecent = getRecent;
+exports.deleteById = deleteById;

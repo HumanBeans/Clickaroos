@@ -117,12 +117,12 @@ exports.addABTest = function( res, data, callback ){
 
 //refactor not sure if it is working
 exports.deleteABTest = function( res, ABTestId, callback ){ 
-  ABTest.where({ab_test_id: ABTestId}).del()
+  ABTest.where({ab_test_id: ABTestId}).destroy
     .then(function(result){
-      console.log('deleteABtest ', result);
+      callback(res, result);
     })
     .catch(function(err){
-      console.log('err in delete abtest ', err)
+      callback(res, err);
     });
 };
 

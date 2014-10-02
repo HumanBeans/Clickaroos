@@ -75,6 +75,13 @@ describe('campaign query test', function(){
         done();
       });
     });
+  });
+
+  xit('should be albe to delete a campaign', function(done){
+    Campaign.deleteById(85, function(){
+      console.log('here');
+      done();
+    });
   })
 
 });
