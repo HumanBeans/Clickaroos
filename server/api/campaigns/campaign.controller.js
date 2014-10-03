@@ -51,7 +51,7 @@ exports.show = function(req, res, next){
 };
 
 exports.recent = function(req, res, next){
-  Campaign.getRecent(req.body.num, function(err, campaigns){
+  Campaign.getRecent(req.user._id, req.body.num, function(err, campaigns){
     if(err){
       return res.json('try again');
     }

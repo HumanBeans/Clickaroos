@@ -75,13 +75,16 @@ var findAllCampaignByUserId = function(user_id, callback){
 //   connection.query(queryString, [num], callback);
 // }
 
-var getRecent = function(num, callback){
+var getRecent = function(user_id, num, callback){
+
   num = num || 4;
   console.log('in getRecent');
+
   Campaign.collection()
     .query(function(qb){
       console.log('in query qb');
-      qb.orderBy('modified_at', 'desc')
+      qb.where({user_id: user_id})
+        .orderBy('modified_at', 'desc')
         .limit(num);
     })
     // .query('order by', '-modified_at', 'limit', num)

@@ -54,6 +54,7 @@ describe('local auth test', function(){
       .expect(200)
       .end(function(err,res){
         res.body.should.have.property('token');
+        res.body.should.have.property('username');
         done();
       });
   });
