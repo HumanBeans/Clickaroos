@@ -9,13 +9,10 @@
       Julie Smith
     </div> -->
     <div id="filter-campaigns">
-      <h3>Recent Reports:</h3>
-      <ul id="select-campaign">
-        <li>Fall Campaign</li>
-        <li class="active">30% Off Sale</li>
-        <li>Another Campaign</li>
-        <li>One More Campaign</li>
-        <li ng-click="getRecentCampaigns()">Aggregate</li>
+      <h3>Recent Campaigns:</h3>
+      <ul id="select-campaign" ng-repeat="campaign in recentCampaigns">
+        <a ng-href="#/campaign/{{ campaign.campaign_id }}"><li>{{ campaign.campaign_title }}</li></a>
+        <!-- <li ng-click="getRecentCampaigns()">Aggregate</li> -->
       </ul>
     </div>
   </div>

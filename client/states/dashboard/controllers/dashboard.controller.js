@@ -3,6 +3,13 @@ angular.module('clickaroos.dashboard', [])
 .controller('DashboardController', ['$scope', 'Dashboard', function($scope, Dashboard) {
   $scope.user = {};
   $scope.campaigns = {};
+  $scope.recentCampaigns = Dashboard.recentCampaigns;
+
+  $scope.selectedIndex = 0;
+
+  $scope.itemClicked = function ($index) {
+    $scope.selectedIndex = $index;
+  };
 
   // **** DUMMY DATA FOR DIRECTIVE TESTING ****
   $scope.data = [];
