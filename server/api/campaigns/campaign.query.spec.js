@@ -73,11 +73,11 @@ describe('campaign query test', function(){
     });
   });
 
-  xit('should be able to return the nth recent campaigns', function(done){
+  it('should be able to return the nth recent campaigns', function(done){
     var queryString = 'INSERT into campaigns SET ?';
     query(queryString, [campaign3])
     connection.query(queryString, [campaign3], function(err, result){
-      Campaign.getRecent(2, function(err, campaigns){
+      Campaign.getRecent(1, 2, function(err, campaigns){
         campaigns.length.should.equal(2);
         campaigns[0].attributes.campaign_title.should.equal(campaign3.campaign_title);
         done();

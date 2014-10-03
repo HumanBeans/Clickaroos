@@ -34,7 +34,7 @@ router.post('/', function(req, res, next){
       }
       User.findByEmail(req.body.email, function(err, user){
         var token = auth.signToken(user.user_id);
-        res.json({token:token});
+        res.json({token:token, username: user.username});
       });
     });
 });
