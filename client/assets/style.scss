@@ -73,14 +73,40 @@ body {
   margin-top: $nav-height;
   padding: 30px;
   margin-left: 240px;
+}
 
+#content {
   h1 {
     padding: 0;
     margin: 0;
     color: #333;
+    margin-bottom: 30px; 
   }
   
   h1 span {
     font-weight: 100;
+  }
+
+  input {
+    margin-bottom: 25px;
+    width: 100%;
+    display: block;
+    padding: 10px;
+  }
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  input[type=submit] {
+    width: 150px;
+  }
+}
+
+#time-picker, #date-picker {
+  /*float: left;*/
+  /*width: 50%;*/
+  input {
+    margin-bottom: 0;
   }
 }

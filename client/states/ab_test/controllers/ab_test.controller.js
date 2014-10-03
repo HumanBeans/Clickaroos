@@ -18,6 +18,52 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
   $scope.time = AbTest.time;
   $scope.submitImagesAndReroutes = AbTest.submitImagesAndReroutes;
   $scope.productUrls = AbTest.productUrls;
+  //////////////////////////////////////////////////////
+  // For Angular/Bootstrap Calendar Directive
+  //
+
+  $scope.today = function() {
+    $scope.mydate = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.dateChanged = function () {
+    var date = $scope.mydate.getDate();
+    var month = $scope.mydate.getMonth();
+    var year = $scope.mydate.getFullYear();
+
+    $scope.time.start.setDate(date);
+    $scope.time.start.setMonth(month);
+    $scope.time.start.setYear(year);
+
+    console.log('$scope.time: ', $scope.time);
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+
+  //
+  // End Angular/Bootstrap Calendar Directive
+  //////////////////////////////////////////////////////
+
+
 
   //////////////////////////////////////////////////////
   // For Angular/Bootstrap Timepicker Directive
@@ -45,9 +91,14 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
     $scope.mytime = d;
   };
 
-  $scope.changed = function () {
-    $scope.time.start = $scope.mytime;
-    console.log('$scope.time', $scope.time);
+  $scope.timeChanged = function () {
+    var hours = $scope.mytime.getHours();
+    var minutes = $scope.mytime.getMinutes();
+
+    $scope.time.start.setHours(hours);
+    $scope.time.start.setMinutes(minutes);
+
+    console.log('$scope.time: ', $scope.time);
   };
 
   $scope.clear = function() {
@@ -57,6 +108,8 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
   //
   // End Angular/Bootstrap Timepicker Directive
   //////////////////////////////////////////////////////
+
+
 
   //////////////////////////////////////////////////////
   // For ng-file-upload

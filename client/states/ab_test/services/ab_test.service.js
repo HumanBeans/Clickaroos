@@ -14,7 +14,9 @@ angular.module('clickaroos.abTest')
       minutes: null
     }
   };
-  
+
+  factory.date;
+
   factory.imagesAndReroutes = [];
 
   factory.addImageAndReroute = function(imageUrl) {
