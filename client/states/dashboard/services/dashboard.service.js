@@ -9,9 +9,9 @@ angular.module('clickaroos.dashboard')
   .success(function(data, status, headers, config) {
     console.log('data: ', data);
 
-    for(var campaign in data) {
-      factory.recentCampaigns.push(data[campaign]);
-    }
+    data.forEach(function(campaign) {
+      factory.recentCampaigns.push(campaign);
+    });
 
     console.log('factory.recentCampaigns', factory.recentCampaigns);
 

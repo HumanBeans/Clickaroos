@@ -5,6 +5,12 @@ angular.module('clickaroos.dashboard', [])
   $scope.campaigns = {};
   $scope.recentCampaigns = Dashboard.recentCampaigns;
 
+  $scope.selectedIndex = 0;
+
+  $scope.itemClicked = function ($index) {
+    $scope.selectedIndex = $index;
+  };
+
   // **** DUMMY DATA FOR DIRECTIVE TESTING ****
   $scope.data = [];
   $scope.data.campaign = {};

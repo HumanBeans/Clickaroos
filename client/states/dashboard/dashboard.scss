@@ -16,7 +16,13 @@ $nav-height: 68px;
 }
 
 #dashboard-sidebar {
+  a, a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
   ul {
+    margin: 0;
     list-style-type: none;
     padding: 0;
   }
