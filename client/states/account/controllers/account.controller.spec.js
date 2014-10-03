@@ -7,6 +7,8 @@ describe("Unit: AccountController", function() {
 			$provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
 		});
 
+    module('clickaroos');
+
     module('ui.router')
 
     // Inject the $controller and $rootScope services
@@ -38,10 +40,5 @@ describe("Unit: AccountController", function() {
   it("should have a login and signup function", function() { 
   	expect(scope.submitLogin).to.be.a('function');
   	expect(scope.submitSignup).to.be.a('function');
-  });
-
-  it('should have a logout function', function() {
-    expect(scope.logout).to.exist;
-    expect(scope.logout).to.be.a('function');
   });
 });

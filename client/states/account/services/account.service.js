@@ -1,6 +1,6 @@
 angular.module('clickaroos.account')
 
-.factory('Account', ['$http', '$state', '$window', 'appServerUrl', function($http, $state, $window, appServerUrl) {
+.factory('Account', ['$http', '$state', '$window', 'appServerUrl', 'Logout', function($http, $state, $window, appServerUrl, Logout) {
   var factory = {};
 
   factory.loginView = true;
@@ -16,14 +16,9 @@ angular.module('clickaroos.account')
     $state.go('dashboard');
   };
 
-  var deleteSessionToken = function() {
-    console.log('deleteSessionToken');
-    if($window.sessionStorage) { delete $window.sessionStorage.token; }
-  };
-
   var submitError = function(data, status, headers, config) {
     console.log('submitError');
-    deleteSessionToken();
+    Logout.deleteSessionToken();
     console.log('$window.sessionStorage', $window.sessionStorage);
   };
 
@@ -71,13 +66,6 @@ angular.module('clickaroos.account')
     factory.loginView = !factory.loginView;
     console.log('toggled');
     console.log('factory.loginView: ', factory.loginView);
-  };
-
-  // TODO: Move globally
-  factory.logout = function(user) {
-    console.log('logout');
-    deleteSessionToken();
-    $state.go('account');
   };
 
   return factory;
