@@ -1,92 +1,141 @@
-ab_test.html
-
-<h1>A/B Test Title</h1>
-<input type="text" ng-model="abTestTitle"></input>
-
-<h1>Images</h1>
-
-<!-- ng-file-upload -->
-<div>
-  <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
-  <div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
-  <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
-        ng-show="dropSupported" style="height: 150px; width: 300px; text-align: center; border: 3px dashed gray; margin: 20px;">Or, drag drop files here.</div>
-  <div ng-file-drop-available="dropSupported=true" 
-        ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
-  <button ng-click="upload.abort()">Cancel Upload</button>
-</div>
-
-<form>
-  <div ng-repeat="imageAndReroute in imagesAndReroutes">
-    <p>
-    <img style="width: 100px;" ng-src="{{ imageAndReroute.imageUrl }}" />
-    <input type="text" placeholder="http://rerouting-url-here" ng-model="imageAndReroute.rerouteUrl" />
-    </p>
+<div class="view-container">
+  <div id="dashboard-sidebar">
+    <div id="filter-campaigns">
+      <h3>Articles:</h3>
+      <ul id="select-campaign">
+        <li>How Armano got 12% increase in conversions</li>
+        <li class="active">Effective countdown timer usage</li>
+        <li>Email opens on mobile increases another 2%. Now at 56% of all email opens</li>
+      </ul>
+    </div>
   </div>
 
-  <!-- <button ng-click="addImageAndReroute()">Add image</button> -->
+  <div id="content">
+    <h1>Switcharoo</h1>
 
-  <hr>
+    <form>
+    <div>
+      <input type="text" ng-model="abTestTitle" placeholder="A/B Test Name"></input>
 
-  <h1>Logic</h1>
+      <h3>Images to A/B Test</h3>
+      <div class="section-container">
+      <!-- ng-file-upload -->
+        <div>
+          <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+          <div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
+          <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+                ng-show="dropSupported" style="height: 150px; width: 100%; text-align: center; border: 3px dashed gray; background: #BBB"><h2>Or, drag & drop files here.</h2></div>
+          <div ng-file-drop-available="dropSupported=true" 
+                ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+          <!-- <button ng-click="upload.abort()">Cancel Upload</button> -->
+        </div>
 
-  <h4>A/B testing start time:</h4>
+        <div ng-repeat="imageAndReroute in imagesAndReroutes">
+          <p>
+          <img style="width: 100px;" ng-src="{{ imageAndReroute.imageUrl }}" />
+          <input type="text" placeholder="http://redirect-url-here.com" ng-model="imageAndReroute.rerouteUrl" />
+          </p>
+        </div>
 
-  <!-- Angular/Bootstrap Timepicker Directive -->
-  <div>
-
-    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
-
-    <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
-
-    <div class="row"> 
-      <div class="col-xs-6">
-          Hours step is:
-        <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+      <!-- <button ng-click="addImageAndReroute()">Add image</button> -->
       </div>
-      <div class="col-xs-6">
-          Minutes step is:
-        <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+    
+      <br />
+      <h3>A/B Test Settings</h3>
+    
+    <div class="section-container">
+        <h4>A/B testing start date & time:</h4>
+        <h5>This is the time that you plan on deploying your email campaign.</h5>
+        <br />
+
+        <div id="date-picker">
+          <div class="row">
+            <div class="col-md-6">
+                <p class="input-group">
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="mydate" is-open="opened" ng-change="dateChanged()" min-date="minDate" max-date="'2025-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+            </div>
+            <!-- Angular/Bootstrap Timepicker Directive -->
+            <div class="col-md-6">
+              <timepicker class="timepicker" ng-model="mytime" ng-change="timeChanged()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+              <button class="time-24 btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+              <!--
+              <div class="row"> 
+                <div class="col-xs-6">
+                    Hours step is:
+                  <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+                </div>
+                <div class="col-xs-6">
+                    Minutes step is:
+                  <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                </div>
+              </div>
+              -->
+              <hr>
+            </div>
+            <!-- End Angular/Bootstrap Timepicker Directive -->
+          </div>
+          <pre class="alert alert-info">A/B Test Start Time: <b>{{mydate | date:'fullDate' }}</b> at <b>{{mytime | date:'shortTime' }}</b></pre>
+          <!--
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+              </div>
+          </div>
+          -->
+          <hr />
+          <!--
+          <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+          <button type="button" class="btn btn-sm btn-default" ng-click="dt = '2009-08-24'">2009-08-24</button>
+          <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" tooltip="After today restriction">Min date</button>
+          -->
+        </div>
+
+        <h4>How long do you want the A/B Test to run before a winner is decided?</h4>
+        <!-- <input class="winner-hour" type="number" min="0" ng-model="time.timeAfterStart.hours"></input>  -->
+        <div class="time-after">
+          <div class="input-group">
+            <input type="number" min="0" ng-model="time.timeAfterStart.hours" class="form-control winner-hour">
+            <span class="input-group-addon">Hours</span>
+          </div>
+          <div class="input-group">
+            <input type="number" min="0" max="59" ng-model="time.timeAfterStart.minutes" class="form-control winner-minutes">
+            <span class="input-group-addon">Minutes</span>
+          </div>
+        </div>
+        <!-- <input class="winner-minutes" type="number" min="0" max="60" ng-model="time.timeAfterStart.minutes"></input> Minutes -->
+
+       <hr>
+
+        <!-- Using ng-click because ng-submit considers button clicks as submits, and there are buttons littered throughout the HTML -->
+        <button class="btn btn-warning generate-img" type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)">Generate Image</button>
       </div>
     </div>
+    </form>
 
-    <hr>
+    <div class="section-container generated-image-box">
+      <!-- TODO: click and copies -->
+      <h4>Use the below code in your email:</h4>
+      <!-- <h3>Image Link:</h3>
+      <span><code>
+        {{ productUrls.imageUrl }}
+      </code></span>
+      <h3>Reroute Link:</h3>
+      <span><code>
+        {{ productUrls.rerouteUrl }}
+      </code></span>
 
-    <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
-    <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
-    <button class="btn btn-danger" ng-click="clear()">Clear</button>
+      <h3>Copy and paste me!</h3> -->
+      <textarea><a href="{{ productUrls.rerouteUrl }}"><img src="{{ productUrls.imageUrl }}.png" /></a>
+      </textarea>
+
+      <!-- TODO: Generate a <a href...><img src...></img></a> code block example -->
+      <!-- TODO: swap out dummy routes with real routes -->
+      <!-- <p><a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a></p> -->
+    </div>
 
   </div>
-  <!-- End Angular/Bootstrap Timepicker Directive -->
-
-  <h4>Hours after start when A/B testing ends:</h4>
-  <input type="number" ng-model="time.timeAfterStart.hours"></input> Hours
-  <input type="number" ng-model="time.timeAfterStart.minutes"></input> Minutes
-
-  <hr>
-
-  <!-- Using ng-click because ng-submit considers button clicks as submits, and there are buttons littered throughout the HTML -->
-  <input type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)"></input>
-
-</form>
-
-<!-- TODO: click and copies -->
-<h1>For you to use in your emails</h1>
-<h3>Image Link:</h3>
-<span><code>
-  {{ productUrls.imageUrl }}
-</code></span>
-<h3>Reroute Link:</h3>
-<span><code>
-  {{ productUrls.rerouteUrl }}
-</code></span>
-
-<h3>Copy and paste me!</h3>
-<textarea>
-<a href="{{ productUrls.rerouteUrl }}"><img src="{{ productUrls.imageUrl }}"></img></a>
-</textarea>
-
-<!-- TODO: Generate a <a href...><img src...></img></a> code block example -->
-
-<!-- TODO: swap out dummy routes with real routes -->
-<p><a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a></p>
+</div>

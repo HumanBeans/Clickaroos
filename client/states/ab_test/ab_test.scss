@@ -1,0 +1,55 @@
+.section-container {
+  background: #F5F5F5;
+  padding: 20px;
+
+  .time-after {
+    .input-group {
+      margin-right: 25px;
+      width: 25%;
+      /*float: left;*/
+      display: inline-block;
+      input {
+        width: 50% !important;
+        margin-bottom: 0 !important;
+        padding: 0 10px !important;
+      }
+      span {
+        width: 50%;
+        padding: 9px 12px !important;
+      }
+    }
+  }
+}
+
+#date-picker {
+  .timepicker {
+    float: left;
+    margin-left: 20px;
+  }
+
+  .time-24 {
+    float: left;
+    margin-left: 25px;
+    margin-top: 34px;
+  }
+
+  .input-group {
+    margin-top: 34px;
+  }
+}
+
+.generated-image-box {
+  margin-top: 35px;
+  
+  textarea {
+    width: 100%;
+  }
+}
+
+.winner-hour {
+
+}
+
+.winner-minutes {
+
+}

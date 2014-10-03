@@ -4,27 +4,6 @@ $secondary-color: #FF8282;
 $page-bg: #EBEBEB;
 $nav-height: 68px;
 
-#content {
-  h1 {
-    margin-bottom: 30px; 
-  }
-
-  input {
-    margin-bottom: 25px;
-    width: 100%;
-    display: block;
-    padding: 10px;
-  }
-
-  label {
-    margin-bottom: 10px;
-  }
-
-  input[type=submit] {
-    width: 150px;
-  }
-}
-
 .switchLoginSignupView {
   cursor: pointer;
   color: $secondary-color;

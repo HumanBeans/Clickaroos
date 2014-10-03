@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon');
 
 gulp.task('styles', function() {
-  return gulp.src(['client/**/*.scss', 'client/assets/*.scss'])
+  return gulp.src(['client/assets/style.scss', 'client/states/*/*.scss', 'client/directives'])
     .pipe(sass({ style: 'expanded' }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(concat('main.css'))
@@ -27,11 +27,11 @@ gulp.task('scripts', function() {
   return gulp.src(['client/**/*.js', '!client/**/*.spec.js', '!client/assets/lib/*.js'])
     // .pipe(jshint('.jshintrc'))
     // .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('client/assets/js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('client/assets/js'))
+    // .pipe(concat('main.js'))
+    // .pipe(gulp.dest('client/assets/js'))
+    // .pipe(rename({suffix: '.min'}))
+    // .pipe(uglify())
+    // .pipe(gulp.dest('client/assets/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
