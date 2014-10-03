@@ -3,6 +3,7 @@ angular.module('clickaroos.dashboard', [])
 .controller('DashboardController', ['$scope', 'Dashboard', function($scope, Dashboard) {
   $scope.user = {};
   $scope.campaigns = {};
+  $scope.recentCampaigns = Dashboard.recentCampaigns;
 
   // **** DUMMY DATA FOR DIRECTIVE TESTING ****
   $scope.data = [];
