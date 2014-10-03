@@ -1,5 +1,6 @@
 angular.module('clickaroos')
-.controller('DropdownCtrl', function ($scope) {
+
+.controller('DropdownCtrl', ['$scope', 'Logout', function($scope, Logout) {
   $scope.test = function() {
     console.log('test works');
   };
@@ -23,4 +24,6 @@ angular.module('clickaroos')
     $event.stopPropagation();
     $scope.status.isopen = !$scope.status.isopen;
   };
-});
+
+  $scope.logout = Logout.logout;
+}]);

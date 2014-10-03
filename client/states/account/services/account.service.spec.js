@@ -4,9 +4,11 @@ describe("Unit: Account", function() {
   beforeEach(function () {
     module('ui.router');
 
+    module('clickaroos');
+
     module('clickaroos.account', function($provide) {
       $provide.constant('appServerUrl', 'http://APP-SERVER-URL-HERE');
-      });
+    });
 
     inject(function ($injector) {
       Account = $injector.get('Account');
@@ -25,9 +27,5 @@ describe("Unit: Account", function() {
 
   it("should have a signup function", function() { 
     expect(Account.submitSignup).to.be.a('function');
-  });
-
-  it('should have a logout function', function() {
-    expect(Account.logout).to.be.a('function');
   });
 });
