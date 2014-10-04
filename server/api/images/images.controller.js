@@ -37,12 +37,12 @@ exports.createImage = function(req, res) {
         return;
       }
 
-      console.log('success! ', response);
+      // console.log('success! ', response);
 
-      console.log('url: ', 'https://clickaroos.blob.core.windows.net/img/'+response.blob);
+      // console.log('url: ', 'http://clickaroos.blob.core.windows.net/img/'+response.blob);
       // save image url string to DB
       // TODO: use res.body in front-end
-      magic = 'https://clickaroos.blob.core.windows.net/img/'+response.blob;
+      magic = 'http://clickaroos.blob.core.windows.net/img/'+response.blob;
       res.json({ imageUrl: magic });
 
     };
