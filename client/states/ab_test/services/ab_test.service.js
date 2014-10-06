@@ -60,7 +60,7 @@ angular.module('clickaroos.abTest')
       dataToServer
     ).success(function(data, status, headers, config) {
       // TODO: Change global appServerUrl properly
-      var appServerUrl = 'http://clickaroos-email-server.azurewebsites.net/';
+      var appServerUrl = 'http://clickaroos-email-server.azurewebsites.net';
       console.log('data from submit:', data);
       factory.productUrls.imageUrl = appServerUrl+'/img/ab/'+data.abTestId+'/'+data.emailVar;
       factory.productUrls.rerouteUrl = appServerUrl+'/site/ab/'+data.abTestId+'/'+data.emailVar;
