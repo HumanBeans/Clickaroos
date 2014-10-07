@@ -44,7 +44,9 @@ CREATE TABLE ab_tests (
   start_time DATETIME NOT NULL,
   milliseconds_after_start BIGINT NOT NULL,
   milliseconds_pick_winner BIGINT NOT NULL,
-  winner VARCHAR(40),
+  winner_imgid BIGINT,
+  winner_views BIGINT,
+  winner_clicks BIGINT,
   PRIMARY KEY(ab_test_id)
 );
 
