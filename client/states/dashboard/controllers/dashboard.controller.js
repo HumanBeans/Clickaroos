@@ -3,6 +3,9 @@ angular.module('clickaroos.dashboard', [])
 .controller('DashboardController', ['$scope', 'Dashboard', function($scope, Dashboard) {
   $scope.user = {};
   $scope.campaigns = {};
+
+  // Get most recent campaigns from server
+  Dashboard.getRecentCampaigns();
   $scope.recentCampaigns = Dashboard.recentCampaigns;
 
   $scope.selectedIndex = 0;
