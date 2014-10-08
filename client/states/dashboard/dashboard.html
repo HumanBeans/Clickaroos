@@ -18,22 +18,81 @@
   </div>
   <div id="dashboard-content">
     <div id="dashboard-reports">
+      <!-- TODO: incorporate scope data for dynamic naming of campaigns -->
       <h1>DASHBOARD<span> / 30% Off Sale</span></h1>
-      <div height="1000" width="1000">
-        
-        <canvas client-doughnut-directive ng-model="data" options="options"  auto-legend></canvas>
-        <!-- basic setup for directive legend -->
-        <div class="client-doughnut-legend" ng-model="data">
-          <ul style="list-style-type:none">
-            <li ng-repeat="client in data.campaign.analytics.email_client">
-              <span>{{ client.label }}<span>:
-              <span>{{ client.value }}</span>
-              <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ client.color }};"></div>
-            </li>
-          </ul>
+      <!-- Row 1 of dashboard -->
+      <div id="dashboard-stat-block-row" ng-model="data">
+
+        <div class="dashboard-stat-block-container">
+          <div class="dashboard-stat-block">
+            <h2 class="dashboard-stat-block-text">Opens</h2>
+            <h2 class="dashboard-stat-block-text">{{ data.campaign.analytics.rawData.opens.total }}</h2>
+          </div>
         </div>
 
+        <div class="dashboard-stat-block-container">
+          <div class="dashboard-stat-block">
+            <h2 class="dashboard-stat-block-text">Clicks</h2>
+            <h2 class="dashboard-stat-block-text">{{ data.campaign.analytics.rawData.clicks.total }}</h2>
+          </div>
+        </div>  
+
+        <div class="dashboard-stat-block-container">
+          <div class="dashboard-stat-block">
+            <h2 class="dashboard-stat-block-text">CTR</h2>
+            <h2 class="dashboard-stat-block-text">{{ data.campaign.analytics.rawData.ctr }}</h2>
+          </div>
+        </div>  
       </div>
+
+      <!-- Row 2 of dashboard -->
+      <div id="dashboard-doughnuts-row">
+
+        <div class="dashboard-doughnut-container">
+          <h2 class="dashboard-subheader">Clicks per Device</h2>
+          <canvas client-doughnut-directive ng-model="data" options="options"></canvas>
+          <div class="doughnut-legend" ng-model="data">
+            <ul class="legend-list" style="list-style-type:none">
+              <li ng-repeat="client in data.campaign.analytics.email_client">
+                <span>{{ client.label }}<span>:
+                <span>{{ client.value }}</span>
+                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ client.color }};"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dashboard-doughnut-container">
+          <h2 class="dashboard-subheader">Clicks per Client Type</h2>
+          <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
+          <div class="doughnut-legend" ng-model="data">
+            <ul class="legend-list" style="list-style-type:none">
+              <li ng-repeat="device in data.campaign.analytics.device">
+                <span>{{ device.label }}<span>:
+                <span>{{ device.value }}</span>
+                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3 of dashboard -->
+      <div id="dashboard-time-series-row">
+        <div class="dashboard-time-series-container">
+          <h2>Clicks & Opens per Time of Day</h2>
+          <canvas time-series-directive ng-model="data" options="options"></canvas>
+          <div class="time-series-legend">
+            <ul class="legend-list" style="list-style-type:none">
+              <li ng-repeat="type in data.campaign.analytics.rawData">
+                <span>{{ type.label }}<span>
+                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ type.color + '1)'}};"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

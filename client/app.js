@@ -7,7 +7,7 @@ angular.module('clickaroos', [
   'clickaroos.directives',
   'clickaroos.directives.clientDoughnutDirective',
   'clickaroos.directives.deviceDoughnutDirective',
-  'clickaroos.directives.clickTimeSeriesDirective',
+  'clickaroos.directives.timeSeriesDirective',
   'clickaroos.account',
   'clickaroos.dashboard',
   'clickaroos.createCampaign',

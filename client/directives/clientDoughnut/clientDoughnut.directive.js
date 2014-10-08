@@ -14,8 +14,6 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
       var ctx = element[0].getContext("2d");
       var counter = 0;
       var chartData = [];
-      
-      console.log(scope.data);
 
       //populate chartData with properly formatted from scope.data
       for(var key in scope.data.campaign.analytics.email_client) {
@@ -42,8 +40,8 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
       };
       
       // set chart dimensions
-      ctx.canvas.width = 500;
-      ctx.canvas.height= 250;
+      ctx.canvas.width = 350;
+      ctx.canvas.height= 200;
 
       var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
     }

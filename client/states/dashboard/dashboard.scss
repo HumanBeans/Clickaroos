@@ -82,6 +82,77 @@ $nav-height: 68px;
   }
 }
 
+
+
+
+
+.dashboard-subheader {
+  text-align: center;
+}
+
+#dashboard-reports {
+  padding-top: 100px;
+  height: 1200px;
+  width: 1200px;
+}
+
+#dashboard-stat-block-row, #dashboard-doughnuts-row, #dashboard-time-series-row {
+  height: 300px;
+  border: 1px solid #000;
+  }
+
+.dashboard-stat-block-container {
+  height: 100%;
+  width: 33.31%;
+  float: left;
+}
+
+.dashboard-stat-block {
+  height: 100%;
+  width: 100%;
+  float: left;
+  border: 50px solid transparent;
+}
+
+.dashboard-stat-block-text {
+  text-align: center;
+  padding-top: 22px;
+}
+
+.dashboard-doughnut-container {
+  height: 100%;
+  width: 50%;
+  float: left;
+
+}
+
+.dashboard-time-series-container {
+  height: 100%;
+  width: 50%;
+  margin-left: 60px;
+  float: left;
+}
+
+.doughnut-legend {
+  height: 80%;
+  width: 25%;
+  float: left;
+}
+
+.time-series-legend {
+  height: 80%;
+  width: 25%;
+  float: left;
+}
+
+
+
+
+
+
+
+
+
 #campaign-list, #create-campaign {
   border-radius: 5px;
   background-color: $primary-color;
