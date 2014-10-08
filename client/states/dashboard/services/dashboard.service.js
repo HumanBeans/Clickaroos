@@ -5,19 +5,23 @@ angular.module('clickaroos.dashboard')
 
   factory.recentCampaigns = [];
 
-  $http.get('/api/campaigns/recent')
-  .success(function(data, status, headers, config) {
-    console.log('data: ', data);
+  factory.getRecentCampaigns = function() {
 
-    data.forEach(function(campaign) {
-      factory.recentCampaigns.push(campaign);
+    $http.get('/api/campaigns/recent')
+    .success(function(data, status, headers, config) {
+      console.log('data from server: ', data);
+
+      data.forEach(function(campaign, index, campaigns) {
+        factory.recentCampaigns[index] = campaigns[index];
+      });
+
+      console.log('factory.recentCampaigns', factory.recentCampaigns);
+
+    }).error(function(data, status, headers, config) {
+      console.log('error: ', data);
     });
 
-    console.log('factory.recentCampaigns', factory.recentCampaigns);
-
-  }).error(function(data, status, headers, config) {
-    console.log('error: ', data);
-  });
+  };
 
   return factory;
 }]);
