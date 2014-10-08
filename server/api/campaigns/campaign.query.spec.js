@@ -49,9 +49,11 @@ describe('campaign query test', function(){
     })
   });
 
-  xit('should find a campaign with the given id', function(done){
-    Campaign.findById(campaign1_id, function(err, campaign){
-      campaign.campaign_title.should.equal(campaign1_title);
+  it('should find a campaign with the given id', function(done){
+    // Campaign.findById(campaign1_id, function(err, campaign){
+    Campaign.findById(165, function(err, campaign){
+      // console.log('-------', campaign);
+      campaign.campaign.campaign_title.should.equal(campaign1_title);
       done();
     })
   });
@@ -73,7 +75,7 @@ describe('campaign query test', function(){
     });
   });
 
-  it('should be able to return the nth recent campaigns', function(done){
+  xit('should be able to return the nth recent campaigns', function(done){
     var queryString = 'INSERT into campaigns SET ?';
     query(queryString, [campaign3])
     connection.query(queryString, [campaign3], function(err, result){

@@ -13,6 +13,28 @@ var ABTest = bookshelf.Model.extend({
 var ABImg = bookshelf.Model.extend({
   tableName: 'ab_imgs'
 });
+
+var ABOpenTime = bookshelf.Model.extend({
+  tableName: 'ab_open_time'
+});
+
+var ABClickTime = bookshelf.Model.extend({
+  tableName: 'ab_click_time'
+});
+
+//////////dummy data for email client and device
+var device_dummy_data = {};
+device_dummy_data['android'] = {label: 'Android', value: 40};
+device_dummy_data['iphone'] = {label: 'iPhone',value: 20};
+device_dummy_data['desktop'] = {label: 'Desktop',value: 30};
+device_dummy_data['tablet'] = {label: 'Tablet',value: 10};
+
+var email_client_dummy_data = {};
+email_client_dummy_data['webmail'] = {label: 'Web mail',value: 65};
+email_client_dummy_data['outlook'] = {label: 'Outlook',value: 25};
+email_client_dummy_data['apple_mail'] = {label: 'Apple Mail',value: 10};
+
+
 // var save = function(user_id, campaignObj, callback){
 //   campaignObj.user_id = user_id;
 //   var queryString = 'INSERT INTO campaigns SET ?';
@@ -39,19 +61,54 @@ var save = function(user_id, campaignObj, callback){
 
 var findById = function(campaign_id, callback){
   var result = {};
+  result.analytics = {rawData:{}, device:{}, email_client:{}};
+  result.analytics.device = device_dummy_data;
+  result.analytics.email_client = email_client_dummy_data;
+  result.analytics.rawData.clicks = {};
+  result.analytics.rawData.clicks.label = 'clicks';
+  result.analytics.rawData.clicks.data = [];
+  result.analytics.rawData.opens = {};
+  result.analytics.rawData.opens.label = 'opens';
+  result.analytics.rawData.opens.data = [];
+  // result.analytics.rawData.winner = {};
+
+
   Campaign.where({campaign_id:campaign_id}).fetch()
     .then(function(campaign){
       result.campaign = campaign.attributes;
       return ABTest.collection().query().where({campaign_id: campaign_id}).select();
     })
     .then(function(ab_tests){
+      result.analytics
       result.ab_tests = ab_tests;
       // console.log('+++++++++', result);
-      callback(undefined, result);
+      return ABOpenTime.collection().query().where({campaign_id: campaign_id}).select();
+      // callback(undefined, result);
     })
-    .catch(function(err){
-      callback(err);
+    .then(function(abOpenTime){
+      abOpenTime.forEach(function(item){
+        result.analytics.rawData.abTestId = item.ab_test_id;
+        for (var key in item){
+          result.analytics.rawData.opens.data.push(item[key]);
+        }
+      })
+      // console.log('========= ', result.analytics.rawData.opens);
+      return ABClickTime.collection().query().where({campaign_id: campaign_id}).select();
+    })
+    .then(function(abClickTime){
+      // console.log('result+++++++', result);
+      abClickTime.forEach(function(item){
+        for (var key in item){
+          result.analytics.rawData.clicks.data.push(item[key]);
+        }
+      });
+
+      console.log('===========', result);
+      callback(undefined, result);
     });
+    // .catch(function(err){
+    //   callback(err);
+    // });
 };
 
 // var findAllCampaignByUserId = function(user_id, callback){

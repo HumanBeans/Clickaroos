@@ -62,6 +62,7 @@ CREATE TABLE ab_imgs (
 
 CREATE TABLE ab_open_time(
   ab_test_id INT NOT NULL,
+  campaign_id BIGINT NOT NULL,
   0_1 BIGINT,
   1_2 BIGINT,
   2_3 BIGINT,
@@ -91,6 +92,7 @@ CREATE TABLE ab_open_time(
 
 CREATE TABLE ab_click_time(
   ab_test_id INT NOT NULL,
+  campaign_id BIGINT NOT NULL,
   0_1 BIGINT,
   1_2 BIGINT,
   2_3 BIGINT,
