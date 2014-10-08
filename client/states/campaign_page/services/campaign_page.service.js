@@ -1,27 +1,26 @@
 angular.module('clickaroos.campaignPage')
 
-.factory('CampaignPage', ['$http', '$stateParams', 'appServerUrl', function($http, $stateParams, appServerUrl) {
+.factory('CampaignPage', ['$http', 'appServerUrl', function($http, appServerUrl) {
   var factory = {};
 
-  console.log('$stateParams', $stateParams);
-  // Get campaign_id from stateParams
-  var campaign_id = Number($stateParams.campaign_id);
-  console.log('campaign_id', campaign_id);
+  // Get Campaign Info from server.
+  factory.getCampaignInfo = function(campaign_id) {
 
-  // When page loading, get Campaign Info from server.
-  $http.get(
-    appServerUrl+'/api/campaigns/'+campaign_id
-  ).success(function(data) {
-    // TODO: set campaignInfo and currentApps
-    console.log('data in CampaignPage get request:', data);
-    // Clone data object into factory.campaignInfo so controller's $scope can always reference the same object.
-    for(var key in data) {
-      factory.campaignInfo[key] = data[key];
-    }
-  }).error(function() {
-    // error
-    console.log('Error in CampaignPage get request');
-  });
+    $http.get(
+      appServerUrl+'/api/campaigns/'+campaign_id
+    ).success(function(data) {
+      // TODO: set campaignInfo and currentApps
+      console.log('data in CampaignPage get request:', data);
+      // Clone data object into factory.campaignInfo so controller's $scope can always reference the same object.
+      for(var key in data) {
+        factory.campaignInfo[key] = data[key];
+      }
+    }).error(function() {
+      // error
+      console.log('Error in CampaignPage get request');
+    });
+    
+  };
 
   factory.campaignInfo = {};
 
