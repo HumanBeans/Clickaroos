@@ -1,5 +1,5 @@
--- USE clickagoosdb;
-USE clickaroosTest;
+USE clickagoosdb;
+-- USE clickaroosTest;
 -- USE Test;
 
 drop table users;
@@ -58,6 +58,64 @@ CREATE TABLE ab_imgs (
   asset_url VARCHAR(150) NOT NULL,
   redirect_url VARCHAR(150) NOT NULL,
   PRIMARY KEY(ab_imgs_id)
+);
+
+CREATE TABLE ab_open_time(
+  ab_test_id INT NOT NULL,
+  0_1 BIGINT,
+  1_2 BIGINT,
+  2_3 BIGINT,
+  3_4 BIGINT,
+  4_5 BIGINT,
+  5_6 BIGINT,
+  6_7 BIGINT,
+  7_8 BIGINT,
+  8_9 BIGINT,
+  9_10 BIGINT,
+  10_11 BIGINT,
+  11_12 BIGINT,
+  12_13 BIGINT,
+  13_14 BIGINT,
+  14_15 BIGINT,
+  15_16 BIGINT,
+  16_17 BIGINT,
+  17_18 BIGINT,
+  18_19 BIGINT,
+  19_20 BIGINT,
+  20_21 BIGINT,
+  21_22 BIGINT,
+  22_23 BIGINT,
+  23_24 BIGINT,
+  PRIMARY KEY(ab_test_id)
+);
+
+CREATE TABLE ab_click_time(
+  ab_test_id INT NOT NULL,
+  0_1 BIGINT,
+  1_2 BIGINT,
+  2_3 BIGINT,
+  3_4 BIGINT,
+  4_5 BIGINT,
+  5_6 BIGINT,
+  6_7 BIGINT,
+  7_8 BIGINT,
+  8_9 BIGINT,
+  9_10 BIGINT,
+  10_11 BIGINT,
+  11_12 BIGINT,
+  12_13 BIGINT,
+  13_14 BIGINT,
+  14_15 BIGINT,
+  15_16 BIGINT,
+  16_17 BIGINT,
+  17_18 BIGINT,
+  18_19 BIGINT,
+  19_20 BIGINT,
+  20_21 BIGINT,
+  21_22 BIGINT,
+  22_23 BIGINT,
+  23_24 BIGINT,
+  PRIMARY KEY(ab_test_id)
 );
 
 /* test data */
