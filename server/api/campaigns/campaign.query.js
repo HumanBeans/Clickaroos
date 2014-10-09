@@ -62,7 +62,7 @@ var save = function(user_id, campaignObj, callback){
 var findById = function(campaign_id, callback){
   var result = {};
   result.analytics = {rawData:{}, device:{}, email_client:{}};
-  result.analytics.device = device_dummy_data;
+  // result.analytics.device = device_dummy_data;
   result.analytics.email_client = email_client_dummy_data;
   result.analytics.rawData.clicks = {};
   result.analytics.rawData.clicks.label = 'clicks';
@@ -72,10 +72,19 @@ var findById = function(campaign_id, callback){
   result.analytics.rawData.opens.data = [];
   // result.analytics.rawData.winner = {};
 
-
   Campaign.where({campaign_id:campaign_id}).fetch()
     .then(function(campaign){
       result.campaign = campaign.attributes;
+
+      //pass the device data into analytics
+
+      result.analytics.device.iphone = campaign.attributes.iphone;
+      result.analytics.device.ipad = campaign.attributes.ipad;
+      result.analytics.device.android_phone = campaign.attributes.android_phone;
+      result.analytics.device.android_pad = campaign.attributes.android_pad;
+      result.analytics.device.desktop = campaign.attributes.desktop;
+      result.analytics.device.device_other = campaign.attributes.device_other;
+
       return ABTest.collection().query().where({campaign_id: campaign_id}).select();
     })
     .then(function(ab_tests){
