@@ -10,8 +10,8 @@
     </div> -->
     <div id="filter-campaigns">
       <h3>Recent Campaigns:</h3>
-      <ul id="select-campaign" ng-repeat="campaign in recentCampaigns">
-        <a ng-href="#/campaign/{{ campaign.campaign_id }}"><li>{{ campaign.campaign_title }}</li></a>
+      <ul id="select-campaign">
+        <a ng-repeat="campaign in recentCampaigns" ng-href="#/campaign/{{ campaign.campaign_id }}"><li>{{ campaign.campaign_title }}</li></a>
         <!-- <li ng-click="getRecentCampaigns()">Aggregate</li> -->
       </ul>
     </div>
