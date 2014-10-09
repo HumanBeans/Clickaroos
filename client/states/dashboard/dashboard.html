@@ -2,7 +2,7 @@
 
   <div id="dashboard-sidebar">
     <div id="client-logo">
-      <img src="http://dummyimage.com/240x160/3d3d3d/ffffff&text=client+logo" alt="">
+      <img src="assets/images/groupoff.png" alt="">
       <!-- <img src="http://dummyimage.com/240x150/19c6ff/fff.png" alt=""> -->
     </div>
     <!-- <div id="user-details">
@@ -19,34 +19,91 @@
   <div id="dashboard-content">
     <div id="dashboard-reports">
       <!-- TODO: incorporate scope data for dynamic naming of campaigns -->
-      <h1>DASHBOARD<span> / 30% Off Sale</span></h1>
+      <h1>REPORTS<span> / 30% Off Sale</span></h1>
       <!-- Row 1 of dashboard -->
       <div id="dashboard-stat-block-row" ng-model="data">
+        <style>
+          .each-stat {
+            width: 30%;
+            /*padding-left: 25px;*/
+            background: #fff;
+            float: left;
+            margin-right: 5%;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+          }
 
-        <div class="dashboard-stat-block-container">
-          <div class="dashboard-stat-block">
-            <h2 class="dashboard-stat-block-text">Opens</h2>
-            <h2 class="dashboard-stat-block-text">{{ data.campaign.analytics.rawData.opens.total }}</h2>
+          .stat-container {
+            margin-top: 40px;
+            font-family: Oswald;
+            width: 100%;
+            float: left;
+          }
+          
+          .dashboard-doughnut-container {
+            float: left;
+            width: 48%;
+            margin-right: 4%;
+            background: #fff;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+          }
+
+          .dashboard-doughnut-container:nth-last-child(1) {
+            margin-right: 0;
+          }
+
+          .each-stat:nth-last-child(1) {
+            margin-right: 0;
+          }
+
+          #time-chart {
+            background: #fff;
+            border-bottom: 2px solid #ddd;
+            padding: 10px 30px 30px 30px;
+          }
+
+        </style>
+        <div class="stat-container">
+          <div class="each-stat">
+            <h3 class="">Opens</h3>
+            <h4 class="">{{ data.campaign.analytics.rawData.opens.total }}</h4>
+          </div>
+
+          <div class="each-stat">
+            <h3 class="">Clicks</h3>
+            <h4 class="">{{ data.campaign.analytics.rawData.clicks.total }}</h4>
+          </div>  
+
+          <div class="each-stat">
+            <h3 class="">CTR</h3>
+            <h4 class="">{{ data.campaign.analytics.rawData.ctr * 100 }}%</h4>
           </div>
         </div>
-
-        <div class="dashboard-stat-block-container">
-          <div class="dashboard-stat-block">
-            <h2 class="dashboard-stat-block-text">Clicks</h2>
-            <h2 class="dashboard-stat-block-text">{{ data.campaign.analytics.rawData.clicks.total }}</h2>
-          </div>
-        </div>  
-
-        <div class="dashboard-stat-block-container">
-          <div class="dashboard-stat-block">
-            <h2 class="dashboard-stat-block-text">CTR</h2>
-            <h2 class="dashboard-stat-block-text">{{ data.campaign.analytics.rawData.ctr }}</h2>
-          </div>
-        </div>  
+      </div>
+      
+      <!-- Row 3 of dashboard -->
+      <div id="time-chart" class="stat-container">
+        <h3>Clicks & Opens per Time of Day</h3>
+        <br />
+        <canvas time-series-directive ng-model="data" options="options"></canvas>
+        <div class="time-series-legend">
+          <ul class="legend-list" style="list-style-type:none; margin-left: -13px">
+            <li ng-repeat="type in data.campaign.analytics.rawData">
+              <div style="float: left; margin-top: 10px">
+                <span>{{ type.label }}<span>
+                <span class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ type.color + '1)'}};"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
 
+
       <!-- Row 2 of dashboard -->
-      <div id="dashboard-doughnuts-row">
+      <div class="stat-container">
 
         <div class="dashboard-doughnut-container">
           <h2 class="dashboard-subheader">Clicks per Device</h2>
@@ -75,23 +132,11 @@
             </ul>
           </div>
         </div>
-      </div>
 
-      <!-- Row 3 of dashboard -->
-      <div id="dashboard-time-series-row">
-        <div class="dashboard-time-series-container">
-          <h2>Clicks & Opens per Time of Day</h2>
-          <canvas time-series-directive ng-model="data" options="options"></canvas>
-          <div class="time-series-legend">
-            <ul class="legend-list" style="list-style-type:none">
-              <li ng-repeat="type in data.campaign.analytics.rawData">
-                <span>{{ type.label }}<span>
-                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ type.color + '1)'}};"></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      </div> 
+
+      
+
 
     </div>
   </div>
