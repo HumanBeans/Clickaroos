@@ -21,7 +21,11 @@
 
       <div>
         <ul>
-          <li ng-repeat="ab_test in campaignInfo.ab_tests">{{ ab_test.ab_test_title }}</li>
+          <li ng-repeat="ab_test in campaignInfo.ab_tests">
+            AB Test: {{ ab_test.ab_test_title }}
+            <!-- TODO: Change hard coded to dynamic -->
+            <textarea><a href="http://clickaroos-email-server.azurewebsites.net/site/ab/{{ ab_test.ab_test_id }}/*|EMAIL|*"><img src="http://clickaroos-email-server.azurewebsites.net/img/ab/{{ ab_test.ab_test_id }}/*|EMAIL|*.png" /></a></textarea>
+          </li>
         </ul>
       </div>
 
