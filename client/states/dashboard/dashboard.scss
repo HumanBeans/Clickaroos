@@ -4,6 +4,7 @@ $page-bg: #EBEBEB;
 $nav-height: 68px;
 
 #dashboard-sidebar {
+  margin-top: 58px;
   background: #222A30;
   width: 240px;
   position: fixed;
@@ -59,10 +60,6 @@ $nav-height: 68px;
     font-size: 0.8em;
     margin: 20px;
   }
-}
-
-#dashboard-sidebar, #dashboard-content {
-  margin-top: 58px;
 }
 
 #dashboard-content #dashboard-reports {
