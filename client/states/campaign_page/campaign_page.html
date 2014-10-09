@@ -19,9 +19,9 @@
 
       <h4>Current Apps</h4>
 
-      <div ng-repeat="ab_test in campaignInfo.ab_tests">
+      <div>
         <ul>
-          <li>{{ ab_test.ab_test_title }}</li>
+          <li ng-repeat="ab_test in campaignInfo.ab_tests">{{ ab_test.ab_test_title }}</li>
         </ul>
       </div>
 
