@@ -1,26 +1,20 @@
 angular.module('clickaroos.dashboard')
 
-.factory('Dashboard', ['$http', 'appServerUrl', function($http, appServerUrl) {
+.factory('Dashboard', ['$http', '$q', 'appServerUrl', function($http, $q, appServerUrl) {
   var factory = {};
 
-  factory.recentCampaigns = [];
-
   factory.getRecentCampaigns = function() {
+    var deferred = $q.defer();
 
     $http.get('/api/campaigns/recent')
     .success(function(data, status, headers, config) {
       console.log('data from server: ', data);
-
-      data.forEach(function(campaign, index, campaigns) {
-        factory.recentCampaigns[index] = campaigns[index];
-      });
-
-      console.log('factory.recentCampaigns', factory.recentCampaigns);
-
+      deferred.resolve(data);
     }).error(function(data, status, headers, config) {
-      console.log('error: ', data);
+      deferred.reject(new Error(data));
     });
 
+    return deferred.promise;
   };
 
   return factory;

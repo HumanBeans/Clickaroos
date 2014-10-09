@@ -4,17 +4,13 @@ angular.module('clickaroos.campaignList', [])
   
   $scope.campaigns;
   $scope.filterCampaignName;
-  
-  $scope.getDate = function(str) {
-    var date = new Date(str);
-    console.log('date', date);
-    return date.toString();
-  };
 
   // Get campaigns
   CampaignList.getCampaigns()
     .then(function(campaigns) {
       $scope.campaigns = campaigns;
     });
+  
+  $scope.getDate = CampaignList.getDate;
 
 }]);

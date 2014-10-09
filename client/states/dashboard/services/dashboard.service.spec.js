@@ -11,5 +11,8 @@ describe('Unit: Dashboard', function() {
     });
   });
 
-  // TODO: getCampaigns function should be on global campaign model controller and services
+  it('should have a getRecentCampaigns function', function() {
+    expect(Dashboard.getRecentCampaigns).to.be.a('function');
+    expect(Dashboard.getRecentCampaigns()).to.be.a('object');
+  });
 });

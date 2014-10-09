@@ -3,7 +3,11 @@ angular.module('clickaroos.campaignList')
 .factory('CampaignList', ['$http', '$q', 'appServerUrl', function($http, $q, appServerUrl) {
   var factory = {};
 
-  factory.campaigns = {};
+  factory.getDate = function(str) {
+    var date = new Date(str);
+    console.log('date', date);
+    return date.toString();
+  };
 
   factory.getCampaigns = function() {
     var deferred = $q.defer();
