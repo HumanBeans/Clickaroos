@@ -2,8 +2,19 @@ angular.module('clickaroos.campaignList', [])
 
 .controller('CampaignListController', ['$scope', 'CampaignList', function($scope, CampaignList) {
   
-  $scope.user = {};
-  $scope.campaigns = {};
+  $scope.campaigns;
+  $scope.filterCampaignName;
   
-  // TODO: getCampaigns function should be on global campaign model controller and services
+  $scope.getDate = function(str) {
+    var date = new Date(str);
+    console.log('date', date);
+    return date.toString();
+  };
+
+  // Get campaigns
+  CampaignList.getCampaigns()
+    .then(function(campaigns) {
+      $scope.campaigns = campaigns;
+    });
+
 }]);

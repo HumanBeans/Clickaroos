@@ -1,8 +1,23 @@
-campaign_list.html
 
-<!-- NOTE: dummy campaign id below -->
-<!-- TODO: swap out dummy campaign with real data -->
-<a ui-sref="dummy-campaign">Some campaign 1</a>
-<a ui-sref="dummy-campaign">Some campaign 2</a> 
-<a ui-sref="dummy-campaign">Some campaign 3</a> 
-<a ui-sref="dummy-campaign">Some campaign 4</a>  
+<!-- Filter -->
+
+<!-- Table -->
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+
+Filter by Campaign Name: <input type="text" ng-model="filterCampaignName"></input>
+
+<table style="width:100%;">
+  <th>Campaign Name</th>
+  <th>Created At</th>
+  <th>Last Modified</th>
+
+  <tr ng-repeat="campaign in campaigns | filter: { campaign_title: filterCampaignName } | orderBy:'-modified_at'">
+    <td><a ng-href="#/campaign/{{ campaign.campaign_id }}">{{ campaign.campaign_title }}</a></td>
+    <td>{{ getDate(campaign.created_at) }}</td> 
+    <td>{{ getDate(campaign.modified_at) }}</td>
+  </tr>
+</table>
