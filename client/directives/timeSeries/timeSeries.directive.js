@@ -59,7 +59,7 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
         scaleGridLineWidth : 1,
 
         /// Boolean - Whether the line is curved between points
-        bezierCurve : true,
+        bezierCurve : false,
 
         /// Number - Tension of the bezier curve between points
         bezierCurveTension : 0.4,
@@ -85,9 +85,10 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
         /// Boolean - Whether to fill the dataset with a colour
         datasetFill : true,
       };
-      
+
       // set chart dimensions
-      ctx.canvas.width = 400 ;
+      // ctx.canvas.width = 650;
+      ctx.canvas.width = document.getElementById('time-chart').offsetWidth - 60;
       ctx.canvas.height= 200;
       
       var myLineChart = new Chart(ctx).Line(chartData, options);

@@ -1,5 +1,5 @@
 $font-stack: Helvetica, sans-serif;
-$primary-color: #FFBC67;
+$primary-color: #5bc0de;
 $page-bg: #EBEBEB;
 $nav-height: 68px;
 
@@ -75,6 +75,7 @@ $nav-height: 68px;
     padding: 0;
     margin: 0;
     color: #333;
+    font-family: 'Oswald', Helvetica, Arial;
   }
   
   h1 span {
@@ -90,15 +91,7 @@ $nav-height: 68px;
   text-align: center;
 }
 
-#dashboard-reports {
-  padding-top: 100px;
-  height: 1200px;
-  width: 1200px;
-}
-
 #dashboard-stat-block-row, #dashboard-doughnuts-row, #dashboard-time-series-row {
-  height: 300px;
-  border: 1px solid #000;
   }
 
 .dashboard-stat-block-container {
@@ -173,5 +166,7 @@ $nav-height: 68px;
 #filter-campaigns h3 {
   color: $primary-color;
   font-size: 16px;
+  font-weight: bold;
   padding: 18px 20px 0 20px;
+  font-family: 'Oswald', Helvetica, Arial;
 }

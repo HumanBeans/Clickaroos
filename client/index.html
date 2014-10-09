@@ -2,7 +2,7 @@
 <html ng-app="clickaroos">
 <head>
   <title>Clickaroos</title>
-
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- Bootstrap -->
@@ -74,25 +74,23 @@
 <body>
   <div id="top-bar">
     <div id="clickaroos-logo">
-      <a ui-sref="dashboard"><img src="http://dummyimage.com/240x58/ffbd67/ffffff&text=clickaroos" alt=""></a>
+      <a ui-sref="dashboard"><img src="assets/images/clickaroos.png" width="240" height="58" alt=""></a>
     </div>
-    <div id="top-nav" ng-controller="DropdownCtrl">
-      <!-- <div id="settings-btn" ui-sref="settings-page"><i class="fa fa-cog settings-icon"></i></div> -->
-      <div class="nav-btn btn-group" dropdown>
-        <button type="button" class="btn btn-default">Settings</button>
-        <button type="button" class="btn btn-default dropdown-toggle">
-          <span class="caret"></span>
-          <!-- <span class="sr-only">Split button!</span> -->
+    <div id="top-nav" ng-controller="DropdownCtrl">      
+      <!-- Single button -->
+      <div class="nav-btn btn-group" dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-default dropdown-toggle" ng-disabled="disabled">
+          <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" role="menu">
+        <ul class="dropdown-menu" style="right: 0; left: inherit" role="menu">
           <li><a href="#">Settings</a></li>
           <li class="divider"></li>
           <li><a ng-click="logout()">Sign out</a></li>
         </ul>
       </div>
 
-      <div class="nav-btn btn btn-warning" ui-sref="create-campaign">Create Campaign</div>
-      <div class="nav-btn btn btn-warning" ui-sref="campaign-list">Campaigns</div>
+      <div class="nav-btn btn btn-info" ui-sref="create-campaign">Create Campaign</div>
+      <div class="nav-btn btn btn-info" ui-sref="campaign-list">Campaigns</div>
 
 
     </div>

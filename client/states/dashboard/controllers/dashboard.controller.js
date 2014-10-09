@@ -17,7 +17,8 @@ angular.module('clickaroos.dashboard', [])
   };
 
   // colors to be used in analytics charts
-  var colors = ['#FFF10E', '#19C4FF', '#CC1441', '#38FF00', '#1C19FF', '#CC1479', '#19E9FF', '#FFDC19'];
+  // var colors = ['#FFF10E', '#19C4FF', '#CC1441', '#38FF00', '#1C19FF', '#CC1479', '#19E9FF', '#FFDC19'];
+  var colors = ['#F25F51', '#F5CF32', '#56D9CD', '#3AA1BF', '#9ED960', '#CC1479', '#19E9FF', '#FFDC19'];
 
   // **** DUMMY DATA FOR DIRECTIVE TESTING ****
   $scope.data = {};

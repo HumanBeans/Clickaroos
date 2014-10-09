@@ -32,9 +32,9 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
         segmentShowStroke : true,
         segmentStrokeColor : "#fff",
         segmentStrokeWidth : 2,
-        percentageInnerCutout : 50,
-        animationSteps : 100,
-        animationEasing : "easeOutBounce",
+        percentageInnerCutout : 40,
+        animationSteps : 80,
+        animationEasing : "easeOutQuart",
         animateRotate : true,
         animateScale : false
       };
