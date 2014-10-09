@@ -23,14 +23,4 @@ describe("Unit: CampaignPageController", function() {
     
   });
 
-  it("'campaign' should be an object", function() {
-    expect(scope.campaignInfo).to.exist;
-    expect(scope.campaignInfo).to.be.a('object');
-  });
-
-  it("'currentApps' should be an array", function() { 
-    expect(scope.currentApps).to.exist;
-    expect(scope.currentApps).to.be.a('array');
-  });
-
 });
