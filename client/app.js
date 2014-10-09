@@ -13,7 +13,8 @@ angular.module('clickaroos', [
   'clickaroos.createCampaign',
   'clickaroos.campaignPage',
   'clickaroos.abTest',
-  'clickaroos.dashboard'
+  'clickaroos.dashboard',
+  'clickaroos.campaignList'
 ])
 
 // todo: Update accordingly

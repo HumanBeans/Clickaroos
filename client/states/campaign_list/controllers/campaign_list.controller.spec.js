@@ -13,16 +13,13 @@ describe('Unit: CampaignListController', function() {
     scope = $rootScope.$new();
     // Create the controller
     ctrl = $controller('CampaignListController', {
-      $scope: scope
+      $scope: scope,
+      campaign_id: 0
     });
   }));
 
-  it('should have a user object', function() {
-    expect(scope.user).to.be.a('object');
-  });
-
-  it('should have a campaigns object', function() {
-    expect(scope.campaigns).to.be.a('object');
+  it('should have a getDate function', function() {
+    expect(scope.getDate).to.be.a('function');
   });
   
   // TODO: getCampaigns function should be on global campaign model controller and services

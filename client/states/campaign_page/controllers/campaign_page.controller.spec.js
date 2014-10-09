@@ -16,7 +16,8 @@ describe("Unit: CampaignPageController", function() {
       scope = $rootScope.$new();
       // Create the controller
       ctrl = $controller('CampaignPageController', {
-        $scope: scope
+        $scope: scope,
+        campaign_id: 5
       });
     });
     

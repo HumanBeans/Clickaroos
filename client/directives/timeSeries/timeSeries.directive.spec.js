@@ -1,7 +1,7 @@
 describe("Directive: clickTimeSeriesDirective", function() {
   var element, scope;
 
-  beforeEach(module('clickaroos.directives.clickTimeSeriesDirective'));
+  beforeEach(module('clickaroos.directives.timeSeriesDirective'));
 
   beforeEach(inject(function($rootScope, $compile) {
     // element = angular.element('<div ng-model="data" options="options"><div>');

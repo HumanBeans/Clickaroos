@@ -30,7 +30,8 @@ angular.module('clickaroos.config', [])
     })
     .state('campaign-list', {
       url: '/campaigns',
-      templateUrl: 'states/campaign_list/campaign_list.html'
+      templateUrl: 'states/campaign_list/campaign_list.html',
+      controller: 'CampaignListController'
     })
 
     // CREATE CLIENT TOOL PAGES

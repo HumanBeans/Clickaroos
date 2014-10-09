@@ -16,14 +16,6 @@ describe('Unit: DashboardController', function() {
       $scope: scope
     });
   }));
-
-  it('should have a user object on the scope', function() {
-    expect(scope.user).to.be.a('object');
-  });
-
-  it('should have a campaigns object on the scope', function() {
-    expect(scope.campaigns).to.be.a('object');
-  });
   
   // TODO: getCampaigns function should be on global campaign model controller and services
 });
