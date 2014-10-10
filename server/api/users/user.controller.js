@@ -3,6 +3,7 @@
 var User = require('./user.query');
 var jwt = require('jsonwebtoken');
 var config = require('../../config/main.js');
+var auth = require('../../auth/auth.service');
 
 // return all all the users information
 exports.index = function(req, res, next){
@@ -21,8 +22,9 @@ exports.create = function(req, res, next){
       console.log(err);
       return res.status(403).json('user already exists');
     }
-    var token = jwt.sign({_id: result.insertId}, config.secrets.token, {expiresInMinutes: 60*5});
-    res.status(200).json({token:token});
+    // var token = jwt.sign({_id: result.insertId}, config.secrets.token, {expiresInMinutes: 60*5});
+    var token = auth.signToken(result.id);
+    res.status(200).json({token:token, username:result.username});
   });
 };
 
