@@ -22,12 +22,11 @@ var ABClickTime = bookshelf.Model.extend({
   tableName: 'ab_click_time'
 });
 
+var ABClickDevice = bookshelf.Model.extend({
+  tableName: 'ab_click_device'
+});
+
 //////////dummy data for email client and device
-var device_dummy_data = {};
-device_dummy_data['android'] = {label: 'Android', value: 40};
-device_dummy_data['iphone'] = {label: 'iPhone',value: 20};
-device_dummy_data['desktop'] = {label: 'Desktop',value: 30};
-device_dummy_data['tablet'] = {label: 'Tablet',value: 10};
 
 var email_client_dummy_data = {};
 email_client_dummy_data['webmail'] = {label: 'Web mail',value: 65};
@@ -61,8 +60,8 @@ var save = function(user_id, campaignObj, callback){
 
 var findById = function(campaign_id, callback){
   var result = {};
-  result.analytics = {rawData:{}, device:{}, email_client:{}};
-  result.analytics.device = device_dummy_data;
+  result.analytics = {rawData:{}, device_open:{}, device_click:{}};
+  // result.analytics.device = device_dummy_data;
   result.analytics.email_client = email_client_dummy_data;
   result.analytics.rawData.clicks = {};
   result.analytics.rawData.clicks.label = 'clicks';
@@ -72,10 +71,19 @@ var findById = function(campaign_id, callback){
   result.analytics.rawData.opens.data = [];
   // result.analytics.rawData.winner = {};
 
-
   Campaign.where({campaign_id:campaign_id}).fetch()
     .then(function(campaign){
       result.campaign = campaign.attributes;
+
+      //pass the device data into analytics
+
+      result.analytics.device_open.iphone = campaign.attributes.iphone;
+      result.analytics.device_open.ipad = campaign.attributes.ipad;
+      result.analytics.device_open.android_phone = campaign.attributes.android_phone;
+      result.analytics.device_open.android_pad = campaign.attributes.android_pad;
+      result.analytics.device_open.desktop = campaign.attributes.desktop;
+      result.analytics.device_open.device_other = campaign.attributes.device_other;
+
       return ABTest.collection().query().where({campaign_id: campaign_id}).select();
     })
     .then(function(ab_tests){
@@ -103,9 +111,36 @@ var findById = function(campaign_id, callback){
         }
       });
 
+      return ABClickDevice.collection().query().where({campaign_id: campaign_id}).select();
+    })
+    .then(function(abClickDevice){
+
+
+      result.analytics.device_click = {
+        'iphone': 0,
+        'ipad': 0,
+        'android_phone': 0,
+        'android_pad': 0,
+        'desktop': 0,
+        'device_other': 0
+      };
+
+      abClickDevice.forEach(function(item){
+        result.analytics.device_click.iphone += item.iphone;
+        result.analytics.device_click.ipad += item.ipad;
+        result.analytics.device_click.android_phone += item.android_phone;
+        result.analytics.device_click.android_pad += item.android_pad;
+        result.analytics.device_click.desktop += item.desktop;
+        result.analytics.device_click.device_other += item.device_other;
+      })
+
+      result.analytics.device_open.iphone
+
+
       console.log('===========', result);
       callback(undefined, result);
-    });
+
+    })
     // .catch(function(err){
     //   callback(err);
     // });
