@@ -66,9 +66,11 @@ var findById = function(campaign_id, callback){
   result.analytics.rawData.clicks = {};
   result.analytics.rawData.clicks.label = 'clicks';
   result.analytics.rawData.clicks.data = [];
+  result.analytics.rawData.clicks.color = 'rgba(255,254,0,';
   result.analytics.rawData.opens = {};
   result.analytics.rawData.opens.label = 'opens';
   result.analytics.rawData.opens.data = [];
+  result.analytics.rawData.opens.color = 'rgba(0,177,232,';
   // result.analytics.rawData.winner = {};
 
   Campaign.where({campaign_id:campaign_id}).fetch()
