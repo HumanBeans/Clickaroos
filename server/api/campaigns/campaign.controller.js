@@ -24,6 +24,7 @@ exports.index = function(req, res, next){
 };
 
 exports.create = function(req, res, next){
+  console.log('in create campaign req.user', req.user );
   Campaign.save(req.user._id, req.body, function(err, result){
     if(err){
       console.log('error in create:', err);
@@ -51,6 +52,7 @@ exports.show = function(req, res, next){
 };
 
 exports.recent = function(req, res, next){
+  console.log('in findRecentByUserId req.user', req.user);
   Campaign.getRecent(req.user._id, req.body.num, function(err, campaigns){
     if(err){
       return res.json('try again');

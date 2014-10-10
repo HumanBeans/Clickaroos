@@ -49,5 +49,5 @@ exports.hasRole = function(requiredRole){
 };
 
 exports.signToken = function(id){
-  return jwt.sign({_id: id}, config.secrets.token, {expireInMinutes: 60*5});
+  return jwt.sign({_id: id}, config.secrets.token, {expiresInMinutes: 60*5});
 }
