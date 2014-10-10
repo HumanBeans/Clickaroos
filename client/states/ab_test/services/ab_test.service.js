@@ -10,8 +10,8 @@ angular.module('clickaroos.abTest')
   factory.time = {
     start: new Date(),
     timeAfterStart: {
-      hours: null,
-      minutes: null
+      hours: 2,
+      minutes: 0
     }
   };
 
