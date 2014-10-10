@@ -22,6 +22,10 @@ btn {
   font-family: 'Oswald', Helvetica, Arial;  
 }
 
+h3 {
+  font-family: 'Oswald', Helvetica, Arial;
+}
+
 canvas {
  float: left;  
 }
@@ -117,4 +121,102 @@ canvas {
   input {
     margin-bottom: 0;
   }
+}
+
+.each-stat {
+  width: 30%;
+  /*padding-left: 25px;*/
+  background: #fff;
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.stat-container {
+  margin-top: 40px;
+  font-family: Oswald;
+  width: 100%;
+  float: left;
+}
+
+.dashboard-doughnut-container {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.dashboard-doughnut-container:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.each-stat:nth-last-child(1) {
+  margin-right: 0;
+}
+
+#time-chart {
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 30px 30px 30px;
+}
+
+.box100pc {
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 30px 30px 30px;
+}
+
+.AB-test-block {
+  background: #F25F51;
+  color: #fff;
+  font-family: 'Oswald';
+  font-size: 16px;
+  font-weight: bold;
+  padding: 25px;
+  width: 80px;
+  border-radius: 4px;
+  float: left;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.AB-test-block:hover {
+  background: #F5CF32;
+  transition: 0.35s;
+}
+
+.apps-list {
+  margin-top: 10px;
+  list-style-type: none;
+  padding: 0;
+}
+.apps-list li {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+.generated-snippet-block {
+  /*padding: 5px;*/
+}
+
+.generated-snippet-block xmp {
+  word-wrap: break-word;
+  font-size: 12px;
+}
+.AB-test-name {
+
+}
+.AB-test-info {
+  margin-top: 20px;
+  font-size: 15px;
+}
+.generated-snippet-block h4{
+  font-family: 'Oswald';
+  margin: 0;
+  padding: 0;
 }
