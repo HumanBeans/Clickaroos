@@ -1,54 +1,51 @@
 angular.module('clickaroos.dashboard', [])
 
-.controller('DashboardController', ['$scope', 'Dashboard', 'Campaign', function($scope, Dashboard, Campaign) {
+.controller('DashboardController', ['$scope', 'Campaign', 'recentCampaigns', 'campaignData', function($scope, Campaign, recentCampaigns, campaignData) {
   
   var counter = 0;
   var colors = ['#F25F51', '#F5CF32', '#56D9CD', '#3AA1BF', '#9ED960', '#CC1479', '#19E9FF', '#FFDC19'];
   // $scope.selectedIndex = 0;
-  $scope.recentCampaigns;
-  $scope.data;
+  $scope.recentCampaigns = recentCampaigns;
+  console.log('campaignData: ', campaignData);
+  $scope.data = campaignData;
+
+  console.log('$scope.data: ', $scope.data);
   
   // Get most recent campaigns from server
-  Dashboard.getRecentCampaigns()
-    .then(function(campaigns) {
-      $scope.recentCampaigns = campaigns;
-      return campaigns;
-    })
-    .then(function(campaigns) {
-      $scope.getCampaignData(campaigns[0]);
-    });
+  // Dashboard.getRecentCampaigns()
+  //   .then(function(campaigns) {
+  //     $scope.recentCampaigns = campaigns;
+  //     return campaigns;
+  //   })
+  //   .then(function(campaigns) {
+  //     $scope.getCampaignData(campaigns[0]);
+  //   });
 
   // Get data for single campaign
   $scope.getCampaignData = function(campaign) {
-    console.log('campaign.campaign_id: ', campaign.campaign_id);
     Campaign.getCampaignData(campaign.campaign_id)
       .then(function(campaignData) {
         $scope.data = campaignData;
-        console.log('$scope.data: ', $scope.data);
-        $scope.$broadcast('dataReady');
+        $scope.apply();
       });  
   }
   
-  // When data is loaded, populate chart colors
-  $scope.$on('dataReady', function() {
-    console.log('trigger dataReady');
-
-    // populate colors for device doughnut
-    for(var key in $scope.data.analytics.device_click) {
-      $scope.data.analytics.device_click[key].color = colors[counter];
-      counter++;
-    }
-    
-    counter = 0;
-    
-    // populate colors for client doughnut
-    for(var key in $scope.data.analytics.email_client) {
-      $scope.data.analytics.email_client[key].color = colors[counter];
-      counter++;
-      }  
+  // populate colors for device doughnut
+  for(var key in $scope.data.analytics.device_click) {
+    $scope.data.analytics.device_click[key].color = colors[counter];
+    counter++;
+  }
+  
+  counter = 0;
+  
+  // populate colors for client doughnut
+  for(var key in $scope.data.analytics.email_client) {
+    $scope.data.analytics.email_client[key].color = colors[counter];
+    counter++;
+    }  
   
   console.log('$scope.data: ', $scope.data);  
-  });
+
 
 }]);
   //WTF??  

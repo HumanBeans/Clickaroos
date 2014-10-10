@@ -8,7 +8,6 @@ angular.module('clickaroos.models.campaign', [])
 
     $http.get(appServerUrl +'/api/campaigns/' + campaignID)
       .success(function(data, status, headers, config) {
-        // console.log('data from server: ', data);
         deferred.resolve(data);
       })
       .error(function(data, status, headers, config) {
