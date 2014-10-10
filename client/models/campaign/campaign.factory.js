@@ -1,14 +1,14 @@
 angular.module('clickaroos.models.campaign', [])
 
-.factory('Campaign', ['$http', '$q', function($http, $q) {
+.factory('Campaign', ['$http', '$q', 'appServerUrl', function($http, $q, appServerUrl) {
   var factory = {};
 
-  factory.getData = function(campaignID) {
+  factory.getCampaignData = function(campaignID) {
     var deferred = $q.defer();
 
-    $http.get('api/campaigns/:' + campaignID)
+    $http.get(appServerUrl +'/api/campaigns/' + campaignID)
       .success(function(data, status, headers, config) {
-        console.log('data from server: ', data);
+        // console.log('data from server: ', data);
         deferred.resolve(data);
       })
       .error(function(data, status, headers, config) {
@@ -18,7 +18,7 @@ angular.module('clickaroos.models.campaign', [])
       return deferred.promise;
   };
 
-  factory.getAllData = function() {
+  factory.getAllCampaignData = function() {
     var deferred = $q.defer();
 
     $http.get('api/campaigns/all')

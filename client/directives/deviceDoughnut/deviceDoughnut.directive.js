@@ -11,19 +11,21 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
     },
 
     link: function(scope, element, attrs) {
-      var ctx = element[0].getContext("2d");
-      var counter = 0;
-      var chartData = [];
+      scope.$on('dataReady', function() {
+        console.log('device doughnut directive');
 
-      //populate chartData with properly formatted from scope.data
-      for(var key in scope.data.campaign.analytics.device){
-        
-        chartData.push({
-          value: scope.data.campaign.analytics.device[key].value,
-          color: scope.data.campaign.analytics.device[key].color,
-          label: key
-        });
+        var ctx = element[0].getContext("2d");
+        var counter = 0;
+        var chartData = [];
 
+        //populate chartData with properly formatted from scope.data
+        for(var key in scope.data.campaign.analytics.device){
+          
+          chartData.push({
+            value: scope.data.campaign.analytics.device[key].value,
+            color: scope.data.campaign.analytics.device[key].color,
+            label: key
+          });
         counter++;
       }
       
@@ -43,7 +45,8 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
       ctx.canvas.width = 200;
       ctx.canvas.height= 200;
 
-      var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
+        var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
+      });
     }
   };
 }]);

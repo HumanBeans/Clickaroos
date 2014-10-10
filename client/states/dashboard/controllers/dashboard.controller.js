@@ -1,8 +1,10 @@
 angular.module('clickaroos.dashboard', [])
 
-.controller('DashboardController', ['$scope', 'Dashboard', 'Campaign' function($scope, Dashboard, Campaign) {
-
-  $scope.selectedIndex = 0;
+.controller('DashboardController', ['$scope', 'Dashboard', 'Campaign', function($scope, Dashboard, Campaign) {
+  
+  var counter = 0;
+  var colors = ['#F25F51', '#F5CF32', '#56D9CD', '#3AA1BF', '#9ED960', '#CC1479', '#19E9FF', '#FFDC19'];
+  // $scope.selectedIndex = 0;
   $scope.recentCampaigns;
   $scope.data;
   
@@ -10,22 +12,56 @@ angular.module('clickaroos.dashboard', [])
   Dashboard.getRecentCampaigns()
     .then(function(campaigns) {
       $scope.recentCampaigns = campaigns;
+      return campaigns;
+    })
+    .then(function(campaigns) {
+      $scope.getCampaignData(campaigns[0]);
     });
 
-  $scope.itemClicked = function ($index) {
-    console.log('itemClicked called');
-    $scope.selectedIndex = $index;
-    console.log($scope.selectedIndex);
-  };
+  // Get data for single campaign
+  $scope.getCampaignData = function(campaign) {
+    console.log('campaign.campaign_id: ', campaign.campaign_id);
+    Campaign.getCampaignData(campaign.campaign_id)
+      .then(function(campaignData) {
+        $scope.data = campaignData;
+        console.log('$scope.data: ', $scope.data);
+        $scope.$broadcast('dataReady');
+      });  
+  }
+  
+  // When data is loaded, populate chart colors
+  $scope.$on('dataReady', function() {
+    console.log('trigger dataReady');
+
+    // populate colors for device doughnut
+    for(var key in $scope.data.analytics.device_click) {
+      $scope.data.analytics.device_click[key].color = colors[counter];
+      counter++;
+    }
+    
+    counter = 0;
+    
+    // populate colors for client doughnut
+    for(var key in $scope.data.analytics.email_client) {
+      $scope.data.analytics.email_client[key].color = colors[counter];
+      counter++;
+      }  
+  
+  console.log('$scope.data: ', $scope.data);  
+  });
+
+}]);
+  //WTF??  
+  // $scope.itemClicked = function ($index) {
+  //   console.log('itemClicked called');
+  //   $scope.selectedIndex = $index;
+  //   console.log($scope.selectedIndex);
+  // };
 
   // $scope.getRecentCampaigns = Dashboard.getRecentCampaigns;
-  $scope.getCampaignData = Campaign.getCampaignData(campaignID)
-                    .then(function(campaignData) {
-                      $scope.data = campaignID;
-                    });
+
 
   // colors to be used in analytics charts
-  var colors = ['#F25F51', '#F5CF32', '#56D9CD', '#3AA1BF', '#9ED960', '#CC1479', '#19E9FF', '#FFDC19'];
 
   // // **** DUMMY DATA FOR DIRECTIVE TESTING ****
   // $scope.data = {};
@@ -71,20 +107,4 @@ angular.module('clickaroos.dashboard', [])
   // $scope.data.campaign.analytics.rawData.ctr = ($scope.data.campaign.analytics.rawData.clicks.total / $scope.data.campaign.analytics.rawData.opens.total).toFixed(3);
   // // **** END DUMMY DATA ****
  
-  var counter = 0;
-  
-  // populate colors for device doughnut
-  for(var key in $scope.data.campaign.analytics.device) {
-    $scope.data.campaign.analytics.device[key].color = colors[counter];
-    counter++;
-  }
-  
-  counter = 0;
-  
-  // populate colors for client doughnut
-  for(var key in $scope.data.campaign.analytics.email_client) {
-    $scope.data.campaign.analytics.email_client[key].color = colors[counter];
-    counter++;
-  }
 
-}]);

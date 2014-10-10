@@ -8,7 +8,6 @@ angular.module('clickaroos.dashboard')
 
     $http.get('/api/campaigns/recent')
       .success(function(data, status, headers, config) {
-        console.log('data from server: ', data);
         deferred.resolve(data);
       }).error(function(data, status, headers, config) {
         deferred.reject(new Error(data));

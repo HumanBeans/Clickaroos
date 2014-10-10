@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////
 // API's Request Handlers
 var abTestRequestHandlers = require( './api/ab_tests/main' );
-var campaginRequestHandlers = require('./api/campaigns/main');
+var campaignRequestHandlers = require('./api/campaigns/main');
 var queryRequestHandlers = require('./api/queries/main');
 var timerRequestHandlers = require('./api/timers/main');
 var userRequestHandlers = require('./api/users/main');

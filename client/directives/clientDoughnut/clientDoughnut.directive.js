@@ -1,28 +1,22 @@
 angular.module('clickaroos.directives.clientDoughnutDirective', [])
 
 .directive('clientDoughnutDirective', [function() {
-  return {
-    restrict: 'A',
-    
-    scope: {
-      //these options bind scope data to attributes on HTML element with directive attached
-      data: '=ngModel',
-      options: '=',
-    },
+    return {
+      restrict: 'A',
+      
+      scope: {
+        //these options bind scope data to attributes on HTML element with directive attached
+        data: '=ngModel',
+        options: '=',
+      },
 
-    link: function(scope, element, attrs) {
-      var ctx = element[0].getContext("2d");
-      var counter = 0;
-      var chartData = [];
+      link: function(scope, element, attrs) {
+        scope.$on('dataReady', function() {
+          console.log('client doughnut directive');
 
-      //populate chartData with properly formatted from scope.data
-      for(var key in scope.data.campaign.analytics.email_client) {
-        
-        chartData.push({
-          value: scope.data.campaign.analytics.email_client[key].value,
-          color: scope.data.campaign.analytics.email_client[key].color,
-          label: key
-        });
+          var ctx = element[0].getContext("2d");
+          var counter = 0;
+          var chartData = [];
 
         counter++;
       }
@@ -43,7 +37,8 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
       ctx.canvas.width = 200;
       ctx.canvas.height= 200;
 
-      var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
-    }
-  };
+          var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
+        });
+      }
+    };
 }]);

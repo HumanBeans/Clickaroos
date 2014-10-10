@@ -11,7 +11,7 @@
     <div id="filter-campaigns">
       <h3>Recent Campaigns:</h3>
       <ul id="select-campaign">
-        <li ng-repeat="campaign in recentCampaigns" id="{{ campaign.campaign_id }}" ng-click="getCampaignData(campaign.campaign_id)">{{ campaign.campaign_title }}</li>
+        <li ng-repeat="campaign in recentCampaigns" data="{{ campaign }}" ng-click="getCampaignData(campaign)">{{ campaign.campaign_title }}</li>
       </ul>
     </div>
   </div>
