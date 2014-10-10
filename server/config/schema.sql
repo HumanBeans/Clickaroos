@@ -136,7 +136,8 @@ CREATE TABLE ab_click_device(
   android_phone BIGINT DEFAULT 0,
   android_pad BIGINT DEFAULT 0,
   desktop BIGINT DEFAULT 0,
-  device_other BIGINT DEFAULT 0
+  device_other BIGINT DEFAULT 0,
+  PRIMARY KEY(ab_test_id)
 );
 
 /* test data */
