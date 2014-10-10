@@ -2,8 +2,14 @@
 
 var User = require('../api/users/user.query');
 var Campaign = require('../api/campaigns/campaign.query');
-// var connection = require('./dbconnection.js').connection;
-var connection = require('./dbconnection.js').testingConnection;
+var connection = require('./dbconnection.js').connection;
+// var connection = require('./dbconnection.js').testingConnection;
+var bookshelf = require('./dbconfig');
+
+// var User = bookshelf.Model.extend({
+//   tableName: 'users'
+// });
+
 var Q = require('q');
 var query = Q.nbind(connection.query, connection);
 
@@ -22,17 +28,18 @@ var user2 = {
 };
 
 // the test campaigns user_id will always be set to 1
-var campaign1 = ['Winter Sale', 1, 4000, 10000, 400, 2000, 800, 700, 1000];
-var campaign2 = ['Fall Sale', 1, 3000, 9000, 400, 1500, 600, 500, 700];
-var campaign3 = ['Summer Sale', 1, 1000, 7000, 100, 600, 150, 130, 400];
-var campaign4 = ['Breakfast', 1, 2000, 8000, 200, 500, 100, 100, 300];
-var campaign5 = ['Dinner', 1, 5000, 9000, 300, 600, 700, 200, 500];
+var campaign1 = ['Winter Sale', 1];
+var campaign2 = ['Fall Sale', 1];
+var campaign3 = ['Summer Sale', 1];
+var campaign4 = ['Breakfast', 1];
+var campaign5 = ['Dinner', 1];
 
-var queryString_saveCampaigns = 'INSERT INTO campaigns (campaign_title, user_id, clicks, views, tablet, desktop, android, iphone, webmail) VALUES (?), (?), (?), (?), (?)';
+var queryString_saveCampaigns = 'INSERT INTO campaigns (campaign_title, user_id) VALUES (?), (?), (?), (?), (?)';
 
 query('truncate users')
   .then(function(err, result){ return query('INSERT INTO users SET ?', [user1]);})
   .then(function(err, result){ return query('INSERT INTO users SET ?', [user2]);})
+  .then(function(err, result){return User.forge(user1)})
   .then(function(err, result){ return query('truncate campaigns');})
   .then(function(err, result){
     return query(queryString_saveCampaigns, [campaign1, campaign2, campaign3, campaign4, campaign5])
