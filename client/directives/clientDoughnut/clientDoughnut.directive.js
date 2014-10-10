@@ -40,7 +40,7 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
       };
       
       // set chart dimensions
-      ctx.canvas.width = 350;
+      ctx.canvas.width = 200;
       ctx.canvas.height= 200;
 
       var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
