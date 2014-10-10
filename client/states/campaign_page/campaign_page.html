@@ -12,35 +12,35 @@
     </div>
     <div id="content">
       <h1>Campaign Name: {{ campaignInfo.campaign.campaign_title }}</h1>
-    
-      <br />
-      <br />
-      <h1>Apps</h1>
-
-      <h4>Current Apps</h4>
-
-      <div>
-        <ul>
-          <li ng-repeat="ab_test in campaignInfo.ab_tests">
-            AB Test: {{ ab_test.ab_test_title }}
-            <!-- TODO: Change hard coded to dynamic -->
-            <textarea><a href="http://clickaroos-email-server.azurewebsites.net/site/ab/{{ ab_test.ab_test_id }}/*|EMAIL|*"><img src="http://clickaroos-email-server.azurewebsites.net/img/ab/{{ ab_test.ab_test_id }}/*|EMAIL|*.png" /></a></textarea>
-          </li>
-        </ul>
+      <div class="box100pc">
+        <h3>Current Apps</h3>
+          <ul class="apps-list">
+            <li ng-repeat="ab_test in campaignInfo.ab_tests">
+              <div class="AB-test-block">
+                A/B
+              </div>
+              <div class="generated-snippet-block">
+                <h4>Code:</h4>
+                <xmp><a href="http://clickaroos-email-server.azurewebsites.net/site/ab/{{ ab_test.ab_test_id }}/*|EMAIL|*"><img src="http://clickaroos-email-server.azurewebsites.net/img/ab/{{ ab_test.ab_test_id }}/*|EMAIL|*.png" /></a></xmp>
+              </div>
+              <div class="AB-test-info">
+                {{ ab_test.ab_test_title }}
+              </div>
+              <!-- TODO: Change hard coded to dynamic -->
+            </li>
+          </ul>
+        <!-- TODO: swap out dummy tests with real data -->
+        <!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
+        <br />
+        <a class="btn btn-info" ui-sref="campaign-page.ab-test">Add Switcheroo</a>
       </div>
 
-      <h4>Add Apps</h4>
-      <!-- TODO: swap out dummy tests with real data -->
-      <!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
-      <a class="btn btn-info" ui-sref="campaign-page.ab-test">Add Switcheroo</a>
-      <!-- <a ui-sref="dummy-timer">Add timer</a> -->
-      <!-- <a class="btn btn-warning btn-md" ui-sref="dummy-query">Add RooLogic</a> -->
 
-      <hr>
+      <!-- <hr> -->
 
-      <h1>Reports</h1>
+      <!-- <h1>Reports</h1> -->
       <!-- TODO: Data visualization; use directives? -->
-      
+
     </div>
   </div>
 </div>
