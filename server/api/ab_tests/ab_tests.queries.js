@@ -113,7 +113,7 @@ exports.addABTest = function( res, data, callback ){
             AB_Open_Time.forge({ab_test_id: abtest.attributes.id, campaign_id: abtest.attributes.campaign_id, '0_1': 0, '1_2': 0, '2_3': 0, '3_4': 0, '4_5': 0, '5_6': 0, '6_7': 0, '7_8': 0, '8_9': 0, '9_10': 0, '10_11': 0, '11_12': 0,'12_13': 0, '13_14': 0, '14_15': 0, '15_16': 0, '16_17': 0, '17_18': 0, '18_19': 0, '19_20': 0, '20_21': 0, '21_22': 0, '22_23': 0, '23_24': 0 }).save();
             AB_Click_Time.forge({ab_test_id: abtest.attributes.id, campaign_id: abtest.attributes.campaign_id, '0_1': 0, '1_2': 0, '2_3': 0, '3_4': 0, '4_5': 0, '5_6': 0, '6_7': 0, '7_8': 0, '8_9': 0, '9_10': 0, '10_11': 0, '11_12': 0,'12_13': 0, '13_14': 0, '14_15': 0, '15_16': 0, '16_17': 0, '17_18': 0, '18_19': 0, '19_20': 0, '20_21': 0, '21_22': 0, '22_23': 0, '23_24': 0}).save();
 
-            AB_Click_Device.forge({ab_test_id: abtest.attributes.id, campaign_id: abtest.attributes.campaign_id })
+            AB_Click_Device.forge({ab_test_id: abtest.attributes.id, campaign_id: abtest.attributes.campaign_id }).save();
 
           });
           callback( res, { abTestId: abtest.attributes.id, emailVar: '*|EMAIL|*' } )
