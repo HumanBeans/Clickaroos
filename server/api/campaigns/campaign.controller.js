@@ -39,7 +39,7 @@ exports.show = function(req, res, next){
   Campaign.findById(req.params.campaign, function(err, campaign){
     //the second params campaign is an obj {campaign:xx, ab_tests:xx}
     if(err){
-      return res.json('try agin');
+      return res.json('try again');
     }
     if(!campaign){
       return res.status(401);

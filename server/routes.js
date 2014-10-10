@@ -19,7 +19,7 @@ module.exports = function( app ) {
   app.use('/api/ab_tests', abTestRequestHandlers );
 
   // TODO: require and add request-handler for campaigns
-  app.use('/api/campaigns', campaginRequestHandlers);
+  app.use('/api/campaigns', campaignRequestHandlers);
 
   app.use('/api/images', imagesRequestHandlers);
 

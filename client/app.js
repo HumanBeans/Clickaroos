@@ -8,6 +8,8 @@ angular.module('clickaroos', [
   'clickaroos.directives.clientDoughnutDirective',
   'clickaroos.directives.deviceDoughnutDirective',
   'clickaroos.directives.timeSeriesDirective',
+  'clickaroos.models',
+  'clickaroos.models.campaign',
   'clickaroos.account',
   'clickaroos.dashboard',
   'clickaroos.createCampaign',
