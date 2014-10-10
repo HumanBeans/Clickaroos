@@ -4,22 +4,9 @@ angular.module('clickaroos.dashboard', [])
   
   var counter = 0;
   var colors = ['#F25F51', '#F5CF32', '#56D9CD', '#3AA1BF', '#9ED960', '#CC1479', '#19E9FF', '#FFDC19'];
-  // $scope.selectedIndex = 0;
-  $scope.recentCampaigns = recentCampaigns;
-  console.log('campaignData: ', campaignData);
-  $scope.data = campaignData;
-
-  console.log('$scope.data: ', $scope.data);
   
-  // Get most recent campaigns from server
-  // Dashboard.getRecentCampaigns()
-  //   .then(function(campaigns) {
-  //     $scope.recentCampaigns = campaigns;
-  //     return campaigns;
-  //   })
-  //   .then(function(campaigns) {
-  //     $scope.getCampaignData(campaigns[0]);
-  //   });
+  $scope.recentCampaigns = recentCampaigns;
+  $scope.data = campaignData;
 
   // Get data for single campaign
   $scope.getCampaignData = function(campaign) {
@@ -43,65 +30,7 @@ angular.module('clickaroos.dashboard', [])
     $scope.data.analytics.email_client[key].color = colors[counter];
     counter++;
     }  
-  
-  console.log('$scope.data: ', $scope.data);  
-
-
 }]);
-  //WTF??  
-  // $scope.itemClicked = function ($index) {
-  //   console.log('itemClicked called');
-  //   $scope.selectedIndex = $index;
-  //   console.log($scope.selectedIndex);
-  // };
 
-  // $scope.getRecentCampaigns = Dashboard.getRecentCampaigns;
-
-
-  // colors to be used in analytics charts
-
-  // // **** DUMMY DATA FOR DIRECTIVE TESTING ****
-  // $scope.data = {};
-  // $scope.data.campaign = {};
-  // $scope.data.campaign.analytics = {};
-  // $scope.data.campaign.analytics.rawData = {};
-  // $scope.data.campaign.analytics.rawData.clicks = {};
-  // $scope.data.campaign.analytics.rawData.opens = {};
-
-  // // dummy for device doughnut
-  // $scope.data.campaign.analytics.device = {};
-  // $scope.data.campaign.analytics.device['android'] = {label: 'Android', value: 40};
-  // $scope.data.campaign.analytics.device['iphone'] = {label: 'iPhone',value: 20};
-  // $scope.data.campaign.analytics.device['desktop'] = {label: 'Desktop',value: 30};
-  // $scope.data.campaign.analytics.device['tablet'] = {label: 'Tablet',value: 10};
-
-  // // dummy for client doughnut
-  // $scope.data.campaign.analytics.email_client = {};
-  // $scope.data.campaign.analytics.email_client['webmail'] = {label: 'Web mail',value: 65};
-  // $scope.data.campaign.analytics.email_client['outlook'] = {label: 'Outlook',value: 25};
-  // $scope.data.campaign.analytics.email_client['apple_mail'] = {label: 'Apple Mail',value: 10};
-
-  // // dummy for time series
-  // /// clicks
-  // $scope.data.campaign.analytics.rawData.clicks.data = [16,7,4,0,14,22,12,12,3,10,30,35,27,10,12,8,10,2,1,3,1,7,11,15];
-  // $scope.data.campaign.analytics.rawData.clicks.total = 0;
-  // $scope.data.campaign.analytics.rawData.clicks.data.forEach(function(element, index, array) {
-  //   $scope.data.campaign.analytics.rawData.clicks.total += element;
-  // });
-  // $scope.data.campaign.analytics.rawData.clicks.color = 'rgba(255,241,14,';
-  // $scope.data.campaign.analytics.rawData.clicks.label = 'Clicks';
-
-  // /// opens 
-  // $scope.data.campaign.analytics.rawData.opens.data = [35,25,28,30,20,40,45,50,29,19,66,57,55,68,33,24,22,9,11,19,18,24,23,39];
-  // $scope.data.campaign.analytics.rawData.opens.total = 0;
-  // $scope.data.campaign.analytics.rawData.opens.data.forEach(function(element, index, array) {
-  //   $scope.data.campaign.analytics.rawData.opens.total += element;
-  // });
-  // $scope.data.campaign.analytics.rawData.opens.color = 'rgba(25,196,255,';
-  // $scope.data.campaign.analytics.rawData.opens.label = 'Opens';
-
-  // // CTR
-  // $scope.data.campaign.analytics.rawData.ctr = ($scope.data.campaign.analytics.rawData.clicks.total / $scope.data.campaign.analytics.rawData.opens.total).toFixed(3);
-  // // **** END DUMMY DATA ****
  
 
