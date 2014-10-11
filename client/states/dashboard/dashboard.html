@@ -34,12 +34,12 @@
 
           <div class="each-stat">
             <h3 class="">CTR</h3>
-            <h4 class="">{{ data.analytics.rawData.clicks.total / data.analytics.rawData.opens.total * 100 }}%</h4>
+            <h4 class="">{{ data.analytics.rawData.clicks.total / data.analytics.rawData.opens.total * 100 | number : 2 }}%</h4>
           </div>
         </div>
       </div>
       
-      <!-- Row 3 of dashboard -->
+      <!-- Row 2 of dashboard -->
       <div id="time-chart" class="stat-container">
         <h3>Clicks & Opens per Time of Day</h3>
         <br />
@@ -57,25 +57,25 @@
       </div>
 
 
-      <!-- Row 2 of dashboard -->
+      <!-- Row 3 of dashboard -->
       <div class="stat-container">
 
         <div class="dashboard-doughnut-container">
-          <h2 class="dashboard-subheader">Client</h2>
-          <canvas client-doughnut-directive ng-model="data" options="options"></canvas>
+          <h2 class="dashboard-subheader">Opens</h2>
+          <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
           <div class="doughnut-legend" ng-model="data">
             <ul class="legend-list" style="list-style-type:none">
-              <li ng-repeat="client in data.analytics.email_client">
-                <span>{{ client.label }}<span>:
-                <span>{{ client.value }}</span>
-                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ client.color }};"></div>
+              <li ng-repeat="device in data.analytics.device_open">
+                <span>{{ device.label }}<span>:
+                <span>{{ device.value }}</span>
+                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div>
               </li>
             </ul>
           </div>
         </div>
 
         <div class="dashboard-doughnut-container">
-          <h2 class="dashboard-subheader">Device</h2>
+          <h2 class="dashboard-subheader">Clicks</h2>
           <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
           <div class="doughnut-legend" ng-model="data">
             <ul class="legend-list" style="list-style-type:none">

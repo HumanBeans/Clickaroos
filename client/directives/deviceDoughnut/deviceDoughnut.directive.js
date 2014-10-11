@@ -23,7 +23,7 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
         var counter = 0;
 
         //populate chartData with properly formatted from scope.data
-        for(var key in scope.data.analytics.device){  
+        for(var key in scope.data.analytics.device_click){  
           chartData.push({
             value: scope.data.analytics.device_click[key].value,
             color: scope.data.analytics.device_click[key].color,
