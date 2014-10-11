@@ -42,7 +42,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://www.github.com/HumanBeans/Clickaroos/issues)
 
 
 ## Contributing
