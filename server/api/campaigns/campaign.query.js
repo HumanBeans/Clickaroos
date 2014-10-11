@@ -61,6 +61,7 @@ var save = function(user_id, campaignObj, callback){
 var findById = function(campaign_id, callback){
   var result = {};
   result.analytics = {rawData:{}, device_open:{}, device_click:{}};
+
   // result.analytics.device = device_dummy_data;
   result.analytics.email_client = email_client_dummy_data;
   result.analytics.rawData.clicks = {};
@@ -76,15 +77,40 @@ var findById = function(campaign_id, callback){
   Campaign.where({campaign_id:campaign_id}).fetch()
     .then(function(campaign){
       result.campaign = campaign.attributes;
-
+      result.analytics.rawData.clicks.total = campaign.attributes.clicks;
+      result.analytics.rawData.opens.total = campaign.attributes.views;
       //pass the device data into analytics
 
-      result.analytics.device_open.iphone = campaign.attributes.iphone;
-      result.analytics.device_open.ipad = campaign.attributes.ipad;
-      result.analytics.device_open.android_phone = campaign.attributes.android_phone;
-      result.analytics.device_open.android_pad = campaign.attributes.android_pad;
-      result.analytics.device_open.desktop = campaign.attributes.desktop;
-      result.analytics.device_open.device_other = campaign.attributes.device_other;
+      result.analytics.device_open.iphone = {
+        label: 'iPhone',
+        value: campaign.attributes.iphone,
+        color: ''
+      };
+      result.analytics.device_open.ipad = {
+        label: 'iPad',
+        value: campaign.attributes.ipad,
+        color: ''
+      };
+      result.analytics.device_open.android_phone = {
+        label: 'Android phone',
+        value: campaign.attributes.android_phone,
+        color: ''
+      };
+      result.analytics.device_open.android_pad = {
+        label: 'Android tablet',
+        value: campaign.attributes.android_pad,
+        color: ''
+      };
+      result.analytics.device_open.desktop = {
+        label: 'Desktop',
+        value: campaign.attributes.desktop,
+        color: ''
+      };
+      result.analytics.device_open.device_other = {
+        label: 'Others',
+        value: campaign.attributes.device_other,
+        color: ''
+      };
 
       return ABTest.collection().query().where({campaign_id: campaign_id}).select();
     })
@@ -98,6 +124,8 @@ var findById = function(campaign_id, callback){
     .then(function(abOpenTime){
       abOpenTime.forEach(function(item){
         result.analytics.rawData.abTestId = item.ab_test_id;
+        delete item.ab_test_id;
+        delete item.campaign_id;
         for (var key in item){
           result.analytics.rawData.opens.data.push(item[key]);
         }
@@ -108,6 +136,8 @@ var findById = function(campaign_id, callback){
     .then(function(abClickTime){
       // console.log('result+++++++', result);
       abClickTime.forEach(function(item){
+        delete item.ab_test_id;
+        delete item.campaign_id;
         for (var key in item){
           result.analytics.rawData.clicks.data.push(item[key]);
         }
@@ -117,27 +147,47 @@ var findById = function(campaign_id, callback){
     })
     .then(function(abClickDevice){
 
-
-      result.analytics.device_click = {
-        'iphone': 0,
-        'ipad': 0,
-        'android_phone': 0,
-        'android_pad': 0,
-        'desktop': 0,
-        'device_other': 0
+      result.analytics.device_click.iphone = {
+        label: 'iPhone',
+        value: 0,
+        color: ''
+      };
+      result.analytics.device_click.ipad = {
+        label: 'iPad',
+        value: 0,
+        color: ''
+      };
+      result.analytics.device_click.android_phone = {
+        label: 'Android phone',
+        value: 0,
+        color: ''
+      };
+      result.analytics.device_click.android_pad = {
+        label: 'Android tablet',
+        value: 0,
+        color: ''
+      };
+      result.analytics.device_click.desktop = {
+        label: 'Desktop',
+        value: 0,
+        color: ''
+      };
+      result.analytics.device_click.device_other = {
+        label: 'Others',
+        value: 0,
+        color: ''
       };
 
       abClickDevice.forEach(function(item){
-        result.analytics.device_click.iphone += item.iphone;
-        result.analytics.device_click.ipad += item.ipad;
-        result.analytics.device_click.android_phone += item.android_phone;
-        result.analytics.device_click.android_pad += item.android_pad;
-        result.analytics.device_click.desktop += item.desktop;
-        result.analytics.device_click.device_other += item.device_other;
-      })
 
-      result.analytics.device_open.iphone
+        result.analytics.device_click.iphone.value += item.iphone;
+        result.analytics.device_click.ipad.value += item.ipad;
+        result.analytics.device_click.android_phone.value += item.android_phone;
+        result.analytics.device_click.android_pad.value += item.android_pad;
+        result.analytics.device_click.desktop.value += item.desktop;
+        result.analytics.device_click.device_other.value += item.device_other;
 
+      });
 
       console.log('===========', result);
       callback(undefined, result);
