@@ -6,37 +6,39 @@ $nav-height: 68px;
 .campaign-list {
   margin: auto;
   width: 95%;
+  
+  table {
+    margin: auto;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: white;
+  }
+
+  table, th, td, tr {
+    padding: 7px;
+  }
+
+  th {
+    padding: 10px;
+    background-color: $primary-color;
+    font-family: 'Oswald', Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  tr:nth-child(odd) {
+    background-color: rgba(0,0,0,0.04);
+  }
 }
 
-table {
-  margin: auto;
-  margin-bottom: 10px;
-  width: 100%;
-  background-color: white;
-}
-
-table, th, td, tr {
-  padding: 7px;
-}
 
 a, a:hover {
   color: black;
   text-decoration: none;
 }
 
-th {
-  padding: 10px;
-  background-color: $primary-color;
-  font-family: 'Oswald', Helvetica, Sans-Serif;
-  font-weight: normal;
-  font-size: 1.1em;
-  text-transform: uppercase;
-  color: white;
-}
-
-tr:nth-child(odd) {
-  background-color: rgba(0,0,0,0.04);
-}
 
 .campaign-name {
   font-weight: bold;
