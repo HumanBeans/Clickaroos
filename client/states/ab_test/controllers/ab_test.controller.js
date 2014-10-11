@@ -13,6 +13,8 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
     console.log('AbTest.abTestTitle', AbTest.abTestTitle);
   });
 
+  $scope.loading = AbTest.loading;
+
   $scope.imagesAndReroutes = AbTest.imagesAndReroutes;
   $scope.addImageAndReroute = AbTest.addImageAndReroute;
   $scope.time = AbTest.time;
