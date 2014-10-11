@@ -1,12 +1,12 @@
-# Project Name
+# Clickaroos
 
-> Pithy project description
+> An email-marketing tool that allows marketing teams to easily A/B test images.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Dara Bun ([darabun](http://www.github.com/darabun))
+  - __Scrum Masters__: Ly Mai Le ([lmle](http://www.github.com/lmle)), Joe Lowinske ([lowi0008](http://www.github.com/lowi0008))
+  - __Development Team Members__: Haiming Bao ([nrobeR](http://www.github.com/nrobeR)), Armando Perez ([armandopmj](http://www.github.com/armandopmj))
 
 ## Table of Contents
 
@@ -24,11 +24,9 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node/Express
+- MySQL/Bookshelf
+- Angular
 
 ## Development
 
