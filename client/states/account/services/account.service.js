@@ -14,11 +14,11 @@ angular.module('clickaroos.account')
   // Helper functions
   //
 
-  var submitSuccess = function(data, status, headers, config) {
+  var submitSuccess = function(redirect, data, status, headers, config) {
     console.log('submitSuccess');
     $window.sessionStorage.token = data.token;
     console.log('$window.sessionStorage.token', $window.sessionStorage.token);
-    $state.go('dashboard');
+    $state.go(redirect);
   };
 
   var submitError = function(data, status, headers, config) {
@@ -45,7 +45,7 @@ angular.module('clickaroos.account')
     ).success(function(data, status, headers, config) {
       factory.loading.login = false;
       // TODO: Should token be saved in global services?
-      submitSuccess(data, status, headers, config);
+      submitSuccess('dashboard', data, status, headers, config);
     }).error(function(data, status, headers, config) {
       factory.loading.login = false;
       // TODO: login error
@@ -66,7 +66,7 @@ angular.module('clickaroos.account')
     ).success(function(data, status, headers, config) {
       factory.loading.signup = false;
       // TODO: Should token be saved in global services?
-      submitSuccess(data, status, headers, config);
+      submitSuccess('create-campaign', data, status, headers, config);
     }).error(function(data, status, headers, config) {
       factory.loading.signup = false;
       // TODO: login error
