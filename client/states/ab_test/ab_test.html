@@ -17,23 +17,23 @@
     <div>
       <input type="text" ng-model="abTestTitle" placeholder="A/B Test Name"></input>
 
-      <h3>Images to A/B Test</h3>
+      <h3>Images to A/B Test<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.uploadBlob"></i></h3>
       <div class="section-container">
       <!-- ng-file-upload -->
         <div>
           <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
           <div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
           <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
-                ng-show="dropSupported" style="height: 180px; width: 100%; text-align: center; border: 3px dashed rgb(216, 216, 216); color: rgb(216, 216, 216); background: #FFF; padding: 20px"><i class="glyphicon glyphicon-picture" style="font-size: 80px;color:  rgb(216, 216, 216);"></i><h2>OR, DRAG & DROP FILES HERE</h2></div>
+                ng-show="dropSupported" style="margin-bottom: 30px; height: 180px; width: 100%; text-align: center; border: 3px dashed rgb(216, 216, 216); color: rgb(216, 216, 216); background: #FFF; padding: 20px"><i class="glyphicon glyphicon-picture" style="font-size: 80px;color:  rgb(216, 216, 216);"></i><h2>OR, DRAG & DROP FILES HERE</h2></div>
           <div ng-file-drop-available="dropSupported=true" 
                 ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
           <!-- <button ng-click="upload.abort()">Cancel Upload</button> -->
         </div>
 
-        <div ng-repeat="imageAndReroute in imagesAndReroutes">
+        <div style="text-align: center;" ng-repeat="imageAndReroute in imagesAndReroutes">
           <p>
           <img style="width: 100px;" ng-src="{{ imageAndReroute.imageUrl }}" />
-          <input type="text" placeholder="http://redirect-url-here.com" ng-model="imageAndReroute.rerouteUrl" />
+          <input type="text" style="display: inline-block !important; width: 80%;" placeholder="http://redirect-url-here.com" ng-model="imageAndReroute.rerouteUrl" />
           </p>
         </div>
 
@@ -108,34 +108,12 @@
         </div>
         <!-- <input class="winner-minutes" type="number" min="0" max="60" ng-model="time.timeAfterStart.minutes"></input> Minutes -->
 
-       <hr>
-
         <!-- Using ng-click because ng-submit considers button clicks as submits, and there are buttons littered throughout the HTML -->
-        <button class="btn btn-info generate-img" type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)">Generate Image</button>
       </div>
+
+      <button class="btn btn-info generate-img" type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)" style="margin-top: 30px;">Make my Switcharoo!<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.makeABTest"></i></button>
     </div>
     </form>
-
-    <div class="section-container generated-image-box">
-      <!-- TODO: click and copies -->
-      <h4>Use the below code in your email:</h4>
-      <!-- <h3>Image Link:</h3>
-      <span><code>
-        {{ productUrls.imageUrl }}
-      </code></span>
-      <h3>Reroute Link:</h3>
-      <span><code>
-        {{ productUrls.rerouteUrl }}
-      </code></span>
-
-      <h3>Copy and paste me!</h3> -->
-      <textarea><a href="{{ productUrls.rerouteUrl }}"><img src="{{ productUrls.imageUrl }}.png" /></a>
-      </textarea>
-
-      <!-- TODO: Generate a <a href...><img src...></img></a> code block example -->
-      <!-- TODO: swap out dummy routes with real routes -->
-      <!-- <p><a ui-sref="dummy-campaign">Add AB test (for rerouting purposes only)</a></p> -->
-    </div>
 
   </div>
 </div>

@@ -5,21 +5,27 @@ angular.module('clickaroos.account')
 
   factory.loginView = true;
 
+  factory.loading = {
+    login: false,
+    signup: false
+  };
+
   ////////////////////////////////////////////////////
   // Helper functions
   //
 
-  var submitSuccess = function(data, status, headers, config) {
+  var submitSuccess = function(redirect, data, status, headers, config) {
     console.log('submitSuccess');
     $window.sessionStorage.token = data.token;
     console.log('$window.sessionStorage.token', $window.sessionStorage.token);
-    $state.go('dashboard');
+    $state.go(redirect);
   };
 
   var submitError = function(data, status, headers, config) {
     console.log('submitError');
     Logout.deleteSessionToken();
     console.log('$window.sessionStorage', $window.sessionStorage);
+    alert('There appears to be an error.\n' + data);
   };
 
   //
@@ -27,6 +33,8 @@ angular.module('clickaroos.account')
   ////////////////////////////////////////////////////
 
   factory.submitLogin = function(user) {
+    factory.loading.login = true;
+
     console.log('submitLogin');
     console.log('username', user.username);
     console.log('password', user.password);
@@ -35,16 +43,19 @@ angular.module('clickaroos.account')
       appServerUrl+'/auth',
       user
     ).success(function(data, status, headers, config) {
+      factory.loading.login = false;
       // TODO: Should token be saved in global services?
-      submitSuccess(data, status, headers, config);
+      submitSuccess('dashboard', data, status, headers, config);
     }).error(function(data, status, headers, config) {
+      factory.loading.login = false;
       // TODO: login error
       submitError(data, status, headers, config);
-      alert('Login error.');
     });
   };
 
   factory.submitSignup = function(user) {
+    factory.loading.signup = true;
+
     console.log('submitSignup');
     console.log('username', user.username);
     console.log('password', user.password);
@@ -53,12 +64,13 @@ angular.module('clickaroos.account')
       appServerUrl+'/api/users',
       user
     ).success(function(data, status, headers, config) {
+      factory.loading.signup = false;
       // TODO: Should token be saved in global services?
-      submitSuccess(data, status, headers, config);
+      submitSuccess('create-campaign', data, status, headers, config);
     }).error(function(data, status, headers, config) {
+      factory.loading.signup = false;
       // TODO: login error
       submitError(data, status, headers, config);
-      alert('Signup error.');
     });
   };
   

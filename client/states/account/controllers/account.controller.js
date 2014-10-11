@@ -8,6 +8,8 @@ angular.module('clickaroos.account', [])
   	password: ''
   };
 
+  $scope.loading = Account.loading;
+
   $scope.$watch(function () { return Account.loginView }, function () {
     $scope.loginView = Account.loginView;
   });

@@ -4,9 +4,13 @@ angular.module('clickaroos.abTest')
   var factory = {};
 
   factory.abTestTitle = null;
-
   factory.campaignId = null;
   
+  factory.loading = {
+    makeABTest: false,
+    uploadBlob: false
+  };
+
   factory.time = {
     start: new Date(),
     timeAfterStart: {
@@ -38,6 +42,7 @@ angular.module('clickaroos.abTest')
   };
 
   factory.submitImagesAndReroutes = function() {
+    factory.loading.makeABTest = true;
 
     // Convert hours and minutes to milliseconds for easier conversion to Date object with 'new Date(milliseconds)'
     var millisecondsAfterStart = (factory.time.timeAfterStart.hours*60 + factory.time.timeAfterStart.minutes)*60*1000;
@@ -59,6 +64,7 @@ angular.module('clickaroos.abTest')
       appServerUrl+'/api/ab_tests',
       dataToServer
     ).success(function(data, status, headers, config) {
+      factory.loading.makeABTest = false;
       // TODO: Change global appServerUrl properly
       var appServerUrl = 'http://clickaroos-email-server.azurewebsites.net';
       console.log('data from submit:', data);
@@ -67,20 +73,22 @@ angular.module('clickaroos.abTest')
       // console.log('factory.productUrls', factory.productUrls);
 
       var template = '<div class="dialog-contents">' +
-                        '<h4>Your image has been created!</h4>' +
-                        '<div>Copy & paste the below code into your email campaign</div>' +
-                        '<textarea>' +
-                          '<a href="' + factory.productUrls.rerouteUrl + '">' +
+                        '<h4>Your HTML tags have been created!</h4>' +
+                        'Be sure to copy and paste the HTML snippet into your email campaign.' +
+                        '<textarea style="display: block; margin: 10px auto; height: 75px; width: 95%;">' +
+                          '<a href="'+ factory.productUrls.rerouteUrl + '">' +
                             '<img src="' + factory.productUrls.imageUrl + '" />' +
                           '</a>' +
                         '</textarea>' +
-                        '<button class="btn btn-info" ui-sref="dashboard" ng-click="closeThisDialog()">Take me back to the dashboard</button>'
+                        '<button class="btn btn-info" ui-sref="dashboard" ng-click="closeThisDialog()"><i style="margin-right: 10px;" class="glyphicon glyphicon-share-alt"></i>Back to my Dashboard</button>'
                       '</div>';
       
       ngDialog.open( {  template: template,
                         plain: true,
                         className: 'ngdialog-theme-default' } );
 
+    }).error(function(data) {
+      alert('There appears to be an error.\n'+data);
     });
 
   };
@@ -92,6 +100,7 @@ angular.module('clickaroos.abTest')
   factory.upload = $upload.upload;
 
   factory.onFileSelect = function($files) {
+    factory.loading.uploadBlob = true;
 
     console.log('$files:', $files);
     //$files: an array of files selected, each file has name, size, and type.
@@ -99,26 +108,20 @@ angular.module('clickaroos.abTest')
 
       var file = $files[i];
       factory.upload = $upload.upload({
-      
         url: appServerUrl+'/api/images',
         method: 'POST',
         file: file
-      
       }).progress(function(evt) {
-      
         // TODO: Make a loading bar for each image
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-      
       }).success(function(data, status, headers, config) {
-      
+        factory.loading.uploadBlob = false;
         console.log('data', data);
         console.log('imageUrl', data.imageUrl);
         factory.addImageAndReroute(data.imageUrl);
-      
-      }).error(function() {
-
-        console.log('onFileSelect: error!');
-      
+      }).error(function(data) {
+        factory.loading.uploadBlob = false;
+        alert('There appears to be an error.\n'+data);
       });
 
     }

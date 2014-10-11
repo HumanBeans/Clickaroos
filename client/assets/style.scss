@@ -30,11 +30,13 @@ canvas {
  float: left;  
 }
 
-.dashboard-doughnut-container {
-  canvas {
-    margin-left: 30px;
-    padding: 10px;
-  }
+input {
+  margin-bottom: 25px;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px;
 }
 
 #view-container {
@@ -104,13 +106,6 @@ canvas {
   
   h1 span {
     font-weight: 100;
-  }
-
-  input {
-    margin-bottom: 25px;
-    width: 100%;
-    display: block;
-    padding: 10px;
   }
 
   label {
@@ -226,4 +221,20 @@ canvas {
   font-family: 'Oswald';
   margin: 0;
   padding: 0;
+}
+
+.glyphicon-refresh-animate {
+  margin-left: 10px;
+  -animation: spin 1s infinite linear;
+  -webkit-animation: spin2 1s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
 }
