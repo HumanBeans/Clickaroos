@@ -1,6 +1,6 @@
 angular.module('clickaroos.abTest')
 
-.factory('AbTest', ['$http', '$upload', 'appServerUrl', function($http, $upload, appServerUrl) {
+.factory('AbTest', ['$http', '$upload', 'appServerUrl', 'ngDialog', function($http, $upload, appServerUrl, ngDialog) {
   var factory = {};
 
   factory.abTestTitle = null;
@@ -64,7 +64,23 @@ angular.module('clickaroos.abTest')
       console.log('data from submit:', data);
       factory.productUrls.imageUrl = appServerUrl+'/img/ab/'+data.abTestId+'/'+data.emailVar;
       factory.productUrls.rerouteUrl = appServerUrl+'/site/ab/'+data.abTestId+'/'+data.emailVar;
-      console.log('factory.productUrls', factory.productUrls);
+      // console.log('factory.productUrls', factory.productUrls);
+
+      var template = '<div class="dialog-contents">' +
+                        '<h4>Your html tags have been created!</h4>' +
+                        '<h4>Be sure to copy and paste the below html snippet into your email campaign</h4>' +
+                        '<textarea>' +
+                          '<a href="'+ factory.productUrls.rerouteUrl + '">' +
+                            '<img src="' + factory.productUrls.imageUrl + '" />' +
+                          '</a>' +
+                        '</textarea>' +
+                        '<button ui-sref="dashboard" ng-click="closeThisDialog()"> Dashboard </button>'
+                      '</div>';
+      
+      ngDialog.open( {  template: template,
+                        plain: true,
+                        className: 'ngdialog-theme-default' } );
+
     });
 
   };
