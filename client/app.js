@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clickaroos', [
-  'ui.router',
+  'ui.router',  
   'ui.bootstrap',
   'clickaroos.config',
   'clickaroos.directives',
@@ -16,7 +16,8 @@ angular.module('clickaroos', [
   'clickaroos.campaignPage',
   'clickaroos.abTest',
   'clickaroos.dashboard',
-  'clickaroos.campaignList'
+  'clickaroos.campaignList',
+  'ngDialog'
 ])
 
 // todo: Update accordingly

@@ -69,7 +69,14 @@ angular.module('clickaroos.abTest', ['ui.bootstrap', 'angularFileUpload'])
   // For Angular/Bootstrap Timepicker Directive
   //
 
-  $scope.mytime = new Date();
+  // Set AB test start time to be an the next closest hour
+  //    Example: current time: 10:21am >> 11:00am
+  var displayTime = new Date();
+  displayTime.setHours( displayTime.getHours()+1 )
+  if( displayTime.getMinutes() !== 0 ) {
+    displayTime.setMinutes(0)
+  }
+  $scope.mytime = displayTime;
 
   $scope.hstep = 1;
   $scope.mstep = 15;
