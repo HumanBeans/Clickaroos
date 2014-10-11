@@ -30,6 +30,13 @@ canvas {
  float: left;  
 }
 
+.dashboard-doughnut-container {
+  canvas {
+    margin-left: 30px;
+    padding: 10px;
+  }
+}
+
 #view-container {
   height: 100%;
 }

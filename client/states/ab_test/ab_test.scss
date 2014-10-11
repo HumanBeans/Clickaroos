@@ -46,10 +46,24 @@
   }
 }
 
-.winner-hour {
+.dialog-contents {
+  text-align: center;
+  padding: 1.3em;
 
-}
+  textarea {
+    width: 100%;
+    font-size: 12px;
+    text-align: left;
+    height: 95px;
+  }
 
-.winner-minutes {
+  div {
+    margin: 16px 0;
+    font-size: 13px;
+  }
 
+  .btn {
+    margin-top: 12px;
+    width: 100%;
+  }
 }

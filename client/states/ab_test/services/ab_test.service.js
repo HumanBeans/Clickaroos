@@ -67,14 +67,14 @@ angular.module('clickaroos.abTest')
       // console.log('factory.productUrls', factory.productUrls);
 
       var template = '<div class="dialog-contents">' +
-                        '<h4>Your html tags have been created!</h4>' +
-                        '<h4>Be sure to copy and paste the below html snippet into your email campaign</h4>' +
+                        '<h4>Your image has been created!</h4>' +
+                        '<div>Copy & paste the below code into your email campaign</div>' +
                         '<textarea>' +
-                          '<a href="'+ factory.productUrls.rerouteUrl + '">' +
+                          '<a href="' + factory.productUrls.rerouteUrl + '">' +
                             '<img src="' + factory.productUrls.imageUrl + '" />' +
                           '</a>' +
                         '</textarea>' +
-                        '<button ui-sref="dashboard" ng-click="closeThisDialog()"> Dashboard </button>'
+                        '<button class="btn btn-info" ui-sref="dashboard" ng-click="closeThisDialog()">Take me back to the dashboard</button>'
                       '</div>';
       
       ngDialog.open( {  template: template,
