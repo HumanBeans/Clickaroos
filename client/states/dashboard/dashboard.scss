@@ -123,6 +123,20 @@ $nav-height: 68px;
   height: 80%;
   width: 40%;
   float: left;
+
+  table {
+    width: 100%;
+  }
+
+  td {
+    background-color: white;
+    padding: 0px !important;
+    font-family: $font-stack;
+  }
+
+  td.device-label {
+    font-weight: bold;
+  }
 }
 
 .time-series-legend {
@@ -166,18 +180,4 @@ $nav-height: 68px;
 
 h4 {
   font-family: $font-stack;
-}
-
-table {
-  width: 95%;
-}
-
-td {
-  background-color: white;
-  padding: 0px !important;
-  font-family: $font-stack;
-}
-
-td.device-label {
-  font-weight: bold;
 }
