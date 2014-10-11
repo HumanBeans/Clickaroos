@@ -13,7 +13,7 @@ $nav-height: 68px;
     margin-bottom: 30px; 
   }
 
-  input {
+  input, button {
     margin-bottom: 25px;
     width: 300px;
     display: block;
@@ -23,6 +23,6 @@ $nav-height: 68px;
 
 .switchLoginSignupView {
   cursor: pointer;
-  color: $secondary-color;
-  border-bottom: 2px dotted $secondary-color;
+  color: $primary-color;
+  border-bottom: 2px dotted $primary-color;
 }

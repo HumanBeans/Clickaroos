@@ -16,7 +16,7 @@
       <label for="campaignname-input">Campaign Name: </label>
       <input id="campaignname-input" type="text" name="campaign-title" ng-model="campaignInfo.campaign_title"></input>
       <!-- TODO: Campaign folder -->
-      <input class="btn btn-info" type="submit" name="createCampaign"></input>
+      <button class="btn btn-info create-campaign" type="submit" name="createCampaign">Create<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.createCampaign"></i></button>
     </form>
   </div>
 </div>

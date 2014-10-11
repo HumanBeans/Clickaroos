@@ -21,7 +21,7 @@
 
         <label for="password-input">Password: </label>
         <input id="password-input" type="password" name="password" ng-model="user.password"></input>
-        <input class="btn btn-info" type="submit" name="login"></input>
+        <button class="btn btn-info" type="submit" name="login">Login<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.login"></i></button>
       </form>
       <p>Don't have an account?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Sign up</span></p>
     </div>
@@ -34,7 +34,7 @@
         <input id="username-input" type="text" name="username" ng-model="user.username"></input>
         <label for="password-input">Password: </label>
         <input id="password-input" type="password" name="password" ng-model="user.password"></input>
-        <input class="btn btn-info" type="submit" name="signup"></input>
+        <button class="btn btn-info" type="submit" name="signup">Sign Up<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.signup"></i></button>
       </form>
       <p>Already a customer?   <span class="switchLoginSignupView" ng-click="switchLoginSignupView()">Log in</span></p>
     </div>

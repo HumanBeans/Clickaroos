@@ -4,8 +4,7 @@ $secondary-color: #FF8282;
 $page-bg: #EBEBEB;
 $nav-height: 68px;
 
-.switchLoginSignupView {
-  cursor: pointer;
-  color: $secondary-color;
-  border-bottom: 2px dotted $secondary-color;
+button.create-campaign {
+  padding: 10px;
+  width: 150px;
 }
