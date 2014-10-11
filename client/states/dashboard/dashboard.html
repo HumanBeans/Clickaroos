@@ -18,23 +18,23 @@
   <div id="dashboard-content">
     <div id="dashboard-reports">
       <!-- TODO: incorporate scope data for dynamic naming of campaigns -->
-      <h1>REPORTS<span> / {{ campaign.campaign_title }}</span></h1>
+      <h1>REPORTS<span> / {{ data.campaign.campaign_title }}</span></h1>
       <!-- Row 1 of dashboard -->
       <div id="dashboard-stat-block-row" ng-model="data">
         <div class="stat-container">
           <div class="each-stat">
             <h3 class="">Opens</h3>
-            <h4 class="">{{ data.campaign.analytics.rawData.opens.total }}</h4>
+            <h4 class="">{{ data.analytics.rawData.opens.total }}</h4>
           </div>
 
           <div class="each-stat">
             <h3 class="">Clicks</h3>
-            <h4 class="">{{ data.campaign.analytics.rawData.clicks.total }}</h4>
+            <h4 class="">{{ data.analytics.rawData.clicks.total }}</h4>
           </div>  
 
           <div class="each-stat">
             <h3 class="">CTR</h3>
-            <h4 class="">{{ data.campaign.analytics.rawData.ctr * 100 }}%</h4>
+            <h4 class="">{{ data.analytics.rawData.clicks.total / data.analytics.rawData.opens.total * 100 }}%</h4>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
         <canvas time-series-directive ng-model="data" options="options"></canvas>
         <div class="time-series-legend">
           <ul class="legend-list" style="list-style-type:none; margin-left: -13px">
-            <li ng-repeat="type in data.campaign.analytics.rawData">
+            <li ng-repeat="type in data.analytics.rawData">
               <div style="float: left; margin-top: 10px">
                 <span>{{ type.label }}<span>
                 <span class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ type.color + '1)'}};"></span>
@@ -65,7 +65,7 @@
           <canvas client-doughnut-directive ng-model="data" options="options"></canvas>
           <div class="doughnut-legend" ng-model="data">
             <ul class="legend-list" style="list-style-type:none">
-              <li ng-repeat="client in data.campaign.analytics.email_client">
+              <li ng-repeat="client in data.analytics.email_client">
                 <span>{{ client.label }}<span>:
                 <span>{{ client.value }}</span>
                 <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ client.color }};"></div>
@@ -79,7 +79,7 @@
           <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
           <div class="doughnut-legend" ng-model="data">
             <ul class="legend-list" style="list-style-type:none">
-              <li ng-repeat="device in data.campaign.analytics.device">
+              <li ng-repeat="device in data.analytics.device_click">
                 <span>{{ device.label }}<span>:
                 <span>{{ device.value }}</span>
                 <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div>
