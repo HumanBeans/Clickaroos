@@ -11,7 +11,18 @@ angular.module('clickaroos.config', [])
     .state('dashboard', {
       url: '/dashboard',
       templateUrl: 'states/dashboard/dashboard.html',
-      controller: 'DashboardController'
+      controller: 'DashboardController',
+      resolve: {
+        recentCampaigns: ['Dashboard', function(Dashboard) {
+          return Dashboard.getRecentCampaigns();
+        }],
+        campaignData: ['Dashboard', 'Campaign', function(Dashboard, Campaign) {
+          return Dashboard.getRecentCampaigns()
+            .then(function(campaigns) {
+              return Campaign.getCampaignData(campaigns[0].campaign_id);
+          });
+        }]
+      }
     })
     .state('create-campaign', {
       url: '/create-campaign',

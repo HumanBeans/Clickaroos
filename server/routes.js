@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////
 // API's Request Handlers
 var abTestRequestHandlers = require( './api/ab_tests/main' );
-var campaginRequestHandlers = require('./api/campaigns/main');
+var campaignRequestHandlers = require('./api/campaigns/main');
 var queryRequestHandlers = require('./api/queries/main');
 var timerRequestHandlers = require('./api/timers/main');
 var userRequestHandlers = require('./api/users/main');
@@ -19,7 +19,7 @@ module.exports = function( app ) {
   app.use('/api/ab_tests', abTestRequestHandlers );
 
   // TODO: require and add request-handler for campaigns
-  app.use('/api/campaigns', campaginRequestHandlers);
+  app.use('/api/campaigns', campaignRequestHandlers);
 
   app.use('/api/images', imagesRequestHandlers);
 

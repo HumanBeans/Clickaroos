@@ -11,15 +11,14 @@
     <div id="filter-campaigns">
       <h3>Recent Campaigns:</h3>
       <ul id="select-campaign">
-        <a ng-repeat="campaign in recentCampaigns" ng-href="#/campaign/{{ campaign.campaign_id }}"><li>{{ campaign.campaign_title }}</li></a>
-        <!-- <li ng-click="getRecentCampaigns()">Aggregate</li> -->
+        <li ng-repeat="campaign in recentCampaigns" data="{{ campaign }}" ng-click="getCampaignData(campaign)">{{ campaign.campaign_title }}</li>
       </ul>
     </div>
   </div>
   <div id="dashboard-content">
     <div id="dashboard-reports">
       <!-- TODO: incorporate scope data for dynamic naming of campaigns -->
-      <h1>REPORTS<span> / 30% Off Sale</span></h1>
+      <h1>REPORTS<span> / {{ campaign.campaign_title }}</span></h1>
       <!-- Row 1 of dashboard -->
       <div id="dashboard-stat-block-row" ng-model="data">
         <div class="stat-container">
@@ -63,33 +62,29 @@
 
         <div class="dashboard-doughnut-container">
           <h2 class="dashboard-subheader">Client</h2>
-          <div style="padding:0 8%">
-            <canvas client-doughnut-directive ng-model="data" options="options"></canvas>
-            <div class="doughnut-legend" ng-model="data">
-              <ul class="legend-list" style="list-style-type:none">
-                <li ng-repeat="client in data.campaign.analytics.email_client">
-                  <span class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ client.color }};"></span>
-                  <span>{{ client.label }}<span>:
-                  <span>{{ client.value }}</span>
-                </li>
-              </ul>
-            </div>
-          </div>  
+          <canvas client-doughnut-directive ng-model="data" options="options"></canvas>
+          <div class="doughnut-legend" ng-model="data">
+            <ul class="legend-list" style="list-style-type:none">
+              <li ng-repeat="client in data.campaign.analytics.email_client">
+                <span>{{ client.label }}<span>:
+                <span>{{ client.value }}</span>
+                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ client.color }};"></div>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="dashboard-doughnut-container">
           <h2 class="dashboard-subheader">Device</h2>
-          <div style="padding:0 8%">
-            <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
-            <div class="doughnut-legend" ng-model="data">
-              <ul class="legend-list" style="list-style-type:none">
-                <li ng-repeat="device in data.campaign.analytics.device">
-                  <span class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ device.color }};"></span>
-                  <span>{{ device.label }}<span>:
-                  <span>{{ device.value }}</span>
-                </li>
-              </ul>
-            </div>
+          <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
+          <div class="doughnut-legend" ng-model="data">
+            <ul class="legend-list" style="list-style-type:none">
+              <li ng-repeat="device in data.campaign.analytics.device">
+                <span>{{ device.label }}<span>:
+                <span>{{ device.value }}</span>
+                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div>
+              </li>
+            </ul>
           </div>
         </div>
 

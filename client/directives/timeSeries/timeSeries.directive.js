@@ -10,10 +10,11 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
       options: '=',
     },
 
-    link: function(scope, element, attrs) {
+    link: function(scope, element, attrs, ctrl) {
+      console.log('scope: ', scope);
+      console.log('scope.data: ', scope);
+
       var chartData = [];
-      
-      // TODO: NEED THESE???
       var ctx = element[0].getContext("2d");
       var counter = 0;
       
@@ -26,25 +27,25 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
       // clicks
       chartData.datasets.push({
           label: 'Clicks',
-          fillColor: scope.data.campaign.analytics.rawData.clicks.color + '0.2)',
-          strokeColor: scope.data.campaign.analytics.rawData.clicks.color + '1)',
-          pointColor: scope.data.campaign.analytics.rawData.clicks.color + '1)',
+          fillColor: scope.data.analytics.rawData.clicks.color + '0.2)',
+          strokeColor: scope.data.analytics.rawData.clicks.color + '1)',
+          pointColor: scope.data.analytics.rawData.clicks.color + '1)',
           pointStrokeColor: '#fff',
           pointHighlightFill: '#fff',
-          pointHighlightFillStroke: scope.data.campaign.analytics.rawData.clicks.color + '1)',
-          data: scope.data.campaign.analytics.rawData.clicks.data
+          pointHighlightFillStroke: scope.data.analytics.rawData.clicks.color + '1)',
+          data: scope.data.analytics.rawData.clicks.data
         });
 
       // opens
       chartData.datasets.push({
         label: 'Opens',
-        fillColor: scope.data.campaign.analytics.rawData.opens.color + '0.2)',
-        strokeColor: scope.data.campaign.analytics.rawData.opens.color + '1)',
-        pointColor: scope.data.campaign.analytics.rawData.opens.color + '1)',
+        fillColor: scope.data.analytics.rawData.opens.color + '0.2)',
+        strokeColor: scope.data.analytics.rawData.opens.color + '1)',
+        pointColor: scope.data.analytics.rawData.opens.color + '1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
-        pointHighlightFillStroke: scope.data.campaign.analytics.rawData.opens.color + '1)',
-        data: scope.data.campaign.analytics.rawData.opens.data
+        pointHighlightFillStroke: scope.data.analytics.rawData.opens.color + '1)',
+        data: scope.data.analytics.rawData.opens.data
       });
 
       // charttype-specific configuration options

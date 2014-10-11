@@ -36,10 +36,11 @@ exports.create = function(req, res, next){
 };
 
 exports.show = function(req, res, next){
+  console.log('show called');
   Campaign.findById(req.params.campaign, function(err, campaign){
     //the second params campaign is an obj {campaign:xx, ab_tests:xx}
     if(err){
-      return res.json('try agin');
+      return res.json('try again');
     }
     if(!campaign){
       return res.status(401);
@@ -47,6 +48,7 @@ exports.show = function(req, res, next){
     if(campaign.campaign.user_id !== req.user._id){
       return res.status(401);
     }
+    console.log('req.url: ', req.url);
     res.status(200).json(campaign);
   });
 };
