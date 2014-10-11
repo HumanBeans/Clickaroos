@@ -1,0 +1,59 @@
+/*$font-stack: Helvetica, sans-serif;
+$primary-color: #5bc0de;
+$page-bg: #EBEBEB;
+$nav-height: 68px;*/
+
+table{
+  /*margin-top: 2%;*/
+  margin-left: 5%;
+}
+
+th{
+  font: bold;
+  font-size: 20px;
+}
+
+tr > td {
+  padding: 5px 0;
+}
+
+.campaign-name {
+  width: 40%;
+  font-size: 20px;
+}
+
+.campaign-time {
+  width: 30%;
+  font-size: 16px;
+}
+
+.campaign-search {
+  font-size: 26px;
+  font-style: italic;
+  padding: 3% 5%;
+  width: 80%;
+}
+
+.filter-label {
+  margin-right: 35px;
+  float: left;
+}
+
+.campaign-search input{
+
+}
+
+li {
+  list-style-type: none;
+  padding: 18px 20px;
+  border-bottom: 1px solid #353F47;
+  cursor: pointer;
+  transition: .35s;
+}
+
+li:hover {
+  background: #383F45;
+  border-bottom: 1px solid #253F47;
+  transition: .35s;
+}
+
