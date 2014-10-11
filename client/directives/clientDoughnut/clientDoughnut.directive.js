@@ -55,6 +55,8 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
 
           var clientDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
         };
+
+        render();
       }
     };
 }]);
