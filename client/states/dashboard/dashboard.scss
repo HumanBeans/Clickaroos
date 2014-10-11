@@ -80,10 +80,6 @@ $nav-height: 68px;
   }
 }
 
-
-
-
-
 .dashboard-subheader {
   text-align: center;
 }
@@ -166,4 +162,22 @@ $nav-height: 68px;
   font-weight: bold;
   padding: 18px 20px 0 20px;
   font-family: 'Oswald', Helvetica, Arial;
+}
+
+h4 {
+  font-family: $font-stack;
+}
+
+table {
+  width: 95%;
+}
+
+td {
+  background-color: white;
+  padding: 0px !important;
+  font-family: $font-stack;
+}
+
+td.device-label {
+  font-weight: bold;
 }

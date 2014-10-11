@@ -41,7 +41,7 @@
       
       <!-- Row 2 of dashboard -->
       <div id="time-chart" class="stat-container">
-        <h3>Clicks & Opens per Time of Day</h3>
+        <h3>Clicks & Opens / Time of Day</h3>
         <br />
         <canvas time-series-directive ng-model="data" options="options"></canvas>
         <div class="time-series-legend">
@@ -64,13 +64,12 @@
           <h2 class="dashboard-subheader">Opens</h2>
           <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
           <div class="doughnut-legend" ng-model="data">
-            <ul class="legend-list" style="list-style-type:none">
-              <li ng-repeat="device in data.analytics.device_open">
-                <span>{{ device.label }}<span>:
-                <span>{{ device.value }}</span>
-                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div>
-              </li>
-            </ul>
+            <table class="legend-list">
+              <tr ng-repeat="device in data.analytics.device_open">
+                <td class="device-label">{{ device.label }}</td>
+                <td>{{ device.value }} <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div></td>
+              </tr>
+            </table>
           </div>
         </div>
 
@@ -78,13 +77,12 @@
           <h2 class="dashboard-subheader">Clicks</h2>
           <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
           <div class="doughnut-legend" ng-model="data">
-            <ul class="legend-list" style="list-style-type:none">
-              <li ng-repeat="device in data.analytics.device_click">
-                <span>{{ device.label }}<span>:
-                <span>{{ device.value }}</span>
-                <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div>
-              </li>
-            </ul>
+            <table class="legend-list">
+              <tr ng-repeat="device in data.analytics.device_click">
+                <td class="device-label">{{ device.label }}</td>
+                <td>{{ device.value }} <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div></td>
+              </tr>
+            </table>
           </div>
         </div>
 
