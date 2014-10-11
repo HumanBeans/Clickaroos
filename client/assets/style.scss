@@ -46,6 +46,9 @@ input {
 #top-nav {
   float: right;
   height: $nav-height;
+  li {
+    cursor: pointer;
+  }
 }
 
 #top-bar {
@@ -238,3 +241,4 @@ input {
   from { transform: scale(1) rotate(0deg);}
   to { transform: scale(1) rotate(360deg);}
 }
+
