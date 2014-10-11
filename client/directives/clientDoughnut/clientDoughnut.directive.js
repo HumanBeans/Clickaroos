@@ -12,21 +12,17 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
 
       link: function(scope, element, attrs) {
         var ctx = element[0].getContext("2d");
-        var counter = 0;
         var chartData = [];
 
         //populate chartData with properly formatted from scope.data
-        for(var key in scope.data.analytics.email_client) {
-          
+        for(var key in scope.data.analytics.email_client) { 
           chartData.push({
             value: scope.data.analytics.email_client[key].value,
             color: scope.data.analytics.email_client[key].color,
             label: key
           });
-
-          counter++;
         }
-        
+       
         //charttype-specific configuration options
         options = {
           segmentShowStroke : true,
@@ -40,7 +36,7 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
         };
         
         // set chart dimensions
-        ctx.canvas.width = 350;
+        ctx.canvas.width = 200;
         ctx.canvas.height= 200;
 
         var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
