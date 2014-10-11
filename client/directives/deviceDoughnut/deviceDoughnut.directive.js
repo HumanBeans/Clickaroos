@@ -15,10 +15,10 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
       var chartData = [];
 
       //populate chartData with properly formatted from scope.data
-      for(var key in scope.data.campaign.analytics.device){  
+      for(var key in scope.data.analytics.device){  
         chartData.push({
-          value: scope.data.campaign.analytics.device[key].value,
-          color: scope.data.campaign.analytics.device[key].color,
+          value: scope.data.analytics.device[key].value,
+          color: scope.data.analytics.device[key].color,
           label: key
         });
       }
