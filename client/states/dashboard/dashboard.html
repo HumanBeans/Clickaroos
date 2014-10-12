@@ -67,7 +67,7 @@
             <table class="legend-list">
               <tr ng-repeat="device in data.analytics.device_open">
                 <td class="device-label">{{ device.label }}</td>
-                <td>{{ device.value }} <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div></td>
+                <td>{{ device.value }} <div class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ device.color }};"></div></td>
               </tr>
             </table>
           </div>
@@ -81,7 +81,7 @@
             <table class="legend-list">
               <tr ng-repeat="device in data.analytics.device_click">
                 <td class="device-label">{{ device.label }}</td>
-                <td>{{ device.value }} <div class="legend-swatch" style="width:10px;height:10px;background-color:{{ device.color }};"></div></td>
+                <td>{{ device.value }} <div class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ device.color }};"></div></td>
               </tr>
             </table>
           </div>
