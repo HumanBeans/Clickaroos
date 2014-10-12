@@ -1,12 +1,13 @@
 <div class="view-container">
   <div id="dashboard-sidebar">
     <div id="filter-campaigns">
-      <h3>Switachroo is A/B testing.</h3>
+      <h3>Switcharoo A/B testing.</h3>
       <ul id="select-campaign">
-        <li>First, choose what you want to name your A/B test.</li>
-        <li>Next, upload the images you want to A/B test and enter where they should redirect to.</li>
-        <li>Then, decide on your A/B test time settings.</li>
-        <li class="active">Finally, generate that Switcharoo!</li>
+        <li>Step 1: choose a name</li>
+        <li>Step 2: upload the images</li>
+        <li>Step 3: enter destination URLs</li>
+        <li>Step 4: set time settings</li>
+        <li class="active">Step 5: click 'Generate'</li>
       </ul>
     </div>
   </div>
@@ -112,7 +113,7 @@
         <!-- Using ng-click because ng-submit considers button clicks as submits, and there are buttons littered throughout the HTML -->
       </div>
 
-      <button class="btn btn-info generate-img" type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)" style="margin-top: 30px;">Make my Switcharoo!<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.makeABTest"></i></button>
+      <button class="btn btn-info generate-img" type="submit" ng-click="submitImagesAndReroutes(imagesAndReroutes)" style="margin-top: 30px;">Generate<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.makeABTest"></i></button>
     </div>
     </form>
 
