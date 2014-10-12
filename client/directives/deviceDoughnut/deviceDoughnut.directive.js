@@ -23,10 +23,10 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
         var counter = 0;
 
         //populate chartData with properly formatted from scope.data
-        for(var key in scope.data.analytics.device_click){  
+        for(var key in scope.data){  
           chartData.push({
-            value: scope.data.analytics.device_click[key].value,
-            color: scope.data.analytics.device_click[key].color,
+            value: scope.data[key].value,
+            color: scope.data[key].color,
             label: key
           });
         }
@@ -53,7 +53,9 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
         ctx.canvas.width = 200;
         ctx.canvas.height= 200;
 
-        var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);     
+        var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
+
+        scope.$emit('dataReady', colors);     
       };
 
       render();
