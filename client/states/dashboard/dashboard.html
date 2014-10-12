@@ -43,7 +43,7 @@
       <div id="time-chart" class="stat-container">
         <h3>Clicks & Opens / Time of Day</h3>
         <br />
-        <canvas time-series-directive data="data" options="options"></canvas>
+        <canvas time-series-directive data="data.analytics" options="options"></canvas>
         <div class="time-series-legend">
           <ul class="legend-list" style="list-style-type:none; margin-left: -13px">
             <li ng-repeat="type in data.analytics.rawData">

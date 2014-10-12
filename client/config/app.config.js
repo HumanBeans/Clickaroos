@@ -13,14 +13,14 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/dashboard/dashboard.html',
       controller: 'DashboardController',
       resolve: {
-        // recentCampaigns: ['Dashboard', function(Dashboard) {
-        //   return Dashboard.getRecentCampaigns();
-        // }],
+        recentCampaigns: ['Dashboard', function(Dashboard) {
+          return Dashboard.getRecentCampaigns();
+        }],
         campaignData: ['Dashboard', 'Campaign', function(Dashboard, Campaign) {
           return Dashboard.getRecentCampaigns()
             .then(function(campaigns) {
               if(campaigns.length !== 0) {
-                return { allCampaigns: campaigns, thisCampaign: Campaign.getCampaignData(campaigns[0].campaign_id) };
+                return Campaign.getCampaignData(campaigns[0].campaign_id);
               } else  {
                 return;
               }
@@ -45,7 +45,7 @@ angular.module('clickaroos.config', [])
           return Campaign.getAllCampaignData()
             .then(function(campaigns) {
               if(campaigns.length !== 0) {
-                return { thisCampaign: Campaign.getCampaignData(campaigns[0].campaign_id) };
+                return Campaign.getCampaignData(campaigns[0].campaign_id);
               } else  {
                 return;
               }
