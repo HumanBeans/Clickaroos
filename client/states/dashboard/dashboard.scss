@@ -61,7 +61,50 @@ $nav-height: 68px;
     margin: 20px;
   }
 }
+.each-stat {
+  width: 30%;
+  /*padding-left: 25px;*/
+  background: #fff;
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
+}
 
+.stat-container {
+  margin-top: 40px;
+  font-family: Oswald;
+  width: 100%;
+  float: left;
+}
+
+.dashboard-doughnut-container {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  padding: 20px 30px;
+  margin-bottom: 40px;
+  canvas {
+    margin-right: 20px;
+  }
+}
+
+.dashboard-doughnut-container:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.each-stat:nth-last-child(1) {
+  margin-right: 0;
+}
+
+#time-chart {
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 30px 30px 30px;
+}
 #dashboard-content #dashboard-reports {
   margin-left: 240px;
   padding: 30px;
@@ -82,6 +125,7 @@ $nav-height: 68px;
 
 .dashboard-subheader {
   text-align: center;
+  margin-bottom: 15px;
 }
 
 #dashboard-stat-block-row, #dashboard-doughnuts-row, #dashboard-time-series-row {
@@ -105,12 +149,6 @@ $nav-height: 68px;
   padding-top: 22px;
 }
 
-.dashboard-doughnut-container {
-  height: 100%;
-  width: 48%;
-  float: left;
-}
-
 .dashboard-time-series-container {
   height: 100%;
   width: 50%;
@@ -119,9 +157,9 @@ $nav-height: 68px;
 }
 
 .doughnut-legend {
-  padding: 5% 0;
-  height: 80%;
-  width: 40%;
+  padding-top: 20px;
+  /*height: 80%;*/
+  /*width: 30%;*/
   float: left;
 
   table {
@@ -135,7 +173,11 @@ $nav-height: 68px;
   }
 
   td.device-label {
-    font-weight: bold;
+    /*font-weight: bold;*/
+  }
+
+  .donut-value {
+    margin-left: 15px;
   }
 }
 
@@ -180,4 +222,32 @@ $nav-height: 68px;
 
 h4 {
   font-family: $font-stack;
+}
+
+.each-stat {
+  width: 30%;
+  /*padding-left: 25px;*/
+  background: #fff;
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.stat-container {
+  margin-top: 40px;
+  font-family: Oswald;
+  width: 100%;
+  float: left;
+}
+
+.each-stat:nth-last-child(1) {
+  margin-right: 0;
+}
+
+#time-chart {
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 30px 30px 30px;
 }

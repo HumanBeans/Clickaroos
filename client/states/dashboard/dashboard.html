@@ -66,8 +66,8 @@
           <div class="doughnut-legend" ng-model="data">
             <table class="legend-list">
               <tr ng-repeat="device in data.analytics.device_open">
-                <td class="device-label">{{ device.label }}</td>
-                <td>{{ device.value }} <div class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ device.color }};"></div></td>
+                <td class="device-label"><span class="legend-swatch" style="display:inline-block;width:10px;height:10px;margin-right:10px;background-color:{{ device.color }};"></span> {{ device.label }} </td>
+                <td><span class="donut-value">{{ device.value }}</span></td>
               </tr>
             </table>
           </div>
@@ -80,8 +80,8 @@
           <div class="doughnut-legend" ng-model="data">
             <table class="legend-list">
               <tr ng-repeat="device in data.analytics.device_click">
-                <td class="device-label">{{ device.label }}</td>
-                <td>{{ device.value }} <div class="legend-swatch" style="display:inline-block;width:10px;height:10px;background-color:{{ device.color }};"></div></td>
+                <td class="device-label"><span class="legend-swatch" style="display:inline-block;width:10px;height:10px;margin-right:10px;background-color:{{ device.color }};"></span> {{ device.label }} </td>
+                <td><span class="donut-value">{{ device.value }}</span></td>
               </tr>
             </table>
           </div>
