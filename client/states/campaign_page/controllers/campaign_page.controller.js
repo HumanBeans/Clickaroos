@@ -1,16 +1,23 @@
 angular.module('clickaroos.campaignPage', [])
 
-.controller('CampaignPageController', ['$scope', 'CampaignPage', 'campaign_id', function($scope, CampaignPage, campaign_id) {
+.controller('CampaignPageController', ['$scope', 'Campaign', 'CampaignPage', 'campaignData', function($scope, Campaign, CampaignPage) {
 
-  console.log('campaign_id in camp page controller', campaign_id);
- 
-  $scope.campaignInfo;
-  // Get campaign information from server
-  CampaignPage.getCampaignInfo(campaign_id)
-    .then(function(campaignInfo) {
-      $scope.campaignInfo = campaignInfo;
-    });
+  $scope.data = campaignData.thisCampaign;
 
-}])
+  // pull in chart color data for legend
+  $scope.$on('dataReady', function(event, data) {
+    event.preventDefault();
+    var colors = data;
 
-;
+    // TODO: pull in necessary colors for charts from directives
+    // var counter = 0;
+
+    // for(var key in $scope.data.analytics.device_click) {
+    //   $scope.data.analytics.device_click[key].color = colors[counter];
+    //   $scope.data.analytics.device_open[key].color = colors[counter];
+    //   counter++;
+    // }
+  });
+
+
+}]);

@@ -54,7 +54,6 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
         ctx.canvas.height= 200;
 
         var deviceDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
-
         scope.$emit('dataReady', colors);     
       };
 

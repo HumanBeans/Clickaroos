@@ -2,18 +2,18 @@ angular.module('clickaroos.dashboard', [])
 
 .controller('DashboardController', ['$scope', 'Campaign', 'recentCampaigns', 'campaignData', function($scope, Campaign, recentCampaigns, campaignData) {
 
-  $scope.recentCampaigns = recentCampaigns;
-  $scope.data = campaignData;
+  $scope.recentCampaigns = campaignData.allCampaigns;
+  $scope.data = campaignData.thisCampaigns;
 
-  // Get data for single campaign
+  // get data for single campaign
   $scope.getCampaignData = function(campaign) {
     Campaign.getCampaignData(campaign.campaign_id)
       .then(function(campaignData) {
         $scope.data = campaignData;
-        console.log('$scope.data: ', $scope.data);
       });  
   }
-
+  
+  // pull in chart color data for legend
   $scope.$on('dataReady', function(event, data) {
     event.preventDefault();
     var colors = data;
@@ -25,8 +25,6 @@ angular.module('clickaroos.dashboard', [])
       counter++;
     }
   });
-
-  // });
 }]);
 
  
