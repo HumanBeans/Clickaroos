@@ -29,25 +29,25 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
         // clicks
         chartData.datasets.push({
             label: 'Clicks',
-            fillColor: scope.data.analytics.rawData.clicks.color + '0.2)',
-            strokeColor: scope.data.analytics.rawData.clicks.color + '1)',
-            pointColor: scope.data.analytics.rawData.clicks.color + '1)',
+            fillColor: scope.data.rawData.clicks.color + '0.2)',
+            strokeColor: scope.data.rawData.clicks.color + '1)',
+            pointColor: scope.data.rawData.clicks.color + '1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
-            pointHighlightFillStroke: scope.data.analytics.rawData.clicks.color + '1)',
-            data: scope.data.analytics.rawData.clicks.data
+            pointHighlightFillStroke: scope.data.rawData.clicks.color + '1)',
+            data: scope.data.rawData.clicks.data
           });
 
         // opens
         chartData.datasets.push({
           label: 'Opens',
-          fillColor: scope.data.analytics.rawData.opens.color + '0.2)',
-          strokeColor: scope.data.analytics.rawData.opens.color + '1)',
-          pointColor: scope.data.analytics.rawData.opens.color + '1)',
+          fillColor: scope.data.rawData.opens.color + '0.2)',
+          strokeColor: scope.data.rawData.opens.color + '1)',
+          pointColor: scope.data.rawData.opens.color + '1)',
           pointStrokeColor: '#fff',
           pointHighlightFill: '#fff',
-          pointHighlightFillStroke: scope.data.analytics.rawData.opens.color + '1)',
-          data: scope.data.analytics.rawData.opens.data
+          pointHighlightFillStroke: scope.data.rawData.opens.color + '1)',
+          data: scope.data.rawData.opens.data
         });
 
         // charttype-specific configuration options
@@ -70,6 +70,7 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
         ctx.canvas.height= 200;
 
         var myLineChart = new Chart(ctx).Line(chartData, options);      
+        scope.$emit('dataReady', colors);
       };
 
       render();

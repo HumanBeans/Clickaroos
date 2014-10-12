@@ -13,14 +13,14 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/dashboard/dashboard.html',
       controller: 'DashboardController',
       resolve: {
-        recentCampaigns: ['Dashboard', function(Dashboard) {
-          return Dashboard.getRecentCampaigns();
-        }],
+        // recentCampaigns: ['Dashboard', function(Dashboard) {
+        //   return Dashboard.getRecentCampaigns();
+        // }],
         campaignData: ['Dashboard', 'Campaign', function(Dashboard, Campaign) {
           return Dashboard.getRecentCampaigns()
             .then(function(campaigns) {
               if(campaigns.length !== 0) {
-                return Campaign.getCampaignData(campaigns[0].campaign_id); 
+                return { allCampaigns: campaigns, thisCampaign: Campaign.getCampaignData(campaigns[0].campaign_id) };
               } else  {
                 return;
               }
@@ -34,12 +34,22 @@ angular.module('clickaroos.config', [])
       controller: 'CreateCampaignController'
     })
     .state('campaign-page', {
-      url: '/campaign/:campaign_id', // TODO: adjust if necessary
+      url: '/campaign/:campaign_id',
       templateUrl: 'states/campaign_page/campaign_page.html',
       controller: 'CampaignPageController',
       resolve: {
-        campaign_id: ['$stateParams', function($stateParams) {
-          return Number($stateParams.campaign_id);
+        // campaign_id: ['$stateParams', function($stateParams) {
+        //   return Number($stateParams.campaign_id);
+        // }],
+        campaignData: ['Campaign', function(Dashboard, Campaign) {
+          return Campaign.getAllCampaignData()
+            .then(function(campaigns) {
+              if(campaigns.length !== 0) {
+                return { thisCampaign: Campaign.getCampaignData(campaigns[0].campaign_id) };
+              } else  {
+                return;
+              }
+          });
         }]
       }
     })
@@ -49,35 +59,15 @@ angular.module('clickaroos.config', [])
       controller: 'CampaignListController'
     })
 
-    // CREATE CLIENT TOOL PAGES
-    // TODO: Make these nested states of campain page
-    .state('campaign-page.ab-test', {
-      url: '/ab-test', // TODO: adjust if necessary
-      templateUrl: 'states/ab_test/ab_test.html',
-      controller: 'AbTestController'
-    })
     .state('timer', {
-      url: '/campaign/:campaign_id/timer', // TODO: adjust if necessary
+      url: '/campaign/:campaign_id/timer', 
       templateUrl: 'states/campaign-page/timer/timer.html'
     })
     .state('query', {
-      url: '/campaign/:campaign_id/query', // TODO: adjust if necessary
+      url: '/campaign/:campaign_id/query', 
       templateUrl: 'states/campaign-page/query/query.html'
     })
-
-    // DUMMY ROUTES
-    // dummy-campaign no longer in use
-    // .state('dummy-campaign', {
-    //   url: '/dummy-campaign',
-    //   templateUrl: 'states/campaign_page/campaign_page.html',
-    //   controller: 'CampaignPageController'
-    // })
-    // dummy-ab no longer in use
-    // .state('dummy-ab', {
-    //   url: '/dummy-ab',
-    //   templateUrl: 'states/ab_test/ab_test.html',
-    //   controller: 'AbTestController'
-    // })
+    // TODO: delete /dummy-* routes if no longer necessary
     .state('dummy-timer', {
       url: '/dummy-timer',
       templateUrl: 'states/timer/timer.html'
@@ -91,10 +81,8 @@ angular.module('clickaroos.config', [])
       url: "*path",
       templateUrl: 'states/account/account.html',
       controller: 'AccountController'
-    })
-    ;
+    });
 
     // For Auth0
     $httpProvider.interceptors.push('AuthInterceptor');
-
 }]);

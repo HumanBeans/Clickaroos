@@ -25,8 +25,8 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
           //populate chartData with properly formatted from scope.data
           for(var key in scope.data.analytics.email_client) { 
             chartData.push({
-              value: scope.data.analytics.email_client[key].value,
-              color: scope.data.analytics.email_client[key].color,
+              value: scope.data.[key].value,
+              color: scope.data.[key].color,
               label: key
             });
           }
@@ -54,6 +54,7 @@ angular.module('clickaroos.directives.clientDoughnutDirective', [])
           ctx.canvas.height= 200;
 
           var clientDoughnut = new Chart(ctx).Doughnut(chartData, options, ctx);
+          scope.$emit('dataReady', colors);
         };
 
         render();
