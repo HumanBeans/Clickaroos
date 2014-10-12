@@ -1,9 +1,11 @@
 angular.module('clickaroos.dashboard', [])
 
-.controller('DashboardController', ['$scope', 'Campaign', 'recentCampaigns', 'campaignData', function($scope, Campaign, recentCampaigns, campaignData) {
+.controller('DashboardController', ['$scope', 'Campaign', 'campaignData', function($scope, Campaign, campaignData) {
 
   $scope.recentCampaigns = campaignData.allCampaigns;
-  $scope.data = campaignData.thisCampaigns;
+  $scope.data = campaignData;
+
+  console.log('$scope.data: ', $scope.data);
 
   // get data for single campaign
   $scope.getCampaignData = function(campaign) {

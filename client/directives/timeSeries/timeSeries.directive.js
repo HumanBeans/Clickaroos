@@ -14,6 +14,8 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
       var chartData = [];
       var ctx = element[0].getContext("2d");
 
+      // console.log('times series scope.data: ', scope.data);
+
       scope.$watch('data', function() {
         render();
       });
@@ -70,7 +72,6 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
         ctx.canvas.height= 200;
 
         var myLineChart = new Chart(ctx).Line(chartData, options);      
-        scope.$emit('dataReady', colors);
       };
 
       render();
