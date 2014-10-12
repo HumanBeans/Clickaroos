@@ -36,16 +36,31 @@ var campaign5 = ['Dinner', 1];
 
 var queryString_saveCampaigns = 'INSERT INTO campaigns (campaign_title, user_id) VALUES (?), (?), (?), (?), (?)';
 
-query('truncate users')
-  .then(function(err, result){ return query('INSERT INTO users SET ?', [user1]);})
-  .then(function(err, result){ return query('INSERT INTO users SET ?', [user2]);})
-  .then(function(err, result){return User.forge(user1)})
-  .then(function(err, result){ return query('truncate campaigns');})
+User.save(user1, function(){
+  console.log('user1 generated');
+});
+
+User.save(user2, function(){
+  console.log('user2 generated');
+});
+
+query('truncate campaigns')
   .then(function(err, result){
     return query(queryString_saveCampaigns, [campaign1, campaign2, campaign3, campaign4, campaign5])
   })
   .then(function(err, result){
     console.log('Seed data generated susscessfully!');
   });
+
+// query('truncate users')
+//   .then(function(err, result){ return query('INSERT INTO users SET ?', [user1]);})
+//   .then(function(err, result){ return query('INSERT INTO users SET ?', [user2]);})
+//   .then(function(err, result){ return query('truncate campaigns');})
+//   .then(function(err, result){
+//     return query(queryString_saveCampaigns, [campaign1, campaign2, campaign3, campaign4, campaign5])
+//   })
+//   .then(function(err, result){
+//     console.log('Seed data generated susscessfully!');
+//   });
 
 

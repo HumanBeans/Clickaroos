@@ -4,15 +4,24 @@
 var config = require('../../config/main.js');
 var Q = require('q');
 var bookshelf = require('../../config/dbconfig');
-var Campaign = bookshelf.Model.extend({
-  tableName: 'campaigns'
-});
+
 var ABTest = bookshelf.Model.extend({
-  tableName: 'ab_tests'
+  tableName: 'ab_tests',
+  abImgs: function(){ return this.hasMany(ABImg, 'ab_test_id');},
+  campaign: function(){ return this.belongsTo(Campaign, 'campaign_id');}
 });
+
+var Campaign = bookshelf.Model.extend({
+  tableName: 'campaigns',
+  abTests: function(){ return this.hasMany(ABTest, 'campaign_id'); },
+  debug: true
+});
+
 var ABImg = bookshelf.Model.extend({
-  tableName: 'ab_imgs'
+  tableName: 'ab_imgs',
+  abTest: function(){ return this.belongsTo(ABTest, 'ab_test_id');}
 });
+
 
 var ABOpenTime = bookshelf.Model.extend({
   tableName: 'ab_open_time'
@@ -26,13 +35,16 @@ var ABClickDevice = bookshelf.Model.extend({
   tableName: 'ab_click_device'
 });
 
+var random_data = function(){
+  return Math.floor(Math.random()*50);
+};
+
 //////////dummy data for email client and device
 
 var email_client_dummy_data = {};
-email_client_dummy_data['webmail'] = {label: 'Web mail',value: 65};
-email_client_dummy_data['outlook'] = {label: 'Outlook',value: 25};
-email_client_dummy_data['apple_mail'] = {label: 'Apple Mail',value: 10};
-
+email_client_dummy_data['webmail'] = {label: 'Web mail',value: random_data()};
+email_client_dummy_data['outlook'] = {label: 'Outlook',value: random_data()};
+email_client_dummy_data['apple_mail'] = {label: 'Apple Mail',value: random_data()};
 
 // var save = function(user_id, campaignObj, callback){
 //   campaignObj.user_id = user_id;
@@ -75,7 +87,9 @@ var findById = function(campaign_id, callback){
   // result.analytics.rawData.winner = {};
 
   Campaign.where({campaign_id:campaign_id}).fetch()
+  // bookshelf.knex('campaigns').innerJoin('ab_tests', 'campaigns.campaign_id', 'ab_tests.campaign_id').where({'campaigns.campaign_id': campaign_id})
     .then(function(campaign){
+      // console.log('campaign+++', campaign.toJSON());
       result.campaign = campaign.attributes;
       result.analytics.rawData.clicks.total = campaign.attributes.clicks;
       result.analytics.rawData.opens.total = campaign.attributes.views;
@@ -112,12 +126,33 @@ var findById = function(campaign_id, callback){
         color: ''
       };
 
-      return ABTest.collection().query().where({campaign_id: campaign_id}).select();
+      // return ABTest.collection().query().where({campaign_id: campaign_id}).select();
+      return ABTest.collection().query('where', 'campaign_id', '=', campaign_id).fetch();
+
     })
     .then(function(ab_tests){
-      result.analytics
-      result.ab_tests = ab_tests;
-      // console.log('+++++++++', result);
+      var deferred = Q.defer();
+      result.ab_tests = ab_tests.toJSON();
+      var count = 0;
+      for( var i = 0; i < result.ab_tests.length; i++){
+        (function temp(index){
+          ABImg.collection().query().where({ab_test_id: result.ab_tests[i].ab_test_id}).select().then(function(abImgs){
+
+            result.ab_tests[index].abImgs = abImgs;
+            count += 1;
+            if(count === result.ab_tests.length){
+              console.log('trigger defer');
+              deferred.resolve(result.ab_tests);
+            }
+
+          });
+        })(i);
+      }
+
+      return deferred.promise;
+
+    })
+    .then(function(ab_tests){
       return ABOpenTime.collection().query().where({campaign_id: campaign_id}).select();
       // callback(undefined, result);
     })
@@ -192,10 +227,7 @@ var findById = function(campaign_id, callback){
       console.log('===========', result);
       callback(undefined, result);
 
-    })
-    // .catch(function(err){
-    //   callback(err);
-    // });
+    });
 };
 
 // var findAllCampaignByUserId = function(user_id, callback){

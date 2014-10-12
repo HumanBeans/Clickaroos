@@ -2,10 +2,10 @@ USE clickagoosdb;
 -- USE clickaroosTest;
 -- USE Test;
 
-drop table users;
-drop table campaigns;
-drop table ab_tests;
 drop table ab_imgs;
+drop table ab_tests;
+drop table campaigns;
+drop table users;
 drop table ab_open_time;
 drop table ab_click_time;
 drop table ab_click_device;
@@ -23,7 +23,7 @@ CREATE TABLE users (
 CREATE TABLE campaigns (
   campaign_id INT NOT NULL AUTO_INCREMENT,
   campaign_title VARCHAR(50) NOT NULL UNIQUE,
-  user_id BIGINT NOT NULL,
+  user_id INT NOT NULL,
   clicks BIGINT DEFAULT 0,
   views BIGINT DEFAULT 0,
   -- time_viewed BIGINT NOT NULL UNIQUE,
@@ -42,35 +42,41 @@ CREATE TABLE campaigns (
 
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   modified_at DATETIME ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY(campaign_id)
+  PRIMARY KEY(campaign_id),
+  FOREIGN KEY(user_id)
+    REFERENCES users(user_id)
 );
 
 CREATE TABLE ab_tests (
   ab_test_id INT NOT NULL AUTO_INCREMENT,
   ab_test_title VARCHAR(50) NOT NULL UNIQUE,
-  campaign_id BIGINT NOT NULL,
+  campaign_id INT NOT NULL,
   start_time DATETIME NOT NULL,
   milliseconds_after_start BIGINT NOT NULL,
   milliseconds_pick_winner BIGINT NOT NULL,
   winner_imgid BIGINT,
   winner_views BIGINT,
   winner_clicks BIGINT,
-  PRIMARY KEY(ab_test_id)
+  PRIMARY KEY(ab_test_id),
+  FOREIGN KEY(campaign_id)
+    REFERENCES campaigns(campaign_id)
 );
 
 CREATE TABLE ab_imgs (
   ab_imgs_id INT NOT NULL AUTO_INCREMENT,
-  ab_test_id BIGINT NOT NULL,
+  ab_test_id INT NOT NULL,
   clicks BIGINT NOT NULL,
   views BIGINT NOT NULL,
   asset_url VARCHAR(150) NOT NULL,
   redirect_url VARCHAR(150) NOT NULL,
-  PRIMARY KEY(ab_imgs_id)
+  PRIMARY KEY(ab_imgs_id),
+  FOREIGN KEY(ab_test_id)
+    REFERENCES ab_tests(ab_test_id)
 );
 
 CREATE TABLE ab_open_time(
   ab_test_id INT NOT NULL,
-  campaign_id BIGINT NOT NULL,
+  campaign_id INT NOT NULL,
   0_1 BIGINT DEFAULT 0,
   1_2 BIGINT DEFAULT 0,
   2_3 BIGINT DEFAULT 0,
@@ -95,12 +101,14 @@ CREATE TABLE ab_open_time(
   21_22 BIGINT DEFAULT 0,
   22_23 BIGINT DEFAULT 0,
   23_24 BIGINT DEFAULT 0,
-  PRIMARY KEY(ab_test_id)
+  PRIMARY KEY(ab_test_id),
+  FOREIGN KEY(campaign_id)
+    REFERENCES campaigns(campaign_id)
 );
 
 CREATE TABLE ab_click_time(
   ab_test_id INT NOT NULL,
-  campaign_id BIGINT NOT NULL,
+  campaign_id INT NOT NULL,
   0_1 BIGINT DEFAULT 0,
   1_2 BIGINT DEFAULT 0,
   2_3 BIGINT DEFAULT 0,
@@ -125,19 +133,23 @@ CREATE TABLE ab_click_time(
   21_22 BIGINT DEFAULT 0,
   22_23 BIGINT DEFAULT 0,
   23_24 BIGINT DEFAULT 0,
-  PRIMARY KEY(ab_test_id)
+  PRIMARY KEY(ab_test_id),
+  FOREIGN KEY(campaign_id)
+    REFERENCES campaigns(campaign_id)
 );
 
 CREATE TABLE ab_click_device(
   ab_test_id INT NOT NULL,
-  campaign_id BIGINT NOT NULL,
+  campaign_id INT NOT NULL,
   iphone BIGINT DEFAULT 0,
   ipad BIGINT DEFAULT 0,
   android_phone BIGINT DEFAULT 0,
   android_pad BIGINT DEFAULT 0,
   desktop BIGINT DEFAULT 0,
   device_other BIGINT DEFAULT 0,
-  PRIMARY KEY(ab_test_id)
+  PRIMARY KEY(ab_test_id),
+  FOREIGN KEY(campaign_id)
+    REFERENCES campaigns(campaign_id)
 );
 
 /* test data */
