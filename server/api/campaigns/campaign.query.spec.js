@@ -51,7 +51,7 @@ describe('campaign query test', function(){
 
   it('should find a campaign with the given id', function(done){
     Campaign.findById(campaign1_id, function(err, campaign){
-    // Campaign.findById(34, function(err, campaign){
+    // Campaign.findById(2, function(err, campaign){
       // console.log('-------', campaign);
       campaign.campaign.campaign_title.should.equal(campaign1_title);
       done();
