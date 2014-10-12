@@ -1,19 +1,26 @@
-<div class="campaign-list">
-<h1>MY CAMPAIGNS</h1>
+<div class="view-container">
+  <div id="dashboard-sidebar">
+    <div id="filter-campaigns">
+      <h3>Here are all of your campaigns.</h3>
+      <ul id="select-campaign">
+        <li>Want to search by campaign name? No problem.</li>
+        <li class="active">
+          <input class="campaign-search" type="text" ng-model="filterCampaignName" placeholder="Filter by campaign name."></input>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="content" class="campaign-list">
+  <h1>MY CAMPAIGNS</h1>
 
-<div class="campaign-search">
-  <input type="text" ng-model="filterCampaignName" placeholder="Filter by campaign name."></input>
-</div>
+  <table>
+    <th>Campaign Name</th>
+    <th>Created At</th>
 
-<table>
-  <th>Campaign Name</th>
-  <th>Created At</th>
-  <th>Last Modified</th>
-
-  <tr ng-repeat="campaign in campaigns | filter: { campaign_title: filterCampaignName } | orderBy:'-modified_at'">
-    <td class="campaign-name"><a ng-href="#/campaign/{{ campaign.campaign_id }}"><div style="height:100%;width:100%">{{ campaign.campaign_title }}</div></a></td>
-    <td class="campaign-time">{{ campaign.created_at | date:'medium' }}</td> 
-    <td class="campaign-time">{{ campaign.modified_at | date:'medium' }}</td>
-  </tr>
-</table>
+    <tr ng-repeat="campaign in campaigns | filter: { campaign_title: filterCampaignName } | orderBy:'-modified_at'">
+      <td class="campaign-name"><a ng-href="#/campaign/{{ campaign.campaign_id }}"><div style="height:100%;width:100%">{{ campaign.campaign_title }}</div></a></td>
+      <td class="campaign-time">{{ campaign.created_at | date:'medium' }}</td>
+    </tr>
+  </table>
+  </div>
 </div>

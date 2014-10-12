@@ -1,11 +1,9 @@
 <div class="view-container">
   <div id="dashboard-sidebar">
     <div id="filter-campaigns">
-      <h3>Articles:</h3>
+      <h3>Create a new campaign.</h3>
       <ul id="select-campaign">
-        <li>How Armano got 12% increase in conversions</li>
-        <li class="active">Effective countdown timer usage</li>
-        <li>Email opens on mobile increases another 2%. Now at 56% of all email opens</li>
+        <li>Enter in a campaign name and let's get creatin'!</li>
       </ul>
     </div>
   </div>
@@ -14,7 +12,7 @@
       <h1>CREATE CAMPAIGN</h1>
 
       <label for="campaignname-input">Campaign Name: </label>
-      <input id="campaignname-input" type="text" name="campaign-title" ng-model="campaignInfo.campaign_title"></input>
+      <input id="campaignname-input" type="text" name="campaign-title" ng-model="campaignInfo.campaign_title" placeholder="e.g. 30% Off Sale"></input>
       <!-- TODO: Campaign folder -->
       <button class="btn btn-info create-campaign" type="submit" name="createCampaign">Create<i class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loading.createCampaign"></i></button>
     </form>
