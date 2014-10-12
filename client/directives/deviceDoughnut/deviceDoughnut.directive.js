@@ -6,7 +6,7 @@ angular.module('clickaroos.directives.deviceDoughnutDirective', [])
     
     scope: {
       //these options bind scope data to attributes on HTML element with directive attached
-      data: '=ngModel',
+      data: '=data',
       options: '=',
     },
 
