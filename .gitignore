@@ -31,6 +31,7 @@ bower_components/
 # Other
 # Temporarily ignoring these minified/uglified files
 client/assets/css/main.css
+client/assets/css/main.min.css
 client/assets/js/
 .DS_Store
 .sass-cache/

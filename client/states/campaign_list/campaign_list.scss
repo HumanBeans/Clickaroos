@@ -5,7 +5,7 @@ $nav-height: 68px;
 
 .campaign-list {
   margin: auto;
-  width: 95%;
+  width: 78%;
   
   table {
     margin: auto;
@@ -54,10 +54,7 @@ a, a:hover {
   float: left;
 }
 
-.campaign-search input{
-  display: block;
-  /*margin: 20px auto;*/
-  margin: 20px 0px; 
-  width: 60%;
+input.campaign-search {
+  margin-bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
-
