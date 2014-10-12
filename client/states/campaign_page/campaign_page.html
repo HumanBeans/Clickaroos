@@ -15,6 +15,7 @@
       <div class="box100pc">
         <h3>Current Apps</h3>
           <ul class="apps-list">
+            <li style="margin: 20px 0" ng-show="!campaignInfo.ab_tests.length">You currently have no apps for this campaign</li>
             <li ng-repeat="ab_test in campaignInfo.ab_tests">
               <div class="AB-test-block">
                 A/B
