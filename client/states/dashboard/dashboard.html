@@ -43,7 +43,7 @@
       <div id="time-chart" class="stat-container">
         <h3>Clicks & Opens / Time of Day</h3>
         <br />
-        <canvas time-series-directive ng-model="data" options="options"></canvas>
+        <canvas time-series-directive data="data" options="options"></canvas>
         <div class="time-series-legend">
           <ul class="legend-list" style="list-style-type:none; margin-left: -13px">
             <li ng-repeat="type in data.analytics.rawData">
@@ -59,10 +59,10 @@
 
       <!-- Row 3 of dashboard -->
       <div class="stat-container">
-
         <div class="dashboard-doughnut-container">
           <h2 class="dashboard-subheader">Opens</h2>
-          <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
+          <canvas device-doughnut-directive data="data.analytics.device_open" options="options"></canvas>
+          
           <div class="doughnut-legend" ng-model="data">
             <table class="legend-list">
               <tr ng-repeat="device in data.analytics.device_open">
@@ -75,7 +75,8 @@
 
         <div class="dashboard-doughnut-container">
           <h2 class="dashboard-subheader">Clicks</h2>
-          <canvas device-doughnut-directive ng-model="data" options="options"></canvas>
+          <canvas device-doughnut-directive data="data.analytics.device_click" options="options"></canvas>
+
           <div class="doughnut-legend" ng-model="data">
             <table class="legend-list">
               <tr ng-repeat="device in data.analytics.device_click">
@@ -87,10 +88,6 @@
         </div>
 
       </div> 
-
-      
-
-
     </div>
   </div>
 </div>

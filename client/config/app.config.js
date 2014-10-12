@@ -19,7 +19,6 @@ angular.module('clickaroos.config', [])
         campaignData: ['Dashboard', 'Campaign', function(Dashboard, Campaign) {
           return Dashboard.getRecentCampaigns()
             .then(function(campaigns) {
-              console.log('campaigns: ', campaigns);
               if(campaigns.length !== 0) {
                 return Campaign.getCampaignData(campaigns[0].campaign_id); 
               } else  {

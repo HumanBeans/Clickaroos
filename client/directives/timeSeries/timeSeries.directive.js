@@ -6,17 +6,15 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
     
     scope: {
       // these options bind scope data to attributes on HTML element with directive attached
-      data: '=ngModel',
+      data: '=data',
       options: '=',
     },
 
     link: function(scope, element, attrs) {
       var chartData = [];
       var ctx = element[0].getContext("2d");
-      var counter = 0;
 
       scope.$watch('data', function() {
-        // element.children().remove();
         render();
       });
       
@@ -27,7 +25,7 @@ angular.module('clickaroos.directives.timeSeriesDirective', [])
         chartData.datasets = [];
 
         // populate chartData with properly formatted from scope.data
-        
+
         // clicks
         chartData.datasets.push({
             label: 'Clicks',
