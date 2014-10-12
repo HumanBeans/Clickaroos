@@ -2,7 +2,7 @@ angular.module('clickaroos.campaignPage', [])
 
 .controller('CampaignPageController', ['$scope', 'Campaign', 'CampaignPage', 'campaignData', function($scope, Campaign, CampaignPage) {
 
-  $scope.data = campaignData.thisCampaign;
+  $scope.data = campaignData;
 
   // pull in chart color data for legend
   $scope.$on('dataReady', function(event, data) {
