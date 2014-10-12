@@ -14,7 +14,6 @@ angular.module('clickaroos.campaignList')
 
     $http.get(appServerUrl+'/api/campaigns')
       .success(function(campaigns) {
-        console.log('campaigns', campaigns);
         deferred.resolve(campaigns);
       })
       .error(function(error) {

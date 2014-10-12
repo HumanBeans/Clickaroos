@@ -9,6 +9,7 @@ angular.module('clickaroos.campaignList', [])
   CampaignList.getCampaigns()
     .then(function(campaigns) {
       $scope.campaigns = campaigns;
+      console.log('$scope.campaigns: ', $scope.campaigns);
     });
   
   $scope.getDate = CampaignList.getDate;
