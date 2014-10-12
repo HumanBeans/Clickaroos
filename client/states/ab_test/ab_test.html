@@ -4,7 +4,7 @@
       <h3>Switachroo is A/B testing.</h3>
       <ul id="select-campaign">
         <li>First, choose what you want to name your A/B test.</li>
-        <li>Next, upload the images you want to A/B test and enter where they should reroute to.</li>
+        <li>Next, upload the images you want to A/B test and enter where they should redirect to.</li>
         <li>Then, decide on your A/B test time settings.</li>
         <li class="active">Finally, generate that Switcharoo!</li>
       </ul>
@@ -34,7 +34,7 @@
         <div style="text-align: center;" ng-repeat="imageAndReroute in imagesAndReroutes">
           <p>
           <img style="width: 100px;" ng-src="{{ imageAndReroute.imageUrl }}" />
-          <input type="text" style="display: inline-block !important; width: 80%;" placeholder="http://redirect-url-here.com" ng-model="imageAndReroute.rerouteUrl" />
+          <input type="text" style="margin-left: 10px; display: inline-block !important; width: 80%;" placeholder="http://redirect-url-here.com" ng-model="imageAndReroute.rerouteUrl" />
           </p>
         </div>
 
