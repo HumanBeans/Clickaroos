@@ -134,6 +134,9 @@ var findById = function(campaign_id, callback){
       var deferred = Q.defer();
       result.ab_tests = ab_tests.toJSON();
       var count = 0;
+      if(ab_tests.length === 0){
+        deferred.resolve(ab_tests.toJSON());
+      }
       for( var i = 0; i < result.ab_tests.length; i++){
         (function temp(index){
           ABImg.collection().query().where({ab_test_id: result.ab_tests[i].ab_test_id}).select().then(function(abImgs){
@@ -223,7 +226,7 @@ var findById = function(campaign_id, callback){
         result.analytics.device_click.device_other.value += item.device_other;
 
       });
-
+      console.log('end');
       console.log('===========', result);
       callback(undefined, result);
 
