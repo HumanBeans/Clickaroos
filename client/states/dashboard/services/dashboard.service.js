@@ -5,9 +5,12 @@ angular.module('clickaroos.dashboard')
 
   factory.getRecentCampaigns = function() {
     var deferred = $q.defer();
+    console.log('getRecentCampaigns called');
+    console.log('appServerUrl: ', appServerUrl);
 
     $http.get(appServerUrl + '/api/campaigns/recent')
       .success(function(data, status, headers, config) {
+        console.log('success');
         deferred.resolve(data);
       }).error(function(data, status, headers, config) {
         deferred.reject(new Error(data));
