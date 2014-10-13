@@ -22,8 +22,8 @@ angular.module('clickaroos.models.campaign', [])
 
     $http.get('/api/campaigns')
       .success(function(data, status, headers, config) {
-        console.log('getAllCampaignData called');
-        console.log('data from server: ', data);
+        // console.log('getAllCampaignData called');
+        // console.log('data from server: ', data);
         deferred.resolve(data);
       })
       .error(function(data, status, headers, config) {
