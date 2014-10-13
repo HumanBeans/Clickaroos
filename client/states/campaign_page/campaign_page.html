@@ -2,9 +2,9 @@
   <div class="view-container">
     <div id="dashboard-sidebar">
       <div id="filter-campaigns">
-        <h3>Here's your campaign page.</h3>
+        <h3>Campaign Page</h3>
         <ul id="select-campaign">
-          <li>View existing apps, or create new app.</li>
+          <li>View existing apps or create new app.</li>
         </ul>
       </div>
     </div>
@@ -24,9 +24,16 @@
               </div>
               <div class="AB-test-info">
                 {{ ab_test.ab_test_title }}
-              </div>
-              <!-- TODO: Change hard coded to dynamic -->
+              <!-- </div> -->
+              <!-- <canvas image-bar-graph-directive id="clicks-opens-chart" data="ab_test.abImgs" options="options"></canvas> -->
+              <!-- <div class="winner-info-container" ng-show="ab_test.winner_url"> -->
+                <!-- <img src="{{ ab_test.winner_url }}" /> -->
+                <!-- <div>Opens: {{ab_test.winner_views}}</div> -->
+                <!-- <div>Clicks: {{ab_test.winner_clicks}}</div> -->
+                <!-- <div>CTR: {{ab_test.winner_clicks / ab_test.winner_views * 100 | number : 2}}%</div> -->
+              <!-- </div> -->
             </li>
+            </div>
           </ul>
         <!-- TODO: swap out dummy tests with real data -->
         <!-- NOTE: When rerouting, keep track of this particular campaign's ID to send along when client makes a new test -->
