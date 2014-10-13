@@ -15,9 +15,9 @@ angular.module('clickaroos.account')
   //
 
   var submitSuccess = function(redirect, data, status, headers, config) {
-    console.log('submitSuccess');
+    // console.log('submitSuccess');
     $window.sessionStorage.token = data.token;
-    console.log('$window.sessionStorage.token', $window.sessionStorage.token);
+    // console.log('$window.sessionStorage.token', $window.sessionStorage.token);
     $state.go(redirect);
   };
 
@@ -35,9 +35,9 @@ angular.module('clickaroos.account')
   factory.submitLogin = function(user) {
     factory.loading.login = true;
 
-    console.log('submitLogin');
-    console.log('username', user.username);
-    console.log('password', user.password);
+    // console.log('submitLogin');
+    // console.log('username', user.username);
+    // console.log('password', user.password);
 
     $http.post(
       appServerUrl+'/auth',
