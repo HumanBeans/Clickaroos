@@ -6,7 +6,7 @@ angular.module('clickaroos.dashboard')
   factory.getRecentCampaigns = function() {
     var deferred = $q.defer();
 
-    $http.get('/api/campaigns/recent')
+    $http.get(appServerUrl + '/api/campaigns/recent')
       .success(function(data, status, headers, config) {
         deferred.resolve(data);
       }).error(function(data, status, headers, config) {
