@@ -6,7 +6,7 @@ angular.module('clickaroos.models.campaign', [])
   factory.getCampaignData = function(campaignID) {
     var deferred = $q.defer();
 
-    $http.get(appServerUrl +'/api/campaigns/' + campaignID)
+    $http.get(appServerUrl + '/api/campaigns/' + campaignID)
       .success(function(data, status, headers, config) {
         deferred.resolve(data);
       })
@@ -20,12 +20,14 @@ angular.module('clickaroos.models.campaign', [])
   factory.getAllCampaignData = function() {
     var deferred = $q.defer();
 
-    $http.get('api/campaigns/all')
+    $http.get('/api/campaigns')
       .success(function(data, status, headers, config) {
+        console.log('getAllCampaignData called');
         console.log('data from server: ', data);
         deferred.resolve(data);
       })
       .error(function(data, status, headers, config) {
+        console.log('ERROR');
         deferred.reject(new Error(data));
       });
 
