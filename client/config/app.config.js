@@ -38,9 +38,9 @@ angular.module('clickaroos.config', [])
       templateUrl: 'states/campaign_page/campaign_page.html',
       controller: 'CampaignPageController',
       resolve: {
-        // campaign_id: ['$stateParams', function($stateParams) {
-        //   return Number($stateParams.campaign_id);
-        // }],
+        campaign_id: ['$stateParams', function($stateParams) {
+          return Number($stateParams.campaign_id);
+        }],
         campaignData: ['Campaign', function(Dashboard, Campaign) {
           return Campaign.getAllCampaignData()
             .then(function(campaigns) {
