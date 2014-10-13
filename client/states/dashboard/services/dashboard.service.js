@@ -10,7 +10,7 @@ angular.module('clickaroos.dashboard')
 
     $http.get(appServerUrl + '/api/campaigns/recent')
       .success(function(data, status, headers, config) {
-        console.log('success');
+        console.log(data);
         deferred.resolve(data);
       }).error(function(data, status, headers, config) {
         deferred.reject(new Error(data));
