@@ -41,9 +41,10 @@ angular.module('clickaroos.config', [])
         campaign_id: ['$stateParams', function($stateParams) {
           return Number($stateParams.campaign_id);
         }],
-        campaignData: ['Campaign', function(Dashboard, Campaign) {
+        campaignData: ['Campaign', function(Campaign) {
           return Campaign.getAllCampaignData()
             .then(function(campaigns) {
+              console.log('campaigns: ', campaigns);
               if(campaigns.length !== 0) {
                 return Campaign.getCampaignData(campaigns[0].campaign_id);
               } else  {
@@ -52,6 +53,11 @@ angular.module('clickaroos.config', [])
           });
         }]
       }
+    })
+    .state('campaign-page.ab-test', {
+     url: '/ab-test', // TODO: adjust if necessary
+      templateUrl: 'states/ab_test/ab_test.html',
+      controller: 'AbTestController'
     })
     .state('campaign-list', {
       url: '/campaigns',

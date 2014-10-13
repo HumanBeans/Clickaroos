@@ -1,12 +1,12 @@
 angular.module('clickaroos.campaignPage', [])
 
-.controller('CampaignPageController', ['$scope', 'Campaign', 'campaign_id', 'campaignData', function($scope, Campaign, campaign_id, campaignData) {
+.controller('CampaignPageController', ['$scope', 'Campaign', 'campaignData', function($scope, Campaign, campaignData) {
 
   $scope.data = campaignData;
-
+  console.log('campaign_page scope.data: ', $scope.data);
   // pull in chart color data for legend
   $scope.$on('dataReady', function(event, data) {
-    // event.preventDefault();
+    event.preventDefault();
     var colors = data;
 
     // TODO: pull in necessary colors for charts from directives
