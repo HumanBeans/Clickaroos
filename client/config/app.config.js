@@ -14,13 +14,13 @@ angular.module('clickaroos.config', [])
       controller: 'DashboardController',
       resolve: {
         recentCampaigns: ['Dashboard', function(Dashboard) {
-          console.log('callllllled');
+          console.log('recentCampaigns called from app.config');
           return Dashboard.getRecentCampaigns();
         }],
         campaignData: ['Dashboard', 'Campaign', function(Dashboard, Campaign) {
-          console.log('called called called');
           return Dashboard.getRecentCampaigns()
             .then(function(campaigns) {
+              console.log('campaigns from app.config: ', campaigns);
               if(campaigns.length !== 0) {
                 return Campaign.getCampaignData(campaigns[0].campaign_id);
               } else  {
