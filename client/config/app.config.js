@@ -43,16 +43,19 @@ angular.module('clickaroos.config', [])
         campaign_id: ['$stateParams', function($stateParams) {
           return Number($stateParams.campaign_id);
         }],
-        campaignData: ['Campaign', function(Campaign) {
-          return Campaign.getAllCampaignData()
-            .then(function(campaigns) {
-              console.log('campaigns: ', campaigns);
-              if(campaigns.length !== 0) {
-                return Campaign.getCampaignData(campaigns[0].campaign_id);
-              } else  {
-                return;
-              }
-          });
+        // campaignData: ['Campaign', function(Campaign) {
+        //   return Campaign.getAllCampaignData()
+        //     .then(function(campaigns) {
+        //       console.log('campaigns: ', campaigns);
+        //       if(campaigns.length !== 0) {
+        //         return Campaign.getCampaignData(campaigns[0].campaign_id);
+        //       } else  {
+        //         return;
+        //       }
+        //   });
+        // }]
+        campaignData: ['Campaign', '$stateParams', function(Campaign, $stateParams) {
+          return Campaign.getCampaignData($stateParams.campaign_id);
         }]
       }
     })
