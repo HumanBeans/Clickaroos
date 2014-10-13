@@ -5,12 +5,17 @@ angular.module('clickaroos.models.campaign', [])
 
   factory.getCampaignData = function(campaignID) {
     var deferred = $q.defer();
+    
+    console.log('getCampaignData called');
+    console.log('campaignID: ', campaignID);
 
     $http.get(appServerUrl + '/api/campaigns/' + campaignID)
       .success(function(data, status, headers, config) {
+        console.log('getCampaignData success');
         deferred.resolve(data);
       })
       .error(function(data, status, headers, config) {
+        console.log('getCampaignData error');
         deferred.reject(new Error(data));
       });
 
